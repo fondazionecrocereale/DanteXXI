@@ -17,14 +17,11 @@ class StorageService {
   }
 
   // Tokens JWT
-  static Future<void> saveTokens({
-    required String accessToken,
-    required String refreshToken,
-  }) async {
+  static Future<void> saveTokens(String accessToken, String refreshToken) async {
     final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_tokenKey, accessToken);
-    await prefs.setString(_refreshTokenKey, refreshToken);
-    await prefs.setBool(_isLoggedInKey, true);
+    await prefs.setString('access_token', accessToken);
+    await prefs.setString('refresh_token', refreshToken);
+    await prefs.setString('token_timestamp', DateTime.now().millisecondsSinceEpoch.toString());
   }
 
   static Future<String?> getAccessToken() async {
@@ -34,7 +31,25 @@ class StorageService {
 
   static Future<String?> getRefreshToken() async {
     final prefs = await SharedPreferences.getInstance();
-    return prefs.getString(_refreshTokenKey);
+    return prefs.getString('refresh_token');
+  }
+
+  static Future<bool> shouldRefreshToken() async {
+    final prefs = await SharedPreferences.getInstance();
+    final timestamp = prefs.getString('token_timestamp');
+    if (timestamp == null) return true;
+    
+    final tokenTime = DateTime.fromMillisecondsSinceEpoch(int.parse(timestamp));
+    final now = DateTime.now();
+    final difference = now.difference(tokenTime);
+    
+    // Renovar si han pasado más de 23 horas (antes de que expire)
+    return difference.inHours >= 23;
+  }
+
+  static Future<void> updateTokenTimestamp() async {
+    final prefs = await SharedPreferences.getInstance();
+    await prefs.setString('token_timestamp', DateTime.now().millisecondsSinceEpoch.toString());
   }
 
   static Future<void> clearTokens() async {

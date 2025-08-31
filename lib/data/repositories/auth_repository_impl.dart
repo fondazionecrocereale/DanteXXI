@@ -15,8 +15,8 @@ class AuthRepositoryImpl implements AuthRepository {
 
       // Guardar tokens y datos del usuario
       await StorageService.saveTokens(
-        accessToken: response.token,
-        refreshToken: response.refreshToken ?? response.token,
+        response.token,
+        response.refreshToken ?? response.token,
       );
       await StorageService.saveUser(response.user.toJson());
       await StorageService.setLoggedIn(true);
@@ -34,8 +34,8 @@ class AuthRepositoryImpl implements AuthRepository {
 
       // Guardar tokens y datos del usuario
       await StorageService.saveTokens(
-        accessToken: response.token,
-        refreshToken: response.refreshToken ?? response.token,
+        response.token,
+        response.refreshToken ?? response.token,
       );
       await StorageService.saveUser(response.user.toJson());
       await StorageService.setLoggedIn(true);
@@ -72,11 +72,28 @@ class AuthRepositoryImpl implements AuthRepository {
     }
   }
 
+  @override
   Future<bool> isAuthenticated() async {
-    return await StorageService.isLoggedIn();
+    final isLoggedIn = await StorageService.isLoggedIn();
+    final token = await StorageService.getAccessToken();
+
+    if (!isLoggedIn || token == null) return false;
+
+    if (await StorageService.isTokenExpired(token)) {
+      await StorageService.clearAll();
+      return false;
+    }
+
+    return true;
   }
 
+  @override
   Future<String?> getAccessToken() async {
-    return await StorageService.getAccessToken();
+    final token = await StorageService.getAccessToken();
+    if (token != null && await StorageService.isTokenExpired(token)) {
+      await StorageService.clearAll();
+      return null;
+    }
+    return token;
   }
 }

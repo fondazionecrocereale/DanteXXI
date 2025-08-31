@@ -1,10 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../blocs/auth/auth_bloc.dart';
+import '../blocs/auth/auth_state.dart';
+import '../blocs/auth/auth_event.dart';
 
 import '../../core/constants/app_colors.dart';
+import '../../core/constants/app_texts.dart';
 import '../../core/services/storage_service.dart';
-import 'auth/login_page.dart';
+import '../../core/services/profile_service.dart';
 import 'onboarding_page.dart';
 import 'home_page.dart';
+import 'auth/login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -21,28 +27,59 @@ class _SplashPageState extends State<SplashPage> {
   }
 
   Future<void> _handleAuthState() async {
-    // Verificar si el onboarding ya se completó
-    final onboardingCompleted = await StorageService.isOnboardingCompleted();
-
-    // Verificar si el usuario está autenticado
-    final isAuthenticated = await StorageService.isLoggedIn();
+    print(
+      '🚀 SplashPage._handleAuthState() - Iniciando verificación de estado...',
+    );
 
     // Simular un delay para mostrar la pantalla de splash
     await Future.delayed(const Duration(seconds: 2));
 
     if (mounted) {
-      if (!onboardingCompleted) {
-        // Primera vez, mostrar onboarding
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const OnboardingPage()),
+      // PRIMERO: Verificar si hay una sesión activa (prioridad máxima)
+      print('🔍 SplashPage._handleAuthState() - Verificando sesión activa...');
+      final hasActiveSession = await ProfileService.hasActiveSession();
+      final profile = await ProfileService.getProfile();
+
+      print(
+        '🔍 SplashPage._handleAuthState() - hasActiveSession: $hasActiveSession',
+      );
+      print(
+        '🔍 SplashPage._handleAuthState() - profile: ${profile != null ? 'existe' : 'null'}',
+      );
+
+      if (hasActiveSession && profile != null) {
+        // ✅ USUARIO AUTENTICADO - Ir directamente a HomePage
+        print(
+          '✅ SplashPage._handleAuthState() - Usuario autenticado, yendo a HomePage',
         );
-      } else if (isAuthenticated) {
-        // Usuario autenticado, ir a home
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const HomePage()),
         );
+        return; // Salir aquí, no verificar onboarding
+      }
+
+      // SEGUNDO: Si no hay sesión activa, verificar onboarding
+      print(
+        '🔍 SplashPage._handleAuthState() - No hay sesión activa, verificando onboarding...',
+      );
+      final onboardingCompleted = await StorageService.isOnboardingCompleted();
+      print(
+        '🔍 SplashPage._handleAuthState() - onboardingCompleted: $onboardingCompleted',
+      );
+
+      if (!onboardingCompleted) {
+        // Primera vez, mostrar onboarding
+        print(
+          '📚 SplashPage._handleAuthState() - Primera vez, yendo a OnboardingPage',
+        );
+        Navigator.of(context).pushReplacement(
+          MaterialPageRoute(builder: (context) => const OnboardingPage()),
+        );
       } else {
         // Usuario no autenticado, ir a login
+        print(
+          '🔐 SplashPage._handleAuthState() - Usuario no autenticado, yendo a LoginPage',
+        );
         Navigator.of(context).pushReplacement(
           MaterialPageRoute(builder: (context) => const LoginPage()),
         );
@@ -52,73 +89,37 @@ class _SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        decoration: const BoxDecoration(gradient: AppColors.italianGradient),
-        child: Center(
+    return BlocListener<AuthBloc, AuthState>(
+      listener: (context, state) {
+        if (state is AuthAuthenticated) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const HomePage()),
+          );
+        } else if (state is AuthUnauthenticated) {
+          Navigator.of(context).pushReplacement(
+            MaterialPageRoute(builder: (context) => const LoginPage()),
+          );
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.primaryBlue,
+        body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // Logo principal
-              Container(
-                width: 120,
-                height: 120,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryWhite.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(60),
-                ),
-                child: const Icon(
-                  Icons.school,
-                  color: AppColors.primaryWhite,
-                  size: 60,
-                ),
-              ),
-
-              const SizedBox(height: 32),
-
-              // Título de la app
+              // Logo o nombre de la app
               Text(
-                'DanteXXI',
-                style: TextStyle(
-                  fontSize: 36,
+                AppTexts.appName,
+                style: const TextStyle(
+                  fontSize: 32,
                   fontWeight: FontWeight.bold,
-                  color: AppColors.primaryWhite,
-                  letterSpacing: 2,
+                  color: Colors.white,
                 ),
               ),
-
-              const SizedBox(height: 8),
-
-              // Subtítulo
-              Text(
-                'Aprende Italiano de Forma Inteligente',
-                style: TextStyle(
-                  fontSize: 18,
-                  color: AppColors.primaryWhite.withValues(alpha: 0.9),
-                ),
-                textAlign: TextAlign.center,
-              ),
-
-              const SizedBox(height: 64),
-
+              const SizedBox(height: 20),
               // Indicador de carga
               const CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(
-                  AppColors.primaryWhite,
-                ),
-                strokeWidth: 3,
-              ),
-
-              const SizedBox(height: 24),
-
-              // Texto de carga
-              Text(
-                'Conectando con tu API...',
-                style: TextStyle(
-                  fontSize: 14,
-                  color: AppColors.primaryWhite.withValues(alpha: 0.8),
-                ),
-                textAlign: TextAlign.center,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
               ),
             ],
           ),

@@ -5,6 +5,7 @@ import '../../../domain/entities/user.dart';
 import '../../../domain/usecases/auth_usecases.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
+import '../../../core/services/storage_service.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final LoginUseCase _loginUseCase;
@@ -64,6 +65,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     try {
       await _logoutUseCase();
+      await StorageService.clearAll();
       emit(AuthUnauthenticated());
     } catch (e) {
       emit(AuthFailure(e.toString()));
@@ -78,8 +80,17 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     try {
       final user = await _getCurrentUserUseCase();
-      // Aquí podrías obtener el token del storage
-      emit(AuthAuthenticated(user, 'token_from_storage'));
+      if (user != null) {
+        final token = await StorageService.getAccessToken();
+        if (token != null && !await StorageService.isTokenExpired(token)) {
+          emit(AuthAuthenticated(user, token));
+        } else {
+          await StorageService.clearAll();
+          emit(AuthUnauthenticated());
+        }
+      } else {
+        emit(AuthUnauthenticated());
+      }
     } catch (e) {
       emit(AuthUnauthenticated());
     }

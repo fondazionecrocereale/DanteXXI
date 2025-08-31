@@ -97,6 +97,10 @@ class HomeContent extends StatelessWidget {
               MaterialPageRoute(builder: (context) => const SettingsPage()),
             ),
           ),
+          IconButton(
+            icon: const Icon(Icons.logout),
+            onPressed: () => _showLogoutDialog(context),
+          ),
         ],
       ),
       body: SafeArea(
@@ -535,6 +539,29 @@ class HomeContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: const Text('Cerrar Sesión'),
+        content: const Text('¿Estás seguro de que quieres cerrar sesión?'),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Cancelar'),
+          ),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              context.read<AuthBloc>().add(AuthLogoutRequested());
+            },
+            child: const Text('Cerrar Sesión'),
+          ),
+        ],
+      ),
     );
   }
 }
