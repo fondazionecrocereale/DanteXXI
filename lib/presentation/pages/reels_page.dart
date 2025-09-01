@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import '../../core/services/reel_service.dart';
-import '../../domain/entities/reel.dart';
-import '../widgets/custom_button.dart';
 import '../../core/constants/app_colors.dart';
+import '../../core/constants/app_texts.dart';
+import '../../domain/entities/reel.dart';
+import '../widgets/video_card.dart';
+import '../../core/services/reel_service.dart';
 import 'video_player_page.dart';
 
 class ReelsPage extends StatefulWidget {
@@ -15,7 +16,22 @@ class ReelsPage extends StatefulWidget {
 class _ReelsPageState extends State<ReelsPage> {
   List<Reel> _reels = [];
   bool _isLoading = true;
-  String? _error;
+  bool _isRefreshing = false;
+  String _selectedCategory = 'Todas';
+  String _selectedLevel = 'Todos';
+
+  final List<String> _categories = [
+    'Todas',
+    'Educación',
+    'Conversación',
+    'Gramática',
+    'Vocabulario',
+    'Cultura',
+    'Viajes',
+    'Negocios',
+  ];
+
+  final List<String> _levels = ['Todos', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
   @override
   void initState() {
@@ -24,12 +40,10 @@ class _ReelsPageState extends State<ReelsPage> {
   }
 
   Future<void> _loadReels() async {
-    try {
-      setState(() {
-        _isLoading = true;
-        _error = null;
-      });
+    setState(() => _isLoading = true);
 
+    try {
+      // Obtener reels desde la API real
       final reels = await ReelService.getReels();
 
       setState(() {
@@ -37,308 +51,362 @@ class _ReelsPageState extends State<ReelsPage> {
         _isLoading = false;
       });
     } catch (e) {
+      print('❌ Error al cargar reels: $e');
+      // Fallback a datos de muestra si hay error
       setState(() {
-        _error = 'Error al cargar los reels: $e';
+        _reels = _generateSampleReels();
         _isLoading = false;
       });
+
+      // Mostrar mensaje de error
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error al cargar reels: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
     }
+  }
+
+  Future<void> _refreshReels() async {
+    setState(() => _isRefreshing = true);
+
+    try {
+      // Obtener reels desde la API real
+      final reels = await ReelService.getReels();
+
+      setState(() {
+        _reels = reels;
+        _isRefreshing = false;
+      });
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+            content: Text('Reels actualizados'),
+            backgroundColor: Colors.green,
+            duration: Duration(seconds: 2),
+          ),
+        );
+      }
+    } catch (e) {
+      print('❌ Error al actualizar reels: $e');
+      setState(() => _isRefreshing = false);
+
+      if (mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Error al actualizar: $e'),
+            backgroundColor: Colors.red,
+          ),
+        );
+      }
+    }
+  }
+
+  List<Reel> _generateSampleReels() {
+    return [
+      Reel(
+        id: 1,
+        author: 'Prof. Marco Rossi',
+        category: 'Educación',
+        chiave: 'Ciao, come stai?',
+        chiaveTranslation: 'Hola, ¿cómo estás?',
+        chiaveTranslationEN: 'Hello, how are you?',
+        chiaveTranslationPR: 'Olá, como você está?',
+        description:
+            'Aprende los saludos básicos en italiano con ejemplos prácticos.',
+        image: 'assets/images/saludos.jpg',
+        lingua: 'italiano',
+        livello: 'A1',
+        name: 'Saludos Básicos',
+        subtitles: [],
+        url: 'https://www.youtube.com/watch?v=example1',
+        views: 1250,
+        visible: true,
+        createdAt: DateTime.now().subtract(const Duration(days: 2)),
+      ),
+      Reel(
+        id: 2,
+        author: 'Prof. Elena Bianchi',
+        category: 'Conversación',
+        chiave: 'Mi piace la pizza',
+        chiaveTranslation: 'Me gusta la pizza',
+        chiaveTranslationEN: 'I like pizza',
+        chiaveTranslationPR: 'Eu gosto de pizza',
+        description:
+            'Expresiones útiles para hablar sobre comida y preferencias.',
+        image: 'assets/images/comida.jpg',
+        lingua: 'italiano',
+        livello: 'A2',
+        name: 'Hablando de Comida',
+        subtitles: [],
+        url: 'https://www.youtube.com/watch?v=example2',
+        views: 890,
+        visible: true,
+        createdAt: DateTime.now().subtract(const Duration(days: 1)),
+      ),
+      Reel(
+        id: 3,
+        author: 'Prof. Antonio Verdi',
+        category: 'Gramática',
+        chiave: 'Io sono, tu sei, lui è',
+        chiaveTranslation: 'Yo soy, tú eres, él es',
+        chiaveTranslationEN: 'I am, you are, he is',
+        chiaveTranslationPR: 'Eu sou, você é, ele é',
+        description: 'Conjugación del verbo essere en presente.',
+        image: 'assets/images/gramatica.jpg',
+        lingua: 'italiano',
+        livello: 'A1',
+        name: 'Verbo Essere',
+        subtitles: [],
+        url: 'https://www.youtube.com/watch?v=example3',
+        views: 2100,
+        visible: true,
+        createdAt: DateTime.now().subtract(const Duration(days: 3)),
+      ),
+    ];
+  }
+
+  List<Reel> get _filteredReels {
+    return _reels.where((reel) {
+      final categoryMatch =
+          _selectedCategory == 'Todas' || reel.category == _selectedCategory;
+      final levelMatch =
+          _selectedLevel == 'Todos' || reel.livello == _selectedLevel;
+      return categoryMatch && levelMatch;
+    }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.backgroundCard,
       appBar: AppBar(
-        title: const Text('Reels en Italiano'),
+        title: Text(
+          AppTexts.reels,
+          style: const TextStyle(
+            color: AppColors.textPrimary,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
         backgroundColor: Colors.transparent,
         elevation: 0,
         actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: _loadReels,
-            tooltip: 'Recargar reels',
-          ),
+          if (_isRefreshing)
+            const Padding(
+              padding: EdgeInsets.all(16.0),
+              child: SizedBox(
+                width: 20,
+                height: 20,
+                child: CircularProgressIndicator(
+                  strokeWidth: 2,
+                  color: AppColors.primaryBlue,
+                ),
+              ),
+            ),
         ],
       ),
-      body: _buildBody(),
-    );
-  }
-
-  Widget _buildBody() {
-    if (_isLoading) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
-    if (_error != null) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.error_outline, size: 64, color: Colors.red[300]),
-            const SizedBox(height: 16),
-            Text(
-              _error!,
-              style: const TextStyle(fontSize: 16),
-              textAlign: TextAlign.center,
-            ),
-            const SizedBox(height: 16),
-            CustomButton(
-              onPressed: _loadReels,
-              text: 'Reintentar',
-              backgroundColor: AppColors.primaryBlue,
-              textColor: Colors.white,
-            ),
-          ],
-        ),
-      );
-    }
-
-    if (_reels.isEmpty) {
-      return const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.video_library_outlined, size: 64, color: Colors.grey),
-            SizedBox(height: 16),
-            Text(
-              'No hay reels disponibles',
-              style: TextStyle(fontSize: 18, color: Colors.grey),
-            ),
-            SizedBox(height: 8),
-            Text(
-              'Vuelve más tarde para ver nuevos videos',
-              style: TextStyle(fontSize: 14, color: Colors.grey),
-              textAlign: TextAlign.center,
-            ),
-          ],
-        ),
-      );
-    }
-
-    return RefreshIndicator(
-      onRefresh: _loadReels,
-      child: ListView.builder(
-        padding: const EdgeInsets.all(16),
-        itemCount: _reels.length,
-        itemBuilder: (context, index) {
-          final reel = _reels[index];
-          return _buildReelCard(reel);
-        },
-      ),
-    );
-  }
-
-  Widget _buildReelCard(Reel reel) {
-    final youtubeId = ReelService.extractYouTubeId(reel.url);
-    final thumbnailUrl = ReelService.getYouTubeThumbnail(youtubeId);
-
-    return Card(
-      margin: const EdgeInsets.only(bottom: 16),
-      elevation: 4,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
+      body: Column(
         children: [
-          // Thumbnail del video
-          ClipRRect(
-            borderRadius: const BorderRadius.vertical(top: Radius.circular(16)),
-            child: Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  height: 200,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[300],
-                    image: thumbnailUrl.isNotEmpty
-                        ? DecorationImage(
-                            image: NetworkImage(thumbnailUrl),
-                            fit: BoxFit.cover,
-                          )
-                        : null,
+          // Indicador de fuente de datos
+          if (_reels.isNotEmpty &&
+              _reels.first.id > 100) // IDs altos indican datos de la API
+            Container(
+              padding: const EdgeInsets.symmetric(
+                horizontal: 16.0,
+                vertical: 8.0,
+              ),
+              color: AppColors.primaryBlue.withOpacity(0.1),
+              child: Row(
+                children: [
+                  Icon(
+                    Icons.cloud_done,
+                    color: AppColors.primaryBlue,
+                    size: 16,
                   ),
-                  child: thumbnailUrl.isEmpty
-                      ? const Icon(
-                          Icons.video_library,
-                          size: 64,
-                          color: Colors.grey,
-                        )
-                      : null,
-                ),
-                // Overlay con información del video
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: Container(
-                    decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          Colors.transparent,
-                          Colors.black.withOpacity(0.7),
-                        ],
-                      ),
-                    ),
-                    padding: const EdgeInsets.all(16),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                reel.name,
-                                style: const TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                                maxLines: 2,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              const SizedBox(height: 4),
-                              Row(
-                                children: [
-                                  Container(
-                                    padding: const EdgeInsets.symmetric(
-                                      horizontal: 8,
-                                      vertical: 4,
-                                    ),
-                                    decoration: BoxDecoration(
-                                      color: AppColors.primaryBlue,
-                                      borderRadius: BorderRadius.circular(12),
-                                    ),
-                                    child: Text(
-                                      reel.livello,
-                                      style: const TextStyle(
-                                        color: Colors.white,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ),
-                                  const SizedBox(width: 8),
-                                  Text(
-                                    '${reel.views} vistas',
-                                    style: TextStyle(
-                                      color: Colors.white.withOpacity(0.8),
-                                      fontSize: 12,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                            color: AppColors.primaryBlue,
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: const Icon(
-                            Icons.play_arrow,
-                            color: Colors.white,
-                            size: 24,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          // Información del video
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Frase clave
-                if (reel.chiave.isNotEmpty) ...[
-                  Container(
-                    padding: const EdgeInsets.all(12),
-                    decoration: BoxDecoration(
-                      color: AppColors.primaryBlue.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(8),
-                      border: Border.all(
-                        color: AppColors.primaryBlue.withOpacity(0.3),
-                      ),
-                    ),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Frase Clave:',
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.bold,
-                            color: AppColors.primaryBlue,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          reel.chiave,
-                          style: const TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
-                        if (reel.chiaveTranslation.isNotEmpty) ...[
-                          const SizedBox(height: 4),
-                          Text(
-                            reel.chiaveTranslation,
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey[600],
-                              fontStyle: FontStyle.italic,
-                            ),
-                          ),
-                        ],
-                      ],
-                    ),
-                  ),
-                  const SizedBox(height: 12),
-                ],
-                // Descripción
-                if (reel.description.isNotEmpty) ...[
+                  const SizedBox(width: 8),
                   Text(
-                    'Descripción:',
+                    'Conectado a la API de Dantexxi',
                     style: TextStyle(
                       fontSize: 12,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.grey[600],
+                      color: AppColors.primaryBlue,
+                      fontWeight: FontWeight.w500,
                     ),
                   ),
-                  const SizedBox(height: 4),
-                  Text(reel.description, style: const TextStyle(fontSize: 14)),
-                  const SizedBox(height: 12),
                 ],
-                // Botón para ver el video
-                SizedBox(
-                  width: double.infinity,
-                  child: CustomButton(
-                    onPressed: () => _openReelPlayer(reel),
-                    text: 'Ver Video',
-                    backgroundColor: AppColors.primaryBlue,
-                    textColor: Colors.white,
-                    height: 48,
-                  ),
+              ),
+            ),
+          // Filtros
+          Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              children: [
+                // Filtro de categorías
+                Row(
+                  children: [
+                    Text(
+                      'Categoría:',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: _categories.map((category) {
+                            final isSelected = _selectedCategory == category;
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: FilterChip(
+                                label: Text(category),
+                                selected: isSelected,
+                                onSelected: (selected) {
+                                  setState(() {
+                                    _selectedCategory = category;
+                                  });
+                                },
+                                backgroundColor: AppColors.backgroundCard,
+                                selectedColor: AppColors.primaryBlue
+                                    .withOpacity(0.2),
+                                labelStyle: TextStyle(
+                                  color: isSelected
+                                      ? AppColors.primaryBlue
+                                      : AppColors.textSecondary,
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                // Filtro de niveles
+                Row(
+                  children: [
+                    Text(
+                      'Nivel:',
+                      style: TextStyle(
+                        fontSize: 14,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textPrimary,
+                      ),
+                    ),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          children: _levels.map((level) {
+                            final isSelected = _selectedLevel == level;
+                            return Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: FilterChip(
+                                label: Text(level),
+                                selected: isSelected,
+                                onSelected: (selected) {
+                                  setState(() {
+                                    _selectedLevel = level;
+                                  });
+                                },
+                                backgroundColor: AppColors.backgroundCard,
+                                selectedColor: AppColors.primaryBlue
+                                    .withOpacity(0.2),
+                                labelStyle: TextStyle(
+                                  color: isSelected
+                                      ? AppColors.primaryBlue
+                                      : AppColors.textSecondary,
+                                ),
+                              ),
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
+          ),
+
+          // Lista de videos
+          Expanded(
+            child: _isLoading
+                ? const Center(
+                    child: CircularProgressIndicator(
+                      color: AppColors.primaryBlue,
+                    ),
+                  )
+                : _filteredReels.isEmpty
+                ? Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.video_library_outlined,
+                          size: 64,
+                          color: AppColors.textSecondary,
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          'No se encontraron videos',
+                          style: TextStyle(
+                            fontSize: 18,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        const SizedBox(height: 8),
+                        Text(
+                          'Intenta cambiar los filtros',
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: AppColors.textSecondary,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        ElevatedButton.icon(
+                          onPressed: _refreshReels,
+                          icon: const Icon(Icons.refresh),
+                          label: const Text('Recargar'),
+                          style: ElevatedButton.styleFrom(
+                            backgroundColor: AppColors.primaryBlue,
+                            foregroundColor: Colors.white,
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : RefreshIndicator(
+                    onRefresh: _refreshReels,
+                    color: AppColors.primaryBlue,
+                    child: ListView.builder(
+                      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                      itemCount: _filteredReels.length,
+                      itemBuilder: (context, index) {
+                        return VideoCard(
+                          reel: _filteredReels[index],
+                          onTap: () => _onVideoTap(_filteredReels[index]),
+                        );
+                      },
+                    ),
+                  ),
           ),
         ],
       ),
     );
   }
 
-  void _openReelPlayer(Reel reel) {
-    print('🎬 Abriendo reel: ${reel.name}');
-
-    Navigator.push(
-      context,
+  void _onVideoTap(Reel reel) {
+    // Navegar al reproductor de video
+    Navigator.of(context).push(
       MaterialPageRoute(builder: (context) => VideoPlayerPage(reel: reel)),
     );
   }

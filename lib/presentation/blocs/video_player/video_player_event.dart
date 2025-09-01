@@ -29,12 +29,12 @@ class VideoPlayerTimeUpdate extends VideoPlayerEvent {
 }
 
 class VideoPlayerSeekTo extends VideoPlayerEvent {
-  final double time;
+  final double seconds;
 
-  const VideoPlayerSeekTo(this.time);
+  const VideoPlayerSeekTo(this.seconds);
 
   @override
-  List<Object?> get props => [time];
+  List<Object?> get props => [seconds];
 }
 
 class VideoPlayerSeekToSubtitle extends VideoPlayerEvent {
@@ -51,7 +51,7 @@ class VideoPlayerTogglePlayPause extends VideoPlayerEvent {
 }
 
 class VideoPlayerSeekBackward extends VideoPlayerEvent {
-  final double seconds;
+  final int seconds;
 
   const VideoPlayerSeekBackward(this.seconds);
 
@@ -60,7 +60,7 @@ class VideoPlayerSeekBackward extends VideoPlayerEvent {
 }
 
 class VideoPlayerSeekForward extends VideoPlayerEvent {
-  final double seconds;
+  final int seconds;
 
   const VideoPlayerSeekForward(this.seconds);
 
@@ -75,4 +75,27 @@ class VideoPlayerError extends VideoPlayerEvent {
 
   @override
   List<Object?> get props => [message];
+}
+
+// Nuevos eventos para controles de audio
+class VideoPlayerToggleMute extends VideoPlayerEvent {
+  const VideoPlayerToggleMute();
+}
+
+class VideoPlayerSetVolume extends VideoPlayerEvent {
+  final double volume;
+
+  const VideoPlayerSetVolume(this.volume);
+
+  @override
+  List<Object?> get props => [volume];
+}
+
+class VideoPlayerSetSpeed extends VideoPlayerEvent {
+  final double speed;
+
+  const VideoPlayerSetSpeed(this.speed);
+
+  @override
+  List<Object?> get props => [speed];
 }

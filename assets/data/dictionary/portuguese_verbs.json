@@ -1,0 +1,243 @@
+{
+  "portuguese_verbs": [
+    {
+      "id": "pv_001",
+      "infinito": "falar",
+      "participioPresente": "falante",
+      "gerundio": "falando",
+      "gerundioPassato": "tendo falado",
+      "participioPassato": "falado",
+      "traduzione": "hablar",
+      "definizione": "Comunicar-se através da fala, expressar-se verbalmente",
+      "pronunciation": "fa-lar",
+      "tipo": "v.",
+      "lingua": "portuguese",
+      "categoria": "comunicacao",
+      "difficolta": "A1",
+      "conjugations": {
+        "presente": {
+          "eu": "falo",
+          "tu": "falas",
+          "ele/ela": "fala",
+          "nós": "falamos",
+          "vós": "falais",
+          "eles/elas": "falam"
+        },
+        "pretéritoPerfeito": {
+          "eu": "falei",
+          "tu": "falaste",
+          "ele/ela": "falou",
+          "nós": "falamos",
+          "vós": "falastes",
+          "eles/elas": "falaram"
+        },
+        "pretéritoImperfeito": {
+          "eu": "falava",
+          "tu": "falavas",
+          "ele/ela": "falava",
+          "nós": "falávamos",
+          "vós": "faláveis",
+          "eles/elas": "falavam"
+        },
+        "maisQuePerfeito": {
+          "eu": "falara",
+          "tu": "falaras",
+          "ele/ela": "falara",
+          "nós": "faláramos",
+          "vós": "faláreis",
+          "eles/elas": "falaram"
+        },
+        "futuro": {
+          "eu": "falarei",
+          "tu": "falarás",
+          "ele/ela": "falará",
+          "nós": "falaremos",
+          "vós": "falareis",
+          "eles/elas": "falarão"
+        },
+        "futuroPerfeito": {
+          "eu": "terei falado",
+          "tu": "terás falado",
+          "ele/ela": "terá falado",
+          "nós": "teremos falado",
+          "vós": "tereis falado",
+          "eles/elas": "terão falado"
+        },
+        "presenteSubjuntivo": {
+          "eu": "fale",
+          "tu": "fales",
+          "ele/ela": "fale",
+          "nós": "falemos",
+          "vós": "faleis",
+          "eles/elas": "falem"
+        },
+        "imperfeitoSubjuntivo": {
+          "eu": "falasse",
+          "tu": "falasses",
+          "ele/ela": "falasse",
+          "nós": "falássemos",
+          "vós": "falásseis",
+          "eles/elas": "falassem"
+        },
+        "futuroSubjuntivo": {
+          "eu": "falar",
+          "tu": "falares",
+          "ele/ela": "falar",
+          "nós": "falarmos",
+          "vós": "falardes",
+          "eles/elas": "falarem"
+        },
+        "condicional": {
+          "eu": "falaria",
+          "tu": "falarias",
+          "ele/ela": "falaria",
+          "nós": "falaríamos",
+          "vós": "falaríeis",
+          "eles/elas": "falariam"
+        },
+        "condicionalPerfeito": {
+          "eu": "teria falado",
+          "tu": "terias falado",
+          "ele/ela": "teria falado",
+          "nós": "teríamos falado",
+          "vós": "teríeis falado",
+          "eles/elas": "teriam falado"
+        },
+        "imperativo": {
+          "tu": "fala",
+          "ele/ela": "fale",
+          "nós": "falemos",
+          "vós": "falai",
+          "eles/elas": "falem"
+        }
+      },
+      "examples": [
+        "Eu falo português há muitos anos.",
+        "Não fales tão alto, por favor.",
+        "Falamos sobre isso ontem."
+      ],
+      "synonyms": ["comunicar", "expressar", "dizer"],
+      "antonyms": ["calar", "silenciar", "ouvir"]
+    },
+    {
+      "id": "pv_002",
+      "infinito": "comer",
+      "participioPresente": "comente",
+      "gerundio": "comendo",
+      "gerundioPassato": "tendo comido",
+      "participioPassato": "comido",
+      "traduzione": "comer",
+      "definizione": "Ingerir alimentos, mastigar e engolir substâncias nutritivas",
+      "pronunciation": "co-mer",
+      "tipo": "v.",
+      "lingua": "portuguese",
+      "categoria": "alimentacao",
+      "difficolta": "A1",
+      "conjugations": {
+        "presente": {
+          "eu": "como",
+          "tu": "comes",
+          "ele/ela": "come",
+          "nós": "comemos",
+          "vós": "comeis",
+          "eles/elas": "comem"
+        },
+        "pretéritoPerfeito": {
+          "eu": "comi",
+          "tu": "comeste",
+          "ele/ela": "comeu",
+          "nós": "comemos",
+          "vós": "comestes",
+          "eles/elas": "comeram"
+        },
+        "pretéritoImperfeito": {
+          "eu": "comia",
+          "tu": "comias",
+          "ele/ela": "comia",
+          "nós": "comíamos",
+          "vós": "comíeis",
+          "eles/elas": "comiam"
+        },
+        "maisQuePerfeito": {
+          "eu": "comera",
+          "tu": "comeras",
+          "ele/ela": "comera",
+          "nós": "comêramos",
+          "vós": "comêreis",
+          "eles/elas": "comeram"
+        },
+        "futuro": {
+          "eu": "comerei",
+          "tu": "comerás",
+          "ele/ela": "comerá",
+          "nós": "comeremos",
+          "vós": "comereis",
+          "eles/elas": "comerão"
+        },
+        "futuroPerfeito": {
+          "eu": "terei comido",
+          "tu": "terás comido",
+          "ele/ela": "terá comido",
+          "nós": "teremos comido",
+          "vós": "tereis comido",
+          "eles/elas": "terão comido"
+        },
+        "presenteSubjuntivo": {
+          "eu": "coma",
+          "tu": "comas",
+          "ele/ela": "coma",
+          "nós": "comamos",
+          "vós": "comais",
+          "eles/elas": "comam"
+        },
+        "imperfeitoSubjuntivo": {
+          "eu": "comesse",
+          "tu": "comesses",
+          "ele/ela": "comesse",
+          "nós": "comêssemos",
+          "vós": "comêsseis",
+          "eles/elas": "comessem"
+        },
+        "futuroSubjuntivo": {
+          "eu": "comer",
+          "tu": "comeres",
+          "ele/ela": "comer",
+          "nós": "comermos",
+          "vós": "comerdes",
+          "eles/elas": "comerem"
+        },
+        "condicional": {
+          "eu": "comeria",
+          "tu": "comerias",
+          "ele/ela": "comeria",
+          "nós": "comeríamos",
+          "vós": "comeríeis",
+          "eles/elas": "comeriam"
+        },
+        "condicionalPerfeito": {
+          "eu": "teria comido",
+          "tu": "terias comido",
+          "ele/ela": "teria comido",
+          "nós": "teríamos comido",
+          "vós": "teríeis comido",
+          "eles/elas": "teriam comido"
+        },
+        "imperativo": {
+          "tu": "come",
+          "ele/ela": "coma",
+          "nós": "comamos",
+          "vós": "comei",
+          "eles/elas": "comam"
+        }
+      },
+      "examples": [
+        "Eu como sempre às 8 da manhã.",
+        "Não comes carne?",
+        "Comemos juntos ontem."
+      ],
+      "synonyms": ["ingerir", "alimentar", "devorar"],
+      "antonyms": ["jejuar", "abster", "recusar"]
+    }
+  ]
+}
+

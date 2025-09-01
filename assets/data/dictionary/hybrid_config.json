@@ -1,0 +1,142 @@
+{
+  "hybrid_implementation": {
+    "version": "1.0.0",
+    "description": "Configuración para implementación híbrida del diccionario",
+    "architecture": {
+      "type": "hybrid",
+      "components": [
+        "local_files",
+        "postgresql_database",
+        "cache_system"
+      ]
+    },
+    "data_sources": {
+      "local_files": {
+        "description": "Archivos JSON locales para palabras más comunes",
+        "location": "assets/data/dictionary/",
+        "files": [
+          "verbs.json",
+          "words.json",
+          "portuguese_verbs.json",
+          "config.json"
+        ],
+        "advantages": [
+          "Funciona offline",
+          "Carga rápida",
+          "Sin dependencia de internet",
+          "Ideal para palabras básicas"
+        ],
+        "disadvantages": [
+          "Tamaño limitado",
+          "Actualizaciones manuales",
+          "No escalable para grandes volúmenes"
+        ],
+        "use_cases": [
+          "Palabras más comunes (1,000-2,000)",
+          "Modo offline",
+          "Carga inicial rápida",
+          "Contenido educativo básico"
+        ]
+      },
+      "postgresql_database": {
+        "description": "Base de datos principal con diccionario completo",
+        "estimated_size": "50-100 MB",
+        "estimated_words": "50,000+",
+        "advantages": [
+          "Búsquedas rápidas y complejas",
+          "Filtros avanzados",
+          "Escalabilidad ilimitada",
+          "Actualizaciones automáticas",
+          "Búsqueda difusa y autocompletado"
+        ],
+        "disadvantages": [
+          "Requiere conexión a internet",
+          "Latencia de red",
+          "Dependencia de servidor"
+        ],
+        "use_cases": [
+          "Diccionario completo",
+          "Búsquedas avanzadas",
+          "Filtros por categoría/dificultad",
+          "Contenido especializado",
+          "Palabras técnicas y avanzadas"
+        ]
+      },
+      "cache_system": {
+        "description": "Sistema de caché para palabras consultadas recientemente",
+        "storage": "local_storage",
+        "max_items": "1,000",
+        "ttl": "24_hours",
+        "advantages": [
+          "Acceso rápido a palabras recientes",
+          "Reduce consultas a la base de datos",
+          "Mejora experiencia offline"
+        ],
+        "use_cases": [
+          "Palabras consultadas recientemente",
+          "Historial de búsquedas",
+          "Favoritos del usuario"
+        ]
+      }
+    },
+    "sync_strategy": {
+      "initial_load": {
+        "description": "Carga inicial desde archivos locales",
+        "priority": "high",
+        "timing": "app_startup"
+      },
+      "background_sync": {
+        "description": "Sincronización en segundo plano con PostgreSQL",
+        "priority": "medium",
+        "timing": "when_online",
+        "frequency": "daily"
+      },
+      "user_triggered_sync": {
+        "description": "Sincronización manual por el usuario",
+        "priority": "low",
+        "trigger": "pull_to_refresh"
+      },
+      "conflict_resolution": {
+        "strategy": "postgresql_wins",
+        "description": "En caso de conflicto, la base de datos tiene prioridad"
+      }
+    },
+    "performance_optimization": {
+      "search_priorities": [
+        "local_cache",
+        "local_files",
+        "postgresql_database"
+      ],
+      "indexing": {
+        "local": "full_text_search",
+        "postgresql": "btree_indexes + full_text_search"
+      },
+      "compression": {
+        "local": "gzip",
+        "postgresql": "native_compression"
+      }
+    },
+    "offline_capabilities": {
+      "enabled": true,
+      "coverage": "basic_words + cached_words",
+      "limitations": [
+        "Búsquedas limitadas a contenido local",
+        "No filtros avanzados",
+        "Sin actualizaciones de contenido"
+      ]
+    },
+    "estimated_storage": {
+      "local_files": "2-5 MB",
+      "cache": "10-20 MB",
+      "postgresql": "50-100 MB",
+      "total_app_size_increase": "5-10 MB"
+    },
+    "recommended_implementation": {
+      "phase_1": "Implementar archivos locales y caché",
+      "phase_2": "Integrar con PostgreSQL",
+      "phase_3": "Optimizar sincronización y rendimiento",
+      "phase_4": "Implementar funcionalidades avanzadas"
+    }
+  }
+}
+

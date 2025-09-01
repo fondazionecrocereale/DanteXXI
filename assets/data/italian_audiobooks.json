@@ -1,0 +1,241 @@
+{
+  "italian_audiobooks": [
+    {
+      "name": "La Divina Commedia - Inferno",
+      "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Divina%20Commedia%2FInferno%2FDante%20Alighieri%20-%20La%20Divina%20Commedia%20-%20Inferno.mp3?alt=media&token=example",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Divina%20Commedia%2FInferno%2FDante%20Inferno%20cover.jpg?alt=media&token=example",
+      "author": "Dante Alighieri",
+      "description": "Primera parte de la obra maestra de Dante, narrando su viaje por los nueve círculos del infierno. Una obra fundamental de la literatura italiana y universal.",
+      "category": "Letteratura Classica",
+      "genere": "poema epico",
+      "sottogenere": "divina commedia",
+      "anno": "1304-1321",
+      "creator": "Dante Alighieri",
+      "creatorLink": "https://it.wikipedia.org/wiki/Dante_Alighieri",
+      "lingua": "it",
+      "level": "B2",
+      "duration": "2:30:00",
+      "capitoli": [
+        {
+          "capitolo": "Canto I - La Selva Oscura",
+          "duration": "00:08:30",
+          "subtitles": [
+            {
+              "text": "Nel mezzo del cammin di nostra vita",
+              "startTime": "00:00:00",
+              "endTime": "00:00:05",
+              "translation": "En medio del camino de nuestra vida",
+              "translationEN": "In the middle of the journey of our life",
+              "translationPR": "No meio do caminho de nossa vida",
+              "isWordKey": true
+            },
+            {
+              "text": "mi ritrovai per una selva oscura",
+              "startTime": "00:00:05",
+              "endTime": "00:00:10",
+              "translation": "me encontré en una selva oscura",
+              "translationEN": "I found myself in a dark forest",
+              "translationPR": "me encontrei em uma selva escura",
+              "isWordKey": false
+            }
+          ]
+        },
+        {
+          "capitolo": "Canto II - Virgilio",
+          "duration": "00:10:15",
+          "subtitles": [
+            {
+              "text": "Lo giorno se n'andava",
+              "startTime": "00:08:30",
+              "endTime": "00:08:35",
+              "translation": "El día se iba",
+              "translationEN": "The day was departing",
+              "translationPR": "O dia se ia",
+              "isWordKey": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pinocchio - Le Avventure di un Burattino",
+      "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Pinocchio%2FCarlo%20Collodi%20-%20Pinocchio%20-%20Le%20Avventure%20di%20un%20Burattino.mp3?alt=media&token=example",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Pinocchio%2FPinocchio%20cover.jpg?alt=media&token=example",
+      "author": "Carlo Collodi",
+      "description": "La famosa historia del muñeco de madera que cobra vida y aprende a ser un niño de verdad. Una obra maestra de la literatura infantil italiana.",
+      "category": "Letteratura per Bambini",
+      "genere": "romanzo",
+      "sottogenere": "fiaba",
+      "anno": "1883",
+      "creator": "Carlo Collodi",
+      "creatorLink": "https://it.wikipedia.org/wiki/Carlo_Collodi",
+      "lingua": "it",
+      "level": "A2",
+      "duration": "1:45:00",
+      "capitoli": [
+        {
+          "capitolo": "Capitolo I - Come andò che Maestro Ciliegia trovò un pezzo di legno",
+          "duration": "00:12:00",
+          "subtitles": [
+            {
+              "text": "C'era una volta...",
+              "startTime": "00:00:00",
+              "endTime": "00:00:03",
+              "translation": "Érase una vez...",
+              "translationEN": "Once upon a time...",
+              "translationPR": "Era uma vez...",
+              "isWordKey": false
+            },
+            {
+              "text": "Un re! diranno subito i miei piccoli lettori",
+              "startTime": "00:00:03",
+              "endTime": "00:00:08",
+              "translation": "¡Un re! dirán enseguida mis pequeños lectores",
+              "translationEN": "A king! my little readers will say at once",
+              "translationPR": "Um rei! dirão logo meus pequenos leitores",
+              "isWordKey": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Il Principe",
+      "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Il%20Principe%2FNiccol%C3%B2%20Machiavelli%20-%20Il%20Principe.mp3?alt=media&token=example",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Il%20Principe%2FMachiavelli%20cover.jpg?alt=media&token=example",
+      "author": "Niccolò Machiavelli",
+      "description": "Obra fundamental de la filosofía política que analiza el arte de gobernar y las estrategias para mantener el poder. Una lectura esencial para entender la política.",
+      "category": "Filosofia Politica",
+      "genere": "trattato",
+      "sottogenere": "politica",
+      "anno": "1513",
+      "creator": "Niccolò Machiavelli",
+      "creatorLink": "https://it.wikipedia.org/wiki/Niccol%C3%B2_Machiavelli",
+      "lingua": "it",
+      "level": "C1",
+      "duration": "3:15:00",
+      "capitoli": [
+        {
+          "capitolo": "Capitolo I - Di che genere siano i principati e in che modo si acquistino",
+          "duration": "00:15:00",
+          "subtitles": [
+            {
+              "text": "Tutti gli stati, tutti i domini",
+              "startTime": "00:00:00",
+              "endTime": "00:00:04",
+              "translation": "Todos los estados, todos los dominios",
+              "translationEN": "All states, all dominions",
+              "translationPR": "Todos os estados, todos os domínios",
+              "isWordKey": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Grammatica Italiana per Stranieri",
+      "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Grammatica%2FProf%20Maria%20Rossi%20-%20Grammatica%20Italiana%20per%20Stranieri.mp3?alt=media&token=example",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Grammatica%2FGrammatica%20cover.jpg?alt=media&token=example",
+      "author": "Prof. Maria Rossi",
+      "description": "Curso completo de gramática italiana para estudiantes extranjeros. Incluye explicaciones claras, ejemplos prácticos y ejercicios de pronunciación.",
+      "category": "Didattica",
+      "genere": "corso",
+      "sottogenere": "grammatica",
+      "anno": "2024",
+      "creator": "Prof. Maria Rossi",
+      "creatorLink": "https://www.universita-italiana.it/prof-rossi",
+      "lingua": "it",
+      "level": "A1",
+      "duration": "4:00:00",
+      "capitoli": [
+        {
+          "capitolo": "Lezione 1 - Gli Articoli",
+          "duration": "00:20:00",
+          "subtitles": [
+            {
+              "text": "Benvenuti al corso di grammatica italiana",
+              "startTime": "00:00:00",
+              "endTime": "00:00:04",
+              "translation": "Bienvenidos al curso de gramática italiana",
+              "translationEN": "Welcome to the Italian grammar course",
+              "translationPR": "Bem-vindos ao curso de gramática italiana",
+              "isWordKey": false
+            },
+            {
+              "text": "Oggi parleremo degli articoli",
+              "startTime": "00:00:04",
+              "endTime": "00:00:08",
+              "translation": "Hoy hablaremos de los artículos",
+              "translationEN": "Today we will talk about articles",
+              "translationPR": "Hoje falaremos sobre os artigos",
+              "isWordKey": true
+            }
+          ]
+        },
+        {
+          "capitolo": "Lezione 2 - I Sostantivi",
+          "duration": "00:25:00",
+          "subtitles": [
+            {
+              "text": "I sostantivi sono le parole che indicano persone, animali, cose",
+              "startTime": "00:20:00",
+              "endTime": "00:00:25",
+              "translation": "Los sustantivos son las palabras que indican personas, animales, cosas",
+              "translationEN": "Nouns are words that indicate people, animals, things",
+              "translationPR": "Os substantivos são as palavras que indicam pessoas, animais, coisas",
+              "isWordKey": true
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Cuentos Populares Italianos",
+      "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Cuentos%2FVarios%20Autores%20-%20Cuentos%20Populares%20Italianos.mp3?alt=media&token=example",
+      "image": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Cuentos%2FCuentos%20cover.jpg?alt=media&token=example",
+      "author": "Varios Autores",
+      "description": "Una colección de cuentos populares italianos que han pasado de generación en generación. Historias llenas de sabiduría popular y tradición italiana.",
+      "category": "Folclore",
+      "genere": "raccolta",
+      "sottogenere": "fiabe popolari",
+      "anno": "Tradizionale",
+      "creator": "Tradizione Popolare",
+      "creatorLink": "",
+      "lingua": "it",
+      "level": "A2",
+      "duration": "2:00:00",
+      "capitoli": [
+        {
+          "capitolo": "La Bella e la Bestia",
+          "duration": "00:30:00",
+          "subtitles": [
+            {
+              "text": "C'era una volta una bellissima principessa",
+              "startTime": "00:00:00",
+              "endTime": "00:00:05",
+              "translation": "Érase una vez una hermosa princesa",
+              "translationEN": "Once upon a time there was a beautiful princess",
+              "translationPR": "Era uma vez uma bela princesa",
+              "isWordKey": false
+            }
+          ]
+        },
+        {
+          "capitolo": "Cenerentola",
+          "duration": "00:35:00",
+          "subtitles": [
+            {
+              "text": "Cenerentola viveva con la matrigna e le sorellastre",
+              "startTime": "00:30:00",
+              "endTime": "00:30:06",
+              "translation": "Cenicienta vivía con la madrastra y las hermanastras",
+              "translationEN": "Cinderella lived with her stepmother and stepsisters",
+              "translationPR": "Cinderela vivia com a madrasta e as irmãs",
+              "isWordKey": false
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

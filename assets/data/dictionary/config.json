@@ -1,0 +1,116 @@
+{
+  "dictionary_config": {
+    "version": "1.0.0",
+    "last_updated": "2025-01-27",
+    "language": "italiano",
+    "total_words": 0,
+    "total_verbs": 0,
+    "categories": {
+      "grammar_types": [
+        "verbo",
+        "sostantivo",
+        "aggettivo",
+        "avverbio",
+        "pronome",
+        "preposizione",
+        "congiunzione",
+        "interiezione"
+      ],
+      "difficulty_levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "word_categories": [
+        "alimentazione",
+        "abitazione",
+        "abbigliamento",
+        "animali",
+        "colori",
+        "comunicazione",
+        "famiglia",
+        "frutta",
+        "geografia",
+        "lavoro",
+        "mezzi_di_trasporto",
+        "musica",
+        "natura",
+        "numeri",
+        "professioni",
+        "qualità",
+        "salute",
+        "scuola",
+        "sport",
+        "tempo",
+        "verbi_ausiliari"
+      ]
+    },
+    "conjugation_tenses": [
+      "presente",
+      "passatoProssimo",
+      "imperfetto",
+      "trapassatoProssimo",
+      "futuro",
+      "futuroAnteriore",
+      "passatoRemoto",
+      "presenteCongiuntivo",
+      "passatoCongiuntivo",
+      "imperfettoCongiuntivo",
+      "trapassatoCongiuntivo",
+      "condizionalePresente",
+      "condizionalePassato",
+      "imperativoPresente"
+    ],
+    "pronouns": [
+      "io",
+      "tu",
+      "lui/lei",
+      "noi",
+      "voi",
+      "loro"
+    ],
+    "supported_languages": [
+      "italiano",
+      "spanish",
+      "french",
+      "german",
+      "english",
+      "portuguese"
+    ],
+    "features": {
+      "conjugations": true,
+      "pronunciations": true,
+      "examples": true,
+      "synonyms": true,
+      "antonyms": true,
+      "images": true,
+      "difficulty_levels": true,
+      "categories": true,
+      "gender_forms": true,
+      "plural_forms": true,
+      "comparative_forms": true,
+      "superlative_forms": true
+    },
+    "search_options": {
+      "by_word": true,
+      "by_meaning": true,
+      "by_category": true,
+      "by_difficulty": true,
+      "by_grammar_type": true,
+      "by_translation": true,
+      "fuzzy_search": true,
+      "autocomplete": true
+    },
+    "training_modes": {
+      "conjugation_practice": true,
+      "word_matching": true,
+      "translation_practice": true,
+      "fill_in_blanks": true,
+      "multiple_choice": true,
+      "spelling_practice": true
+    }
+  }
+}

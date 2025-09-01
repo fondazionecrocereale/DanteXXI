@@ -11,6 +11,9 @@ DanteXXI es una aplicación móvil moderna y completa para aprender italiano, di
 - **🎬 Sistema de Reels Educativos** con ejercicios integrados
 - **📚 Sistema de Audiolibros** con transcripciones sincronizadas
 - **🗺️ Mapa de Aprendizaje Visual** interactivo
+- **❤️ Sistema de Vidas y Progreso** para mantener la motivación
+- **📊 Seguimiento Detallado** de estadísticas de aprendizaje
+- **🏆 Sistema de Logros** y recompensas por rachas
 - **📱 Diseño Responsive** para todos los dispositivos
 - **🎯 Ejercicios Interactivos** de 5 tipos diferentes
 - **🃏 Sistema de Flashcards** similar a Anki
@@ -59,6 +62,14 @@ lib/
 - [x] Main.dart configurado con temas y providers
 - [x] Configuración de fuentes italianas (Lora, Tinos)
 
+### ✅ **Completado (MES 1 - Semana 3-4)**
+- [x] Sistema de reproductor de video con BLoC
+- [x] Mapa interactivo de aprendizaje con lecciones italianas
+- [x] Sistema de audiolibros con subtítulos sincronizados
+- [x] Entidades para progreso del usuario y sistema de vidas
+- [x] Widgets para mostrar vidas, progreso y logros
+- [x] Configuración JSON local para mapa de aprendizaje y audiolibros
+
 ### 🔄 **En Progreso**
 - [ ] Implementación de Bloc Pattern completo
 - [ ] Sistema de navegación y rutas
@@ -74,7 +85,27 @@ lib/
 
 ### **MES 1: FUNDAMENTOS Y ARQUITECTURA** ✅
 - **Semana 1-2**: ✅ Configuración del proyecto, Clean Architecture
-- **Semana 3-4**: 🔄 Implementación de Bloc Pattern, GetIt, Freezed
+- **Semana 3-4**: ✅ Implementación de Bloc Pattern, GetIt, Freezed
+
+## 🎮 **Sistema de Vidas y Progreso**
+
+### **Características del Sistema de Vidas**
+- **Vidas Máximas**: 5 vidas por defecto
+- **Regeneración Diaria**: Las vidas se regeneran automáticamente cada día
+- **Consumo por Actividad**: Diferentes actividades consumen diferentes cantidades de vidas
+- **Regeneración Manual**: Opción de regenerar vidas usando puntos de experiencia
+
+### **Sistema de Progreso**
+- **Niveles de Usuario**: Sistema de niveles basado en puntos de experiencia
+- **Rachas de Estudio**: Bonus por mantener rachas consecutivas de estudio
+- **Estadísticas Detalladas**: Seguimiento de lecciones completadas, tiempo de estudio, puntuaciones
+- **Logros Desbloqueables**: Sistema de logros por metas alcanzadas
+
+### **Mecánicas de Juego**
+- **Bonus de Racha**: +1 punto por 3 días, +2 por 7 días, +5 por 30 días
+- **Experiencia por Nivel**: 100 puntos de experiencia por nivel
+- **Regeneración de Vidas**: 10 puntos de experiencia por vida regenerada
+- **Tiempo de Estudio**: Seguimiento del tiempo total dedicado al aprendizaje
 
 ### **MES 2: AUTENTICACIÓN Y PERFIL**
 - **Semana 1-2**: Sistema de autenticación con Golang API

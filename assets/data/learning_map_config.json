@@ -1,0 +1,155 @@
+{
+  "learning_map": {
+    "version": "1.0.0",
+    "description": "Configuración del mapa de aprendizaje interactivo",
+    "nodes": [
+      {
+        "id": "1",
+        "title": "Saludos Básicos",
+        "description": "Aprende a saludar en italiano con expresiones comunes",
+        "level": "A1",
+        "position": {"x": 0.2, "y": 0.2},
+        "isUnlocked": true,
+        "isCompleted": false,
+        "nextNodeIds": ["2"],
+        "exerciseTypes": ["multiple_choice", "translation"],
+        "audioUrl": "assets/audio/saludos.mp3",
+        "imageUrl": "assets/images/saludos.jpg",
+        "estimatedDuration": 15,
+        "prerequisites": [],
+        "metadata": {
+          "difficulty": "easy",
+          "tags": ["saludos", "básico", "conversación"]
+        }
+      },
+      {
+        "id": "2",
+        "title": "Números 1-10",
+        "description": "Cuenta hasta diez en italiano con pronunciación correcta",
+        "level": "A1",
+        "position": {"x": 0.5, "y": 0.3},
+        "isUnlocked": false,
+        "isCompleted": false,
+        "nextNodeIds": ["3"],
+        "exerciseTypes": ["fill_in_blank", "matching"],
+        "audioUrl": "assets/audio/numeros.mp3",
+        "imageUrl": "assets/images/numeros.jpg",
+        "estimatedDuration": 20,
+        "prerequisites": ["1"],
+        "metadata": {
+          "difficulty": "easy",
+          "tags": ["números", "contar", "pronunciación"]
+        }
+      },
+      {
+        "id": "3",
+        "title": "Colores",
+        "description": "Aprende los colores básicos en italiano",
+        "level": "A1",
+        "position": {"x": 0.8, "y": 0.4},
+        "isUnlocked": false,
+        "isCompleted": false,
+        "nextNodeIds": ["4"],
+        "exerciseTypes": ["multiple_choice", "matching_pairs"],
+        "audioUrl": "assets/audio/colores.mp3",
+        "imageUrl": "assets/images/colores.jpg",
+        "estimatedDuration": 18,
+        "prerequisites": ["2"],
+        "metadata": {
+          "difficulty": "easy",
+          "tags": ["colores", "adjetivos", "vocabulario"]
+        }
+      },
+      {
+        "id": "4",
+        "title": "Familia",
+        "description": "Miembros de la familia y relaciones básicas",
+        "level": "A1",
+        "position": {"x": 0.3, "y": 0.6},
+        "isUnlocked": false,
+        "isCompleted": false,
+        "nextNodeIds": ["5"],
+        "exerciseTypes": ["translation", "what_exercise"],
+        "audioUrl": "assets/audio/familia.mp3",
+        "imageUrl": "assets/images/familia.jpg",
+        "estimatedDuration": 25,
+        "prerequisites": ["3"],
+        "metadata": {
+          "difficulty": "medium",
+          "tags": ["familia", "relaciones", "sustantivos"]
+        }
+      },
+      {
+        "id": "5",
+        "title": "Comida Básica",
+        "description": "Alimentos y bebidas comunes en italiano",
+        "level": "A1",
+        "position": {"x": 0.7, "y": 0.7},
+        "isUnlocked": false,
+        "isCompleted": false,
+        "nextNodeIds": [],
+        "exerciseTypes": ["multiple_choice", "fill_in_blank"],
+        "audioUrl": "assets/audio/comida.mp3",
+        "imageUrl": "assets/images/comida.jpg",
+        "estimatedDuration": 22,
+        "prerequisites": ["4"],
+        "metadata": {
+          "difficulty": "medium",
+          "tags": ["comida", "bebidas", "restaurante"]
+        }
+      }
+    ],
+    "exercises": {
+      "multiple_choice": {
+        "description": "Ejercicio de opción múltiple",
+        "type": "quiz",
+        "timeLimit": 30
+      },
+      "translation": {
+        "description": "Traducir frases del italiano al español",
+        "type": "translation",
+        "timeLimit": 45
+      },
+      "fill_in_blank": {
+        "description": "Completar espacios en blanco",
+        "type": "completion",
+        "timeLimit": 60
+      },
+      "matching": {
+        "description": "Emparejar palabras con sus significados",
+        "type": "matching",
+        "timeLimit": 40
+      },
+      "matching_pairs": {
+        "description": "Emparejar elementos relacionados",
+        "type": "pairs",
+        "timeLimit": 50
+      },
+      "what_exercise": {
+        "description": "Ejercicio de identificación",
+        "type": "identification",
+        "timeLimit": 35
+      }
+    },
+    "settings": {
+      "zoomLevels": {
+        "min": 0.5,
+        "max": 3.0,
+        "default": 1.0
+      },
+      "nodeSize": {
+        "width": 80,
+        "height": 80
+      },
+      "pathStyle": {
+        "strokeWidth": 3,
+        "color": "#2196F3",
+        "opacity": 0.6
+      },
+      "animations": {
+        "enabled": true,
+        "duration": 300
+      }
+    }
+  }
+}

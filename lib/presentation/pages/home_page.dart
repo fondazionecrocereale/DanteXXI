@@ -12,6 +12,8 @@ import 'exercises_page.dart';
 import 'dictionary_page.dart';
 import 'profile_page.dart';
 import 'settings_page.dart';
+import 'divine_comedy_screen.dart';
+import 'reels_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,12 +23,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 0;
+  int _currentIndex = 2;
 
   final List<Widget> _pages = [
+    const DivineComedyScreen(),
+    const ReelsPage(),
     const HomeContent(),
-    const LessonsPage(),
-    const ExercisesPage(),
     const DictionaryPage(),
     const ProfilePage(),
   ];
@@ -50,19 +52,19 @@ class _HomePageState extends State<HomePage> {
         unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500),
         items: const [
           BottomNavigationBarItem(
+            icon: Icon(Icons.map),
+            activeIcon: Icon(Icons.map),
+            label: AppTexts.learningMap,
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.video_stable),
+            activeIcon: Icon(Icons.video_stable),
+            label: AppTexts.reels,
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
             label: AppTexts.home,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.school_outlined),
-            activeIcon: Icon(Icons.school),
-            label: AppTexts.lessons,
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.quiz_outlined),
-            activeIcon: Icon(Icons.quiz),
-            label: AppTexts.exercises,
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book_outlined),

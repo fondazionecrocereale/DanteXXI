@@ -1,0 +1,422 @@
+{
+  "dictionary": [
+    {
+      "id": "w_001",
+      "word": "mela",
+      "meaning": "frutto rotondo con buccia rossa o verde e interno biancastro",
+      "abbreviation": "sostantivo",
+      "tipo": "s.",
+      "pronunciation": "ˈmɛ.la",
+      "image": "https://firebasestorage.googleapis.com/v0/b/dante-89c62.appspot.com/o/DictionarioImagenes%2Fmela.png?alt=media&token=6bb3635f-b111-4807-abec-f80c06926076",
+      "category": "frutta",
+      "gender": "feminile",
+      "plural": "mele",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "translation": {
+        "spanish": {
+          "word": "manzana",
+          "gender": "feminine"
+        },
+        "french": {
+          "word": "pomme",
+          "gender": "feminine"
+        },
+        "german": {
+          "word": "Apfel",
+          "gender": "masculine"
+        },
+        "english": {
+          "word": "apple",
+          "gender": "feminine"
+        },
+        "portuguese": {
+          "word": "maçã",
+          "gender": "feminine"
+        }
+      },
+      "examples": [
+        "Ha mangiato una mela come spuntino.",
+        "Ci sono molte varietà diverse di mele."
+      ],
+      "synonyms": ["pomo", "frutto"],
+      "antonyms": []
+    },
+    {
+      "id": "w_002",
+      "word": "birra",
+      "meaning": "bevanda alcolica ottenuta dalla fermentazione di cereali maltati",
+      "abbreviation": "sostantivo",
+      "tipo": "s.",
+      "pronunciation": "ˈbir.ra",
+      "image": "https://firebasestorage.googleapis.com/v0/b/dante-89c62.appspot.com/o/DictionarioImagenes%2Fbirra.png?alt=media&token=3cf5e986-84a2-4dc4-baed-4a046b511cbc",
+      "category": "bevande",
+      "gender": "feminile",
+      "plural": "birre",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "translation": {
+        "spanish": {
+          "word": "cerveza",
+          "gender": "feminine"
+        },
+        "french": {
+          "word": "bière",
+          "gender": "feminine"
+        },
+        "german": {
+          "word": "Bier",
+          "gender": "neuter"
+        },
+        "english": {
+          "word": "beer",
+          "gender": "feminine"
+        },
+        "portuguese": {
+          "word": "cerveja",
+          "gender": "feminine"
+        }
+      },
+      "examples": [
+        "Prendiamo sempre una birra fredda quando siamo al mare.",
+        "Ha organizzato una festa con tanto cibo e birra."
+      ],
+      "synonyms": ["bevanda", "alcolico"],
+      "antonyms": []
+    },
+    {
+      "id": "w_003",
+      "word": "bello",
+      "meaning": "che ha qualità estetiche gradevoli, che piace alla vista",
+      "abbreviation": "aggettivo",
+      "tipo": "agg.",
+      "pronunciation": "ˈbɛl.lo",
+      "image": "",
+      "category": "qualità",
+      "gender": "maschile",
+      "feminine": "bella",
+      "plural_m": "belli",
+      "plural_f": "belle",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "gradi": {
+        "comparativo": {
+          "maggioranza": "più bello",
+          "minoranza": "meno bello",
+          "uguaglianza": "bello come"
+        },
+        "superlativo": {
+          "assoluto": "bellissimo",
+          "relativo": "il più bello"
+        }
+      },
+      "translation": {
+        "spanish": {
+          "word": "bonito",
+          "gender": "masculine"
+        },
+        "french": {
+          "word": "beau",
+          "gender": "masculine"
+        },
+        "german": {
+          "word": "schön",
+          "gender": "masculine"
+        },
+        "english": {
+          "word": "beautiful",
+          "gender": "masculine"
+        },
+        "portuguese": {
+          "word": "bonito",
+          "gender": "masculine"
+        }
+      },
+      "examples": [
+        "È un ragazzo molto bello.",
+        "La bella giornata ci ha permesso di fare una passeggiata."
+      ],
+      "synonyms": ["attraente", "gradevole", "elegante"],
+      "antonyms": ["brutto", "sgradevole", "orribile"]
+    },
+    {
+      "id": "w_004",
+      "word": "velocemente",
+      "meaning": "con rapidità, in modo veloce",
+      "abbreviation": "avverbio",
+      "tipo": "avv.",
+      "pronunciation": "ve.lo.tʃeˈmen.te",
+      "image": "",
+      "category": "modo",
+      "lingua": "italiano",
+      "difficolta": "A2",
+      "translation": {
+        "spanish": {
+          "word": "rápidamente"
+        },
+        "french": {
+          "word": "rapidement"
+        },
+        "german": {
+          "word": "schnell"
+        },
+        "english": {
+          "word": "quickly"
+        },
+        "portuguese": {
+          "word": "rapidamente"
+        }
+      },
+      "examples": [
+        "Ha risposto velocemente alla domanda.",
+        "Il treno si muove velocemente."
+      ],
+      "synonyms": ["rapidamente", "presto", "in fretta"],
+      "antonyms": ["lentamente", "piano", "adagio"]
+    },
+    {
+      "id": "w_005",
+      "word": "io",
+      "meaning": "pronome personale di prima persona singolare",
+      "abbreviation": "pronome",
+      "tipo": "pron.",
+      "pronunciation": "ˈi.o",
+      "image": "",
+      "category": "pronomi_personali",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "translation": {
+        "spanish": {
+          "word": "yo"
+        },
+        "french": {
+          "word": "je"
+        },
+        "german": {
+          "word": "ich"
+        },
+        "english": {
+          "word": "I"
+        },
+        "portuguese": {
+          "word": "eu"
+        }
+      },
+      "examples": [
+        "Io sono italiano.",
+        "Io vado al cinema."
+      ],
+      "synonyms": [],
+      "antonyms": []
+    },
+    {
+      "id": "w_006",
+      "word": "di",
+      "meaning": "preposizione semplice che indica appartenenza, origine, materia, causa",
+      "abbreviation": "preposizione",
+      "tipo": "prep.",
+      "pronunciation": "di",
+      "image": "",
+      "category": "preposizioni",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "usages": [
+        "appartenenza: il libro di Marco",
+        "origine: sono di Roma",
+        "materia: una statua di marmo",
+        "causa: morire di fame"
+      ],
+      "translation": {
+        "spanish": {
+          "word": "de"
+        },
+        "french": {
+          "word": "de"
+        },
+        "german": {
+          "word": "von"
+        },
+        "english": {
+          "word": "of"
+        },
+        "portuguese": {
+          "word": "de"
+        }
+      },
+      "examples": [
+        "Il libro di matematica è sul tavolo.",
+        "Sono di Milano."
+      ],
+      "synonyms": [],
+      "antonyms": []
+    },
+    {
+      "id": "w_007",
+      "word": "e",
+      "meaning": "congiunzione coordinante che unisce elementi dello stesso tipo",
+      "abbreviation": "congiunzione",
+      "tipo": "cong.",
+      "pronunciation": "e",
+      "image": "",
+      "category": "congiunzioni_coordinanti",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "translation": {
+        "spanish": {
+          "word": "y"
+        },
+        "french": {
+          "word": "et"
+        },
+        "german": {
+          "word": "und"
+        },
+        "english": {
+          "word": "and"
+        },
+        "portuguese": {
+          "word": "e"
+        }
+      },
+      "examples": [
+        "Marco e Maria sono amici.",
+        "Ho comprato pane e latte."
+      ],
+      "synonyms": [],
+      "antonyms": []
+    },
+    {
+      "id": "w_008",
+      "word": "oh",
+      "meaning": "interiezione che esprime sorpresa, stupore, gioia o dolore",
+      "abbreviation": "interiezione",
+      "tipo": "inter.",
+      "pronunciation": "ˈɔ",
+      "image": "",
+      "category": "interiezioni",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "emotions": ["sorpresa", "stupore", "gioia", "dolore"],
+      "translation": {
+        "spanish": {
+          "word": "¡oh!"
+        },
+        "french": {
+          "word": "oh!"
+        },
+        "german": {
+          "word": "oh!"
+        },
+        "english": {
+          "word": "oh!"
+        },
+        "portuguese": {
+          "word": "oh!"
+        }
+      },
+      "examples": [
+        "Oh, che bella sorpresa!",
+        "Oh, mi fa male la testa!"
+      ],
+      "synonyms": ["ah", "eh", "uh"],
+      "antonyms": []
+    },
+    {
+      "id": "w_009",
+      "word": "casa",
+      "meaning": "edificio destinato ad abitazione, dimora familiare",
+      "abbreviation": "sostantivo",
+      "tipo": "s.",
+      "pronunciation": "ˈka.sa",
+      "image": "",
+      "category": "abitazione",
+      "gender": "feminile",
+      "plural": "case",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "translation": {
+        "spanish": {
+          "word": "casa",
+          "gender": "feminine"
+        },
+        "french": {
+          "word": "maison",
+          "gender": "feminine"
+        },
+        "german": {
+          "word": "Haus",
+          "gender": "neuter"
+        },
+        "english": {
+          "word": "house",
+          "gender": "feminine"
+        },
+        "portuguese": {
+          "word": "casa",
+          "gender": "feminine"
+        }
+      },
+      "examples": [
+        "La mia casa è in centro città.",
+        "Hanno comprato una casa nuova."
+      ],
+      "synonyms": ["abitazione", "dimora", "residenza"],
+      "antonyms": []
+    },
+    {
+      "id": "w_010",
+      "word": "grande",
+      "meaning": "che ha dimensioni notevoli, che supera la misura ordinaria",
+      "abbreviation": "aggettivo",
+      "tipo": "agg.",
+      "pronunciation": "ˈɡran.de",
+      "image": "",
+      "category": "dimensioni",
+      "gender": "maschile",
+      "feminine": "grande",
+      "plural_m": "grandi",
+      "plural_f": "grandi",
+      "lingua": "italiano",
+      "difficolta": "A1",
+      "gradi": {
+        "comparativo": {
+          "maggioranza": "più grande",
+          "minoranza": "meno grande",
+          "uguaglianza": "grande come"
+        },
+        "superlativo": {
+          "assoluto": "grandissimo",
+          "relativo": "il più grande"
+        }
+      },
+      "translation": {
+        "spanish": {
+          "word": "grande",
+          "gender": "masculine"
+        },
+        "french": {
+          "word": "grand",
+          "gender": "masculine"
+        },
+        "german": {
+          "word": "groß",
+          "gender": "masculine"
+        },
+        "english": {
+          "word": "big",
+          "gender": "masculine"
+        },
+        "portuguese": {
+          "word": "grande",
+          "gender": "masculine"
+        }
+      },
+      "examples": [
+        "È un uomo grande e forte.",
+        "La grande città offre molte opportunità."
+      ],
+      "synonyms": ["enorme", "immenso", "vasto"],
+      "antonyms": ["piccolo", "minuscolo", "minuto"]
+    }
+  ]
+}

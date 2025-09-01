@@ -25,6 +25,9 @@ class VideoPlayerBloc
     on<events.VideoPlayerSeekBackward>(_onVideoPlayerSeekBackward);
     on<events.VideoPlayerSeekForward>(_onVideoPlayerSeekForward);
     on<events.VideoPlayerError>(_onVideoPlayerError);
+    on<events.VideoPlayerToggleMute>(_onVideoPlayerToggleMute);
+    on<events.VideoPlayerSetVolume>(_onVideoPlayerSetVolume);
+    on<events.VideoPlayerSetSpeed>(_onVideoPlayerSetSpeed);
   }
 
   YoutubePlayerController? get controller => _controller;
@@ -220,21 +223,14 @@ class VideoPlayerBloc
     Emitter<states.VideoPlayerState> emit,
   ) {
     try {
-      if (_controller != null) {
-        _controller!.seekTo(seconds: event.time);
-        if (state is states.VideoPlayerReady) {
-          final currentState = state as states.VideoPlayerReady;
-          final subtitleIndex = _getCurrentSubtitleIndex(event.time);
-          emit(
-            currentState.copyWith(
-              currentTime: event.time,
-              currentSubtitleIndex: subtitleIndex,
-            ),
-          );
-        }
+      if (_controller != null && state is states.VideoPlayerReady) {
+        final currentState = state as states.VideoPlayerReady;
+        _controller!.seekTo(seconds: event.seconds);
+        emit(currentState.copyWith(currentTime: event.seconds));
       }
     } catch (e) {
-      add(events.VideoPlayerError('Error al saltar al tiempo: $e'));
+      print('❌ Error al hacer seek: $e');
+      add(events.VideoPlayerError('Error al hacer seek: $e'));
     }
   }
 
@@ -407,6 +403,67 @@ class VideoPlayerBloc
     } catch (e) {
       print('❌ Error al extraer ID de YouTube: $e');
       return '';
+    }
+  }
+
+  // Nuevos manejadores para controles de audio
+  void _onVideoPlayerToggleMute(
+    events.VideoPlayerToggleMute event,
+    Emitter<states.VideoPlayerState> emit,
+  ) {
+    try {
+      if (_controller != null && state is states.VideoPlayerReady) {
+        final currentState = state as states.VideoPlayerReady;
+        final newMutedState = !currentState.isMuted;
+
+        if (newMutedState) {
+          _controller!.mute();
+        } else {
+          _controller!.unMute();
+        }
+
+        emit(currentState.copyWith(isMuted: newMutedState));
+        print('🎵 Audio ${newMutedState ? 'silenciado' : 'activado'}');
+      }
+    } catch (e) {
+      print('❌ Error al cambiar mute: $e');
+      add(events.VideoPlayerError('Error al cambiar mute: $e'));
+    }
+  }
+
+  void _onVideoPlayerSetVolume(
+    events.VideoPlayerSetVolume event,
+    Emitter<states.VideoPlayerState> emit,
+  ) {
+    try {
+      if (_controller != null && state is states.VideoPlayerReady) {
+        final currentState = state as states.VideoPlayerReady;
+        _controller!..setVolume((event.volume * 100).round());
+        emit(currentState.copyWith(volume: event.volume));
+        print(
+          '🎵 Volumen establecido a: ${(event.volume * 100).toStringAsFixed(0)}%',
+        );
+      }
+    } catch (e) {
+      print('❌ Error al cambiar volumen: $e');
+      add(events.VideoPlayerError('Error al cambiar volumen: $e'));
+    }
+  }
+
+  void _onVideoPlayerSetSpeed(
+    events.VideoPlayerSetSpeed event,
+    Emitter<states.VideoPlayerState> emit,
+  ) {
+    try {
+      if (_controller != null && state is states.VideoPlayerReady) {
+        final currentState = state as states.VideoPlayerReady;
+        _controller!..setPlaybackRate(event.speed);
+        emit(currentState.copyWith(speed: event.speed));
+        print('🎵 Velocidad establecida a: ${event.speed}x');
+      }
+    } catch (e) {
+      print('❌ Error al cambiar velocidad: $e');
+      add(events.VideoPlayerError('Error al cambiar velocidad: $e'));
     }
   }
 

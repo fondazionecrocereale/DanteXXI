@@ -7,11 +7,41 @@ class AppTexts {
 
   // Textos de navegación
   static const String home = 'Inicio';
-  static const String lessons = 'Lecciones';
-  static const String exercises = 'Ejercicios';
+  static const String learningMap = 'Mapa de Aprendizaje';
+  static const String reels = 'Videos';
   static const String dictionary = 'Diccionario';
   static const String profile = 'Perfil';
   static const String settings = 'Configuración';
+
+  // Textos de audiolibros
+  static const String audiobooks = 'Audiolibros';
+  static const String audiobook = 'Audiolibro';
+  static const String playAudiobook = 'Reproducir Audiolibro';
+  static const String pauseAudiobook = 'Pausar Audiolibro';
+  static const String stopAudiobook = 'Detener Audiolibro';
+  static const String audiobookProgress = 'Progreso del Audiolibro';
+  static const String chapter = 'Capítulo';
+  static const String chapters = 'Capítulos';
+  static const String listeningTime = 'Tiempo de Escucha';
+  static const String bookmarked = 'Marcado';
+  static const String addBookmark = 'Agregar Marcador';
+  static const String removeBookmark = 'Quitar Marcador';
+
+  // Textos del mapa de aprendizaje
+  static const String learningPath = 'Ruta de Aprendizaje';
+  static const String lesson = 'Lección';
+  static const String lessons = 'Lecciones';
+  static const String exercise = 'Ejercicio';
+  static const String exercises = 'Ejercicios';
+  static const String level = 'Nivel';
+  static const String difficulty = 'Dificultad';
+  static const String progress = 'Progreso';
+  static const String unlockLesson = 'Desbloquear Lección';
+  static const String completeLesson = 'Completar Lección';
+  static const String lessonLocked = 'Lección Bloqueada';
+  static const String lessonCompleted = 'Lección Completada';
+  static const String lessonInProgress = 'Lección en Progreso';
+  static const String lessonNotStarted = 'Lección No Iniciada';
 
   // Textos de autenticación
   static const String login = 'Iniciar Sesión';
@@ -41,7 +71,6 @@ class AppTexts {
   static const String tryAgain = 'Intentar de Nuevo';
 
   // Textos de progreso
-  static const String progress = 'Progreso';
   static const String completedStatus = 'Completado';
   static const String inProgress = 'En Progreso';
   static const String notStarted = 'No Iniciado';
