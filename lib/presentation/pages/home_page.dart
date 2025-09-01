@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter/services.dart';
+import 'package:dio/dio.dart';
+import 'package:provider/provider.dart';
 import 'dart:convert';
 
 import '../../core/constants/app_colors.dart';
@@ -19,6 +21,13 @@ import 'divine_comedy_screen.dart';
 import 'reels_page.dart';
 import 'audiobooks_page.dart';
 import 'audiobook_details_page.dart';
+import '../widgets/reels_staggered_grid.dart';
+import '../blocs/reels/reels_bloc.dart';
+import '../blocs/reels/reels_event.dart';
+import '../../core/network/dio_client.dart';
+import 'radio_page.dart';
+
+import '../widgets/italian_holiday_widget.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -28,13 +37,13 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 2;
+  int _currentIndex = 1;
 
   final List<Widget> _pages = [
     const DivineComedyScreen(),
-    const ReelsPage(),
+    //const ReelsPage(),
     const HomeContent(),
-    const DictionaryPage(),
+    //const DictionaryPage(),
     const ProfilePage(),
   ];
 
@@ -61,21 +70,21 @@ class _HomePageState extends State<HomePage> {
             activeIcon: Icon(Icons.map),
             label: AppTexts.learningMap,
           ),
-          BottomNavigationBarItem(
+        /*  BottomNavigationBarItem(
             icon: Icon(Icons.video_stable),
             activeIcon: Icon(Icons.video_stable),
             label: AppTexts.reels,
-          ),
+          ),*/
           BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
             label: AppTexts.home,
           ),
-          BottomNavigationBarItem(
+        /*  BottomNavigationBarItem(
             icon: Icon(Icons.book_outlined),
             activeIcon: Icon(Icons.book),
             label: AppTexts.dictionary,
-          ),
+          ),*/
           BottomNavigationBarItem(
             icon: Icon(Icons.person_outline),
             activeIcon: Icon(Icons.person),
@@ -87,9 +96,38 @@ class _HomePageState extends State<HomePage> {
   }
 }
 
-class HomeContent extends StatelessWidget {
+class CustomTextButton extends StatelessWidget {
+  final VoidCallback onPressed;
+  final String text;
+  final Color textColor;
+
+  const CustomTextButton({
+    super.key,
+    required this.onPressed,
+    required this.text,
+    required this.textColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPressed,
+      child: Text(
+        text,
+        style: TextStyle(color: textColor, fontWeight: FontWeight.w600),
+      ),
+    );
+  }
+}
+
+class HomeContent extends StatefulWidget {
   const HomeContent({super.key});
 
+  @override
+  State<HomeContent> createState() => _HomeContentState();
+}
+
+class _HomeContentState extends State<HomeContent> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,50 +137,71 @@ class HomeContent extends StatelessWidget {
         elevation: 0,
         actions: [
           IconButton(
-            icon: const Icon(Icons.settings),
-            onPressed: () => Navigator.of(context).push(
-              MaterialPageRoute(builder: (context) => const SettingsPage()),
-            ),
-          ),
-          IconButton(
-            icon: const Icon(Icons.logout),
-            onPressed: () => _showLogoutDialog(context),
+            icon: const Icon(Icons.refresh),
+            onPressed: () {
+              setState(() {
+                // Forzar refresh del estado
+              });
+            },
           ),
         ],
       ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              // Saludo del usuario
-              _buildUserGreeting(),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          // Refrescar datos aquí si es necesario
+          await Future.delayed(const Duration(milliseconds: 500));
+          setState(() {
+            // Forzar rebuild
+          });
+        },
+        child: SafeArea(
+          child: SingleChildScrollView(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                // Saludo del usuario
+                _buildUserGreeting(),
 
-              const SizedBox(height: 32),
+                const SizedBox(height: 32),
 
-              // Estadísticas rápidas
-              _buildQuickStats(),
+                // Festivo Italiano (solo se muestra si hay festivo hoy)
+                const ItalianHolidayWidget(),
 
-              const SizedBox(height: 32),
+                const SizedBox(height: 32),
 
-              // Palabra del día
-              const WordOfDayWidget(),
+                // Estadísticas rápidas
+                _buildQuickStats(),
 
-              const SizedBox(height: 32),
+                const SizedBox(height: 32),
 
-              // Lecciones recomendadas
-              _buildRecommendedLessons(context),
+                // Palabra del día
+                const WordOfDayWidget(),
 
-              //const SizedBox(height: 32),
+                const SizedBox(height: 32),
+                // Acciones rápidas
+                _buildQuickActions(context),
+                const SizedBox(height: 32),
+                // Lecciones recomendadas
+                _buildRecommendedLessons(context),
 
-              // Acciones rápidas
-              //_buildQuickActions(context),
-              const SizedBox(height: 32),
+                //const SizedBox(height: 32),
 
-              // Widget Premium
-              _buildPremiumWidget(context),
-            ],
+                // Acciones rápidas
+                //_buildQuickActions(context),
+                const SizedBox(height: 32),
+
+                // Widget Premium
+                _buildPremiumWidget(context),
+
+                const SizedBox(height: 32),
+
+                // Sección de Reels
+                _buildReelsSection(context),
+
+                const SizedBox(height: 32),
+              ],
+            ),
           ),
         ),
       ),
@@ -185,6 +244,9 @@ class HomeContent extends StatelessWidget {
             value: '12',
             subtitle: 'Completadas',
             color: AppColors.primaryBlue,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const LessonsPage()),
+            ),
           ),
         ),
         const SizedBox(width: 16),
@@ -195,6 +257,9 @@ class HomeContent extends StatelessWidget {
             value: '45',
             subtitle: 'Resueltos',
             color: AppColors.secondaryGreen,
+            onTap: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => const ExercisesPage()),
+            ),
           ),
         ),
         const SizedBox(width: 16),
@@ -205,6 +270,7 @@ class HomeContent extends StatelessWidget {
             value: 'A2',
             subtitle: 'Actual',
             color: AppColors.secondaryOrange,
+            onTap: () => null,
           ),
         ),
       ],
@@ -217,56 +283,60 @@ class HomeContent extends StatelessWidget {
     required String value,
     required String subtitle,
     required Color color,
+    VoidCallback? onTap,
   }) {
-    return Container(
-      padding: const EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundCard,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadowLight,
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Column(
-        children: [
-          Container(
-            width: 40,
-            height: 40,
-            decoration: BoxDecoration(
-              color: color.withValues(alpha: 0.1),
-              borderRadius: BorderRadius.circular(20),
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: AppColors.backgroundCard,
+          borderRadius: BorderRadius.circular(16),
+          boxShadow: [
+            BoxShadow(
+              color: AppColors.shadowLight,
+              blurRadius: 8,
+              offset: const Offset(0, 2),
             ),
-            child: Icon(icon, color: color, size: 20),
-          ),
-          const SizedBox(height: 12),
-          Text(
-            value,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: color,
+          ],
+        ),
+        child: Column(
+          children: [
+            Container(
+              width: 40,
+              height: 40,
+              decoration: BoxDecoration(
+                color: color.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(20),
+              ),
+              child: Icon(icon, color: color, size: 20),
             ),
-          ),
-          const SizedBox(height: 4),
-          Text(
-            title,
-            style: const TextStyle(
-              fontSize: 12,
-              fontWeight: FontWeight.w600,
-              color: AppColors.textSecondary,
+            const SizedBox(height: 12),
+            Text(
+              value,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: color,
+              ),
             ),
-            textAlign: TextAlign.center,
-          ),
-          Text(
-            subtitle,
-            style: const TextStyle(fontSize: 10, color: AppColors.textLight),
-            textAlign: TextAlign.center,
-          ),
-        ],
+            const SizedBox(height: 4),
+            Text(
+              title,
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: AppColors.textSecondary,
+              ),
+              textAlign: TextAlign.center,
+            ),
+            Text(
+              subtitle,
+              style: const TextStyle(fontSize: 10, color: AppColors.textLight),
+              textAlign: TextAlign.center,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -289,9 +359,9 @@ class HomeContent extends StatelessWidget {
             Expanded(
               child: CustomButton(
                 onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const LessonsPage()),
+                  MaterialPageRoute(builder: (context) => const DictionaryPage()),
                 ),
-                text: 'Continuar Lección',
+                text: 'Dizionario',
                 icon: Icons.play_arrow,
                 height: 56,
               ),
@@ -304,7 +374,36 @@ class HomeContent extends StatelessWidget {
                     builder: (context) => const ExercisesPage(),
                   ),
                 ),
-                text: 'Practicar',
+                text: 'Flashcards',
+                icon: Icons.quiz,
+                height: 56,
+                backgroundColor: AppColors.secondaryGreen,
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        Row(
+          children: [
+            Expanded(
+              child: CustomButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => const RadioPage()),
+                ),
+                text: 'Radio',
+                icon: Icons.play_arrow,
+                height: 56,
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: CustomButton(
+                onPressed: () => Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => const ReelsPage(),
+                  ),
+                ),
+                text: 'Reels',
                 icon: Icons.quiz,
                 height: 56,
                 backgroundColor: AppColors.secondaryGreen,
@@ -590,36 +689,47 @@ class HomeContent extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(height: 12),
-                    Row(
+                    Wrap(
+                      spacing: 12,
+                      runSpacing: 8,
                       children: [
-                        const Icon(
-                          Icons.check_circle,
-                          color: AppColors.primaryWhite,
-                          size: 16,
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.check_circle,
+                              color: AppColors.primaryWhite,
+                              size: 16,
+                            ),
+                            const SizedBox(width: 6),
+                            const Text(
+                              'Lecciones ilimitadas',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: AppColors.primaryWhite,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 6),
-                        const Text(
-                          'Lecciones ilimitadas',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: AppColors.primaryWhite,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                        const SizedBox(width: 12),
-                        const Icon(
-                          Icons.check_circle,
-                          color: AppColors.primaryWhite,
-                          size: 16,
-                        ),
-                        const SizedBox(width: 6),
-                        const Text(
-                          'Sin anuncios',
-                          style: TextStyle(
-                            fontSize: 12,
-                            color: AppColors.primaryWhite,
-                            fontWeight: FontWeight.w500,
-                          ),
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.check_circle,
+                              color: AppColors.primaryWhite,
+                              size: 16,
+                            ),
+                            const SizedBox(width: 6),
+                            const Text(
+                              'Sin anuncios',
+                              style: TextStyle(
+                                fontSize: 12,
+                                color: AppColors.primaryWhite,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
                         ),
                       ],
                     ),
@@ -634,17 +744,17 @@ class HomeContent extends StatelessWidget {
                   ],
                 ),
               ),
-              const SizedBox(width: 20),
+              const SizedBox(width: 16),
               Container(
-                width: 80,
-                height: 80,
+                width: 70,
+                height: 70,
                 decoration: BoxDecoration(
                   color: AppColors.primaryWhite.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(40),
+                  borderRadius: BorderRadius.circular(35),
                 ),
                 child: const Icon(
                   Icons.workspace_premium,
-                  size: 40,
+                  size: 35,
                   color: AppColors.primaryWhite,
                 ),
               ),
@@ -787,6 +897,41 @@ class HomeContent extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget _buildReelsSection(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              'Reels',
+              style: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: AppColors.textPrimary,
+              ),
+            ),
+            CustomTextButton(
+              onPressed: () => Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => const ReelsPage()),
+              ),
+              text: 'Ver todos',
+              textColor: AppColors.primaryBlue,
+            ),
+          ],
+        ),
+        const SizedBox(height: 16),
+        BlocProvider(
+          create: (context) =>
+              ReelsBloc(dio: Provider.of<DioClient>(context, listen: false).dio)
+                ..add(const LoadReels()),
+          child: const ReelsStaggeredGrid(),
+        ),
+      ],
     );
   }
 }

@@ -6,8 +6,8 @@ class AppConstants {
       'Aprende italiano de manera moderna y efectiva';
 
   // API Configuration
-  static const String baseUrl = 'https://api.dantexxi.com';
-  static const String apiVersion = '/v1';
+  static const String baseUrl = 'https://dantexxi-api.onrender.com';
+  static const String apiVersion = '';
   static const Duration connectionTimeout = Duration(seconds: 30);
   static const Duration receiveTimeout = Duration(seconds: 30);
 

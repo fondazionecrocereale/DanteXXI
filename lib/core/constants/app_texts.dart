@@ -6,11 +6,11 @@ class AppTexts {
       'Tu compañero perfecto para dominar el italiano';
 
   // Textos de navegación
-  static const String home = 'Inicio';
-  static const String learningMap = 'Mapa de Aprendizaje';
+  static const String home = 'Inizio';
+  static const String learningMap = 'Traccia';
   static const String reels = 'Videos';
   static const String dictionary = 'Diccionario';
-  static const String profile = 'Perfil';
+  static const String profile = 'Profilo';
   static const String settings = 'Configuración';
 
   // Textos de audiolibros

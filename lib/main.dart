@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
 
 import 'di/injection_container.dart' as di;
 import 'core/services/storage_service.dart';
 import 'core/services/word_of_day_service.dart';
+import 'core/network/dio_client.dart';
 import 'presentation/blocs/auth/auth_bloc.dart';
 import 'presentation/pages/splash_page.dart';
 import 'routes/route_generator.dart';
@@ -28,9 +30,10 @@ class DanteXXIApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
+    return MultiProvider(
       providers: [
         BlocProvider<AuthBloc>(create: (context) => di.sl<AuthBloc>()),
+        Provider<DioClient>(create: (context) => di.sl<DioClient>()),
       ],
       child: MaterialApp(
         title: 'DanteXXI',

@@ -1,0 +1,104 @@
+{
+  "holidays": [
+    {
+      "name": "Capodanno",
+      "date": "2025-01-01",
+      "message": "Buon Anno Nuovo! Celebra l'inizio del 2025 con gioia e speranza in tutta Italia."
+    },
+    {
+      "name": "Epifania (La Befana)",
+      "date": "2025-01-06",
+      "message": "È il giorno della Befana! Goditi le tradizioni e i doni di questa festa magica."
+    },
+    {
+      "name": "Carnevale",
+      "date" : "2025-03-04",
+      "message": "È Carnevale! Unisciti al divertimento con maschere, sfilate e dolci tradizionali in tutta Italia."
+    },
+    {
+      "name": "Pasqua",
+      "date": "2025-04-20",
+      "message": "Buona Pasqua! Celebra la resurrezione con messe e pranzi in famiglia."
+    },
+    {
+      "name": "Pasquetta",
+      "date": "2025-04-21",
+      "message": "È Pasquetta! Goditi una giornata di picnic e gite all'aperto con amici e familiari."
+    },
+    {
+      "name": "Giorno della Liberazione",
+      "date": "2025-04-25",
+      "message": "Oggi è il Giorno della Liberazione, in ricordo della libertà italiana. Unisciti ai festeggiamenti!"
+    },
+    {
+      "name": "Festa di San Marco (Venezia)",
+      "date": "2025-04-25",
+      "message": "Venezia celebra San Marco! Unisciti alla processione e all'atmosfera romantica."
+    },
+    {
+      "name": "Festa del Lavoro",
+      "date": "2025-05-01",
+      "message": "Buona Festa del Lavoro! Celebra i diritti dei lavoratori con eventi e festività."
+    },
+    {
+      "name": "Festa della Repubblica",
+      "date": "2025-06-02",
+      "message": "È la Festa della Repubblica! Goditi le parate e le celebrazioni patriottiche in Italia."
+    },
+    {
+      "name": "Festa di San Giovanni (Firenze)",
+      "date": "2025-06-24",
+      "message": "Firenze onora San Giovanni! Partecipa alle festività e agli eventi storici."
+    },
+    {
+      "name": "Festa di Santi Pietro e Paolo (Roma)",
+      "date": "2025-06-29",
+      "message": "Roma celebra San Pietro e Paolo! Goditi le cerimonie in Vaticano."
+    },
+    {
+      "name": "Festa di San Gennaro (Napoli)",
+      "date": "2025-09-19",
+      "message": "Napoli festeggia San Gennaro! Unisciti alla processione e alla celebrazione del miracolo."
+    },
+    {
+      "name": "Festa di San Petronio (Bologna)",
+      "date": "2025-10-04",
+      "message": "Bologna celebra San Petronio! Goditi le fiere e le tradizioni nella città."
+    },
+    {
+      "name": "Ognissanti",
+      "date": "2025-11-01",
+      "message": "Giorno di Ognissanti: un momento per onorare i cari e riflettere."
+    },
+    {
+      "name": "Festa di San Carlo Borromeo (Milano)",
+      "date": "2025-11-04",
+      "message": "Milano festeggia San Carlo Borromeo! Partecipa alle celebrazioni religiose e culturali."
+    },
+    {
+      "name": "Festa di Sant'Ambrogio (Milano)",
+      "date": "2025-12-07",
+      "message": "Milano festeggia Sant'Ambrogio! Goditi le fiere e le messe in città."
+    },
+    {
+      "name": "Immacolata Concezione",
+      "date": "2025-12-08",
+      "message": "È l'Immacolata Concezione! Goditi le luci natalizie e i mercatini in Italia."
+    },
+    {
+      "name": "Festa di Santa Lucia (Siracusa)",
+      "date": "2025-12-13",
+      "message": "Siracusa celebra Santa Lucia! Unisciti alla processione e alle tradizioni siciliane."
+    },
+    {
+      "name": "Natale",
+      "date": "2025-12-25",
+      "message": "Buon Natale! Festeggia con panettone, luci e tradizioni familiari in Italia."
+    },
+    {
+      "name": "Santo Stefano",
+      "date": "2025-12-26",
+      "message": "Santo Stefano: un giorno per rilassarti e goderti il tempo in famiglia dopo Natale."
+    }
+  ]
+}
