@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'dart:convert';
-import 'package:carousel_slider/carousel_slider.dart';
 
 import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_texts.dart';
 import 'audiobook_details_page.dart';
 
 class AudiobooksPage extends StatefulWidget {
@@ -18,20 +16,16 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
   List<Map<String, dynamic>> _audiobooks = [];
   bool _isLoading = true;
   String? _errorMessage;
-  String _searchQuery = '';
-  String _selectedCategory = 'Todas';
-  String _selectedLevel = 'Todos';
+  String _selectedCategory = 'Tutte';
 
   final List<String> _categories = [
-    'Todas',
+    'Tutte',
     'Letteratura Classica',
     'Letteratura per Bambini',
     'Filosofia Politica',
     'Didattica',
     'Folclore',
   ];
-
-  final List<String> _levels = ['Todos', 'A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 
   @override
   void initState() {
@@ -54,7 +48,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
       });
     } catch (e) {
       setState(() {
-        _errorMessage = 'Error al cargar los audiolibros: $e';
+        _errorMessage = 'Errore nel caricamento degli audiolibri: $e';
         _isLoading = false;
       });
     }
@@ -62,164 +56,50 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
 
   List<Map<String, dynamic>> get _filteredAudiobooks {
     return _audiobooks.where((audiobook) {
-      final matchesSearch =
-          audiobook['name'].toString().toLowerCase().contains(
-            _searchQuery.toLowerCase(),
-          ) ||
-          audiobook['author'].toString().toLowerCase().contains(
-            _searchQuery.toLowerCase(),
-          );
-
       final matchesCategory =
-          _selectedCategory == 'Todas' ||
+          _selectedCategory == 'Tutte' ||
           audiobook['category'] == _selectedCategory;
-      final matchesLevel =
-          _selectedLevel == 'Todos' || audiobook['level'] == _selectedLevel;
 
-      return matchesSearch && matchesCategory && matchesLevel;
+      return matchesCategory;
     }).toList();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topCenter,
-            end: Alignment.bottomCenter,
-            colors: [
-              AppColors.primaryBlue.withValues(alpha: 0.1),
-              Colors.white,
-            ],
-          ),
-        ),
-        child: _isLoading
-            ? const Center(child: CircularProgressIndicator())
-            : _errorMessage != null
-            ? Center(child: Text(_errorMessage!))
-            : CustomScrollView(
-                slivers: [
-                  _buildAppBar(),
-                  SliverToBoxAdapter(
-                    child: Column(
-                      children: [
-                        _buildSearchAndFilters(),
-                        _buildCategoriesSection(),
-                        _buildFeaturedSection(),
-                        _buildNewReleasesSection(),
-                        const SizedBox(
-                          height: 100,
-                        ), // Espacio para bottom navigation
-                      ],
-                    ),
-                  ),
-                ],
-              ),
-      ),
-    );
-  }
-
-  Widget _buildAppBar() {
-    return SliverAppBar(
-      expandedHeight: 120,
-      floating: false,
-      pinned: true,
-      backgroundColor: AppColors.primaryBlue,
-      flexibleSpace: FlexibleSpaceBar(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
         title: const Text(
-          'Audītōria',
+          'Audiolibri',
           style: TextStyle(
-            color: Colors.white,
+            color: AppColors.textPrimary,
             fontWeight: FontWeight.bold,
             fontSize: 24,
           ),
         ),
+        backgroundColor: Colors.white,
+        elevation: 0,
         centerTitle: true,
-        background: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [
-                AppColors.primaryBlue,
-                AppColors.primaryBlue.withValues(alpha: 0.8),
-              ],
-            ),
-          ),
-          child: const Center(
-            child: Icon(Icons.headphones, size: 60, color: Colors.white),
-          ),
-        ),
       ),
-    );
-  }
+      body: _isLoading
+          ? const Center(child: CircularProgressIndicator())
+          : _errorMessage != null
+          ? Center(child: Text(_errorMessage!))
+          : SingleChildScrollView(
+              child: Column(
+                children: [
+                  _buildCategoriesSection(),
+                  _buildFeaturedSection(),
+                  _buildNewReleasesSection(),
+                  const SizedBox(height: 32),
 
-  Widget _buildSearchAndFilters() {
-    return Container(
-      margin: const EdgeInsets.all(20),
-      child: Column(
-        children: [
-          // Barra de búsqueda mejorada
-          Container(
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(25),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: 0.1),
-                  blurRadius: 10,
-                  offset: const Offset(0, 5),
-                ),
-              ],
-            ),
-            child: TextField(
-              onChanged: (value) => setState(() => _searchQuery = value),
-              decoration: InputDecoration(
-                hintText: '🔍 Buscar audiolibros...',
-                hintStyle: TextStyle(
-                  color: AppColors.textSecondary.withValues(alpha: 0.7),
-                  fontSize: 16,
-                ),
-                prefixIcon: const Icon(
-                  Icons.search,
-                  color: AppColors.primaryBlue,
-                ),
-                border: InputBorder.none,
-                contentPadding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                  vertical: 16,
-                ),
+                  // Lista completa de audiobooks
+                  _buildAllAudiobooksSection(),
+
+                  const SizedBox(height: 100), // Espacio para bottom navigation
+                ],
               ),
             ),
-          ),
-          const SizedBox(height: 20),
-
-          // Filtros mejorados
-          Row(
-            children: [
-              Expanded(
-                child: _buildFilterDropdown(
-                  value: _selectedCategory,
-                  items: _categories,
-                  onChanged: (value) =>
-                      setState(() => _selectedCategory = value!),
-                  label: 'Categoría',
-                ),
-              ),
-              const SizedBox(width: 12),
-              Expanded(
-                child: _buildFilterDropdown(
-                  value: _selectedLevel,
-                  items: _levels,
-                  onChanged: (value) => setState(() => _selectedLevel = value!),
-                  label: 'Nivel',
-                ),
-              ),
-            ],
-          ),
-        ],
-      ),
     );
   }
 
@@ -230,7 +110,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Categoriae',
+            'Categorie',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -302,7 +182,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Tibi commendata',
+            'Raccomandati',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -312,20 +192,24 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
           const SizedBox(height: 16),
           SizedBox(
             height: 200,
-            child: CarouselSlider.builder(
-              itemCount: featuredAudiobooks.length,
-              itemBuilder: (context, index, realIndex) {
-                return _buildFeaturedCard(featuredAudiobooks[index]);
-              },
-              options: CarouselOptions(
-                height: 200,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                autoPlayInterval: const Duration(seconds: 4),
-                autoPlayAnimationDuration: const Duration(milliseconds: 800),
-                autoPlayCurve: Curves.fastOutSlowIn,
-                viewportFraction: 0.8,
-              ),
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: featuredAudiobooks.map((audiobook) {
+                return Container(
+                  margin: const EdgeInsets.only(right: 16),
+                  child: _buildFeaturedAudiobookCard(
+                    title: audiobook['name'] ?? '',
+                    author: audiobook['author'] ?? '',
+                    description:
+                        audiobook['description'] ?? 'Audiolibro in italiano',
+                    level: audiobook['level'] ?? 'A1',
+                    duration: audiobook['duration'] ?? '00:00',
+                    color: _getLevelColor(audiobook['level']),
+                    image: audiobook['image'] ?? '',
+                    audiobookData: audiobook,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],
@@ -333,131 +217,125 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
     );
   }
 
-  Widget _buildFeaturedCard(Map<String, dynamic> audiobook) {
+  Widget _buildFeaturedAudiobookCard({
+    required String title,
+    required String author,
+    required String description,
+    required String level,
+    required String duration,
+    required Color color,
+    required String image,
+    Map<String, dynamic>? audiobookData,
+  }) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 8),
+      width: 200,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
+        color: AppColors.backgroundCard,
+        borderRadius: BorderRadius.circular(16),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: 0.2),
-            blurRadius: 15,
-            offset: const Offset(0, 8),
+            color: AppColors.shadowLight,
+            blurRadius: 8,
+            offset: const Offset(0, 2),
           ),
         ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(20),
-        child: Stack(
-          fit: StackFit.expand,
-          children: [
-            // Imagen de fondo
-            Image.network(
-              audiobook['image'] ?? '',
-              fit: BoxFit.cover,
-              errorBuilder: (context, error, stackTrace) {
-                return Container(
-                  color: AppColors.borderLight,
-                  child: Icon(
-                    Icons.book,
-                    size: 80,
-                    color: AppColors.textSecondary,
-                  ),
-                );
-              },
-            ),
-            // Gradiente oscuro
-            Container(
-              decoration: BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Colors.transparent,
-                    Colors.black.withValues(alpha: 0.8),
-                  ],
-                ),
-              ),
-            ),
-            // Contenido
-            Positioned(
-              bottom: 20,
-              left: 20,
-              right: 20,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 8,
-                      vertical: 4,
-                    ),
-                    decoration: BoxDecoration(
-                      color: _getLevelColor(
-                        audiobook['level'],
-                      ).withValues(alpha: 0.9),
-                      borderRadius: BorderRadius.circular(8),
-                    ),
-                    child: Text(
-                      audiobook['level'] ?? '',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () => _navigateToAudiobookDetails(
+            audiobookData ??
+                {
+                  'name': title,
+                  'author': author,
+                  'description': description,
+                  'level': level,
+                  'duration': duration,
+                  'image': image,
+                },
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: color.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        level,
+                        style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
+                    const Spacer(),
+                    Icon(Icons.headphones, color: color, size: 24),
+                  ],
+                ),
+                const SizedBox(height: 12),
+                Text(
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
                   ),
-                  const SizedBox(height: 8),
-                  Text(
-                    audiobook['name'] ?? '',
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  author,
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: color,
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: AppColors.textSecondary,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.access_time,
+                      size: 16,
+                      color: AppColors.textSecondary,
                     ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    audiobook['author'] ?? '',
-                    style: TextStyle(
-                      color: Colors.white.withValues(alpha: 0.9),
-                      fontSize: 14,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            // Botón de play
-            Positioned(
-              top: 20,
-              right: 20,
-              child: Container(
-                width: 50,
-                height: 50,
-                decoration: BoxDecoration(
-                  color: AppColors.primaryBlue,
-                  shape: BoxShape.circle,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withValues(alpha: 0.3),
-                      blurRadius: 10,
-                      offset: const Offset(0, 5),
+                    Text(
+                      duration,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textSecondary,
+                      ),
                     ),
                   ],
                 ),
-                child: IconButton(
-                  icon: const Icon(
-                    Icons.play_arrow,
-                    color: Colors.white,
-                    size: 24,
-                  ),
-                  onPressed: () => _navigateToAudiobookDetails(audiobook),
-                ),
-              ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
@@ -474,7 +352,7 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Nova Editiones',
+            'Nuove Uscite',
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
@@ -483,13 +361,25 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
           ),
           const SizedBox(height: 16),
           SizedBox(
-            height: 150,
-            child: ListView.builder(
+            height: 200,
+            child: ListView(
               scrollDirection: Axis.horizontal,
-              itemCount: newReleases.length,
-              itemBuilder: (context, index) {
-                return _buildNewReleaseCard(newReleases[index]);
-              },
+              children: newReleases.map((audiobook) {
+                return Container(
+                  margin: const EdgeInsets.only(right: 16),
+                  child: _buildFeaturedAudiobookCard(
+                    title: audiobook['name'] ?? '',
+                    author: audiobook['author'] ?? '',
+                    description:
+                        audiobook['description'] ?? 'Audiolibro in italiano',
+                    level: audiobook['level'] ?? 'A1',
+                    duration: audiobook['duration'] ?? '00:00',
+                    color: _getLevelColor(audiobook['level']),
+                    image: audiobook['image'] ?? '',
+                    audiobookData: audiobook,
+                  ),
+                );
+              }).toList(),
             ),
           ),
         ],
@@ -497,323 +387,54 @@ class _AudiobooksPageState extends State<AudiobooksPage> {
     );
   }
 
-  Widget _buildNewReleaseCard(Map<String, dynamic> audiobook) {
+  Widget _buildGridAudiobookCard(Map<String, dynamic> audiobook) {
+    return _buildFeaturedAudiobookCard(
+      title: audiobook['name'] ?? '',
+      author: audiobook['author'] ?? '',
+      description: audiobook['description'] ?? 'Audiolibro in italiano',
+      level: audiobook['level'] ?? 'A1',
+      duration: audiobook['duration'] ?? '00:00',
+      color: _getLevelColor(audiobook['level']),
+      image: audiobook['image'] ?? '',
+      audiobookData: audiobook,
+    );
+  }
+
+  Widget _buildAllAudiobooksSection() {
+    final allAudiobooks = _filteredAudiobooks;
+
+    if (allAudiobooks.isEmpty) return const SizedBox.shrink();
+
     return Container(
-      width: 280,
-      margin: const EdgeInsets.only(right: 16),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withValues(alpha: 0.1),
-            blurRadius: 10,
-            offset: const Offset(0, 5),
+      margin: const EdgeInsets.symmetric(horizontal: 20),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'Tutti gli Audiolibri',
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: AppColors.textPrimary,
+            ),
+          ),
+          const SizedBox(height: 16),
+          GridView.builder(
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 0.75,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+            ),
+            itemCount: allAudiobooks.length,
+            itemBuilder: (context, index) {
+              final audiobook = allAudiobooks[index];
+              return _buildGridAudiobookCard(audiobook);
+            },
           ),
         ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: () => _navigateToAudiobookDetails(audiobook),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                // Imagen
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image:
-                        audiobook['image'] != null &&
-                            audiobook['image'].isNotEmpty
-                        ? DecorationImage(
-                            image: NetworkImage(audiobook['image']),
-                            fit: BoxFit.cover,
-                          )
-                        : null,
-                  ),
-                  child:
-                      audiobook['image'] == null || audiobook['image'].isEmpty
-                      ? Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.borderLight,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Icon(
-                            Icons.book,
-                            size: 40,
-                            color: AppColors.textSecondary,
-                          ),
-                        )
-                      : null,
-                ),
-                const SizedBox(width: 16),
-
-                // Información
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        audiobook['name'] ?? '',
-                        style: const TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        audiobook['author'] ?? '',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.primaryBlue,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: _getLevelColor(
-                                audiobook['level'],
-                              ).withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              audiobook['level'] ?? '',
-                              style: TextStyle(
-                                color: _getLevelColor(audiobook['level']),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            Icons.access_time,
-                            size: 16,
-                            color: AppColors.textSecondary,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            audiobook['duration'] ?? '',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: AppColors.textSecondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Icono de play
-                Icon(
-                  Icons.play_circle_outline,
-                  size: 32,
-                  color: AppColors.primaryBlue,
-                ),
-              ],
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildFilterDropdown({
-    required String value,
-    required List<String> items,
-    required ValueChanged<String?> onChanged,
-    required String label,
-  }) {
-    return DropdownButtonFormField<String>(
-      value: value,
-      items: items
-          .map((item) => DropdownMenuItem(value: item, child: Text(item)))
-          .toList(),
-      onChanged: onChanged,
-      decoration: InputDecoration(
-        labelText: label,
-        border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(12),
-          borderSide: BorderSide(color: AppColors.borderLight),
-        ),
-        filled: true,
-        fillColor: AppColors.backgroundCard,
-      ),
-    );
-  }
-
-  Widget _buildAudiobooksList() {
-    final filteredAudiobooks = _filteredAudiobooks;
-
-    if (filteredAudiobooks.isEmpty) {
-      return Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.search_off, size: 64, color: AppColors.textSecondary),
-            const SizedBox(height: 16),
-            Text(
-              'No se encontraron audiolibros',
-              style: TextStyle(fontSize: 18, color: AppColors.textSecondary),
-            ),
-          ],
-        ),
-      );
-    }
-
-    return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      itemCount: filteredAudiobooks.length,
-      itemBuilder: (context, index) {
-        final audiobook = filteredAudiobooks[index];
-        return _buildAudiobookCard(audiobook);
-      },
-    );
-  }
-
-  Widget _buildAudiobookCard(Map<String, dynamic> audiobook) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 16),
-      decoration: BoxDecoration(
-        color: AppColors.backgroundCard,
-        borderRadius: BorderRadius.circular(16),
-        boxShadow: [
-          BoxShadow(
-            color: AppColors.shadowLight,
-            blurRadius: 8,
-            offset: const Offset(0, 2),
-          ),
-        ],
-      ),
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          borderRadius: BorderRadius.circular(16),
-          onTap: () => _navigateToAudiobookDetails(audiobook),
-          child: Padding(
-            padding: const EdgeInsets.all(16),
-            child: Row(
-              children: [
-                // Imagen del audiolibro
-                Container(
-                  width: 80,
-                  height: 80,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: NetworkImage(audiobook['image'] ?? ''),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  child: audiobook['image'] == null
-                      ? Container(
-                          decoration: BoxDecoration(
-                            color: AppColors.borderLight,
-                            borderRadius: BorderRadius.circular(12),
-                          ),
-                          child: Icon(
-                            Icons.book,
-                            size: 40,
-                            color: AppColors.textSecondary,
-                          ),
-                        )
-                      : null,
-                ),
-                const SizedBox(width: 16),
-
-                // Información del audiolibro
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        audiobook['name'] ?? '',
-                        style: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.textPrimary,
-                        ),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
-                      ),
-                      const SizedBox(height: 4),
-                      Text(
-                        audiobook['author'] ?? '',
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: AppColors.primaryBlue,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Row(
-                        children: [
-                          Container(
-                            padding: const EdgeInsets.symmetric(
-                              horizontal: 8,
-                              vertical: 4,
-                            ),
-                            decoration: BoxDecoration(
-                              color: _getLevelColor(
-                                audiobook['level'],
-                              ).withValues(alpha: 0.1),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: Text(
-                              audiobook['level'] ?? '',
-                              style: TextStyle(
-                                color: _getLevelColor(audiobook['level']),
-                                fontSize: 12,
-                                fontWeight: FontWeight.w600,
-                              ),
-                            ),
-                          ),
-                          const SizedBox(width: 8),
-                          Icon(
-                            Icons.access_time,
-                            size: 16,
-                            color: AppColors.textSecondary,
-                          ),
-                          const SizedBox(width: 4),
-                          Text(
-                            audiobook['duration'] ?? '',
-                            style: TextStyle(
-                              fontSize: 12,
-                              color: AppColors.textSecondary,
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-
-                // Icono de play
-                Icon(
-                  Icons.play_circle_outline,
-                  size: 32,
-                  color: AppColors.primaryBlue,
-                ),
-              ],
-            ),
-          ),
-        ),
       ),
     );
   }

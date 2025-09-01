@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter/services.dart';
+import 'dart:convert';
 
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_texts.dart';
@@ -16,6 +18,7 @@ import 'settings_page.dart';
 import 'divine_comedy_screen.dart';
 import 'reels_page.dart';
 import 'audiobooks_page.dart';
+import 'audiobook_details_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -126,7 +129,6 @@ class HomeContent extends StatelessWidget {
               // Palabra del día
               const WordOfDayWidget(),
 
-              
               const SizedBox(height: 32),
 
               // Lecciones recomendadas
@@ -136,12 +138,10 @@ class HomeContent extends StatelessWidget {
 
               // Acciones rápidas
               //_buildQuickActions(context),
-
-
               const SizedBox(height: 32),
 
-              // Contenido destacado
-              _buildFeaturedContent(context),
+              // Widget Premium
+              _buildPremiumWidget(context),
             ],
           ),
         ),
@@ -317,71 +317,88 @@ class HomeContent extends StatelessWidget {
   }
 
   Widget _buildRecommendedLessons(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Text(
-              'Audiolibros',
-              style: const TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-              ),
-            ),
-            CustomTextButton(
-              onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const AudiobooksPage()),
-              ),
-              text: 'Ver todos',
-              textColor: AppColors.primaryBlue,
-            ),
-          ],
-        ),
-        const SizedBox(height: 16),
-        SizedBox(
-          height: 200,
-          child: ListView(
-            scrollDirection: Axis.horizontal,
+    return FutureBuilder<String>(
+      future: rootBundle.loadString('assets/data/italian_audiobooks.json'),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
+
+        if (snapshot.hasError || !snapshot.hasData) {
+          return const Center(child: Text('Error cargando audiolibros'));
+        }
+
+        try {
+          final Map<String, dynamic> jsonData = json.decode(snapshot.data!);
+          final List<dynamic> audiobooks = jsonData['italian_audiobooks'];
+
+          // Tomar solo los primeros 3 audiobooks para la homepage
+          final List<dynamic> featuredAudiobooks = audiobooks.take(3).toList();
+
+          return Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              _buildAudiobookCard(
-                title: 'La Divina Commedia',
-                author: 'Dante Alighieri',
-                description: 'Obra maestra de la literatura italiana',
-                level: 'B2',
-                duration: '2:30:00',
-                color: AppColors.primaryBlue,
-                image:
-                    'https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Divina%20Commedia%2FInferno%2FDante%20Inferno%20cover.jpg?alt=media&token=example',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'Audiolibros',
+                    style: const TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: AppColors.textPrimary,
+                    ),
+                  ),
+                  CustomTextButton(
+                    onPressed: () => Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const AudiobooksPage(),
+                      ),
+                    ),
+                    text: 'Ver todos',
+                    textColor: AppColors.primaryBlue,
+                  ),
+                ],
               ),
-              const SizedBox(width: 16),
-              _buildAudiobookCard(
-                title: 'Pinocchio',
-                author: 'Carlo Collodi',
-                description: 'La famosa historia del muñeco de madera',
-                level: 'A2',
-                duration: '1:45:00',
-                color: AppColors.secondaryGreen,
-                image:
-                    'https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Pinocchio%2FPinocchio%20cover.jpg?alt=media&token=example',
-              ),
-              const SizedBox(width: 16),
-              _buildAudiobookCard(
-                title: 'Il Principe',
-                author: 'Niccolò Machiavelli',
-                description: 'Obra fundamental de filosofía política',
-                level: 'C1',
-                duration: '3:15:00',
-                color: AppColors.secondaryOrange,
-                image:
-                    'https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Il%20Principe%2FMachiavelli%20cover.jpg?alt=media&token=example',
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 200,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: featuredAudiobooks.length,
+                  itemBuilder: (context, index) {
+                    final audiobook = featuredAudiobooks[index];
+                    final colors = [
+                      AppColors.primaryBlue,
+                      AppColors.secondaryGreen,
+                      AppColors.secondaryOrange,
+                    ];
+
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        right: index < featuredAudiobooks.length - 1 ? 16 : 0,
+                      ),
+                      child: _buildAudiobookCard(
+                        title: audiobook['name'] ?? '',
+                        author: audiobook['author'] ?? '',
+                        description: audiobook['description'] ?? '',
+                        level: audiobook['level'] ?? '',
+                        duration: audiobook['duration'] ?? '',
+                        color: colors[index % colors.length],
+                        image: audiobook['image'] ?? '',
+                        audiobookData: audiobook,
+                        context: context,
+                      ),
+                    );
+                  },
+                ),
               ),
             ],
-          ),
-        ),
-      ],
+          );
+        } catch (e) {
+          return const Center(child: Text('Error procesando datos'));
+        }
+      },
     );
   }
 
@@ -393,6 +410,8 @@ class HomeContent extends StatelessWidget {
     required String duration,
     required Color color,
     required String image,
+    required Map<String, dynamic> audiobookData,
+    required BuildContext context,
   }) {
     return Container(
       width: 200,
@@ -407,93 +426,108 @@ class HomeContent extends StatelessWidget {
           ),
         ],
       ),
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Row(
+      child: Material(
+        color: Colors.transparent,
+        child: InkWell(
+          borderRadius: BorderRadius.circular(16),
+          onTap: () => Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) =>
+                  AudiobookDetailsPage(audiobook: audiobookData),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 8,
-                    vertical: 4,
-                  ),
-                  decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: Text(
-                    level,
-                    style: TextStyle(
-                      color: color,
-                      fontSize: 12,
-                      fontWeight: FontWeight.w600,
+                Row(
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 8,
+                        vertical: 4,
+                      ),
+                      decoration: BoxDecoration(
+                        color: color.withValues(alpha: 0.1),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Text(
+                        level,
+                        style: TextStyle(
+                          color: color,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
                     ),
-                  ),
+                    const Spacer(),
+                    Icon(Icons.headphones, color: color, size: 24),
+                  ],
                 ),
-                const Spacer(),
-                Icon(Icons.headphones, color: color, size: 24),
-              ],
-            ),
-            const SizedBox(height: 12),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 16,
-                fontWeight: FontWeight.bold,
-                color: AppColors.textPrimary,
-              ),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              author,
-              style: TextStyle(
-                fontSize: 12,
-                color: color,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            const SizedBox(height: 4),
-            Text(
-              description,
-              style: TextStyle(fontSize: 11, color: AppColors.textSecondary),
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-            ),
-            const Spacer(),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Icon(
-                  Icons.access_time,
-                  size: 16,
-                  color: AppColors.textSecondary,
-                ),
+                const SizedBox(height: 12),
                 Text(
-                  duration,
+                  title,
+                  style: const TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.textPrimary,
+                  ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  author,
                   style: TextStyle(
                     fontSize: 12,
+                    color: color,
                     fontWeight: FontWeight.w600,
+                  ),
+                ),
+                const SizedBox(height: 4),
+                Text(
+                  description,
+                  style: TextStyle(
+                    fontSize: 11,
                     color: AppColors.textSecondary,
                   ),
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+                const Spacer(),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Icon(
+                      Icons.access_time,
+                      size: 16,
+                      color: AppColors.textSecondary,
+                    ),
+                    Text(
+                      duration,
+                      style: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600,
+                        color: AppColors.textSecondary,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
-          ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildFeaturedContent(BuildContext context) {
+  Widget _buildPremiumWidget(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'Contenido Destacado',
+          'Hacete Premium',
           style: const TextStyle(
             fontSize: 20,
             fontWeight: FontWeight.bold,
@@ -504,8 +538,23 @@ class HomeContent extends StatelessWidget {
         Container(
           padding: const EdgeInsets.all(20),
           decoration: BoxDecoration(
-            gradient: AppColors.italianGradient,
+            gradient: const LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color(0xFFFFD700), // Dorado premium
+                Color(0xFFFFA500), // Naranja dorado
+                Color(0xFFFF8C00), // Naranja oscuro
+              ],
+            ),
             borderRadius: BorderRadius.circular(20),
+            boxShadow: [
+              BoxShadow(
+                color: const Color(0xFFFFD700).withValues(alpha: 0.3),
+                blurRadius: 15,
+                offset: const Offset(0, 8),
+              ),
+            ],
           ),
           child: Row(
             children: [
@@ -513,28 +562,73 @@ class HomeContent extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      'Reels en Italiano',
-                      style: const TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.bold,
-                        color: AppColors.primaryWhite,
-                      ),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.star,
+                          color: AppColors.primaryWhite,
+                          size: 24,
+                        ),
+                        const SizedBox(width: 8),
+                        const Text(
+                          'Premium',
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: AppColors.primaryWhite,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 8),
-                    Text(
-                      'Aprende con videos cortos y divertidos',
+                    const Text(
+                      'Desbloquea contenido exclusivo y acelera tu aprendizaje',
                       style: TextStyle(
                         fontSize: 14,
-                        color: AppColors.primaryWhite.withValues(alpha: 0.9),
+                        color: AppColors.primaryWhite,
+                        fontWeight: FontWeight.w500,
                       ),
+                    ),
+                    const SizedBox(height: 12),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.check_circle,
+                          color: AppColors.primaryWhite,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 6),
+                        const Text(
+                          'Lecciones ilimitadas',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: AppColors.primaryWhite,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                        const SizedBox(width: 12),
+                        const Icon(
+                          Icons.check_circle,
+                          color: AppColors.primaryWhite,
+                          size: 16,
+                        ),
+                        const SizedBox(width: 6),
+                        const Text(
+                          'Sin anuncios',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: AppColors.primaryWhite,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 16),
                     CustomButton(
-                      onPressed: () => Navigator.pushNamed(context, '/reels'),
-                      text: 'Explorar',
+                      onPressed: () => _showPremiumDialog(context),
+                      text: '¡Hacete Premium!',
                       backgroundColor: AppColors.primaryWhite,
-                      textColor: AppColors.primaryBlue,
+                      textColor: const Color(0xFFFF8C00),
                       height: 40,
                     ),
                   ],
@@ -549,7 +643,7 @@ class HomeContent extends StatelessWidget {
                   borderRadius: BorderRadius.circular(40),
                 ),
                 child: const Icon(
-                  Icons.video_library,
+                  Icons.workspace_premium,
                   size: 40,
                   color: AppColors.primaryWhite,
                 ),
@@ -558,6 +652,118 @@ class HomeContent extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  void _showPremiumDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Row(
+          children: [
+            const Icon(
+              Icons.workspace_premium,
+              color: Color(0xFFFFD700),
+              size: 28,
+            ),
+            const SizedBox(width: 12),
+            const Text(
+              '¡Hacete Premium!',
+              style: TextStyle(
+                fontWeight: FontWeight.bold,
+                color: Color(0xFFFF8C00),
+              ),
+            ),
+          ],
+        ),
+        content: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'Desbloquea todo el potencial de tu aprendizaje:',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+            ),
+            const SizedBox(height: 16),
+            _buildPremiumFeature('🎯 Lecciones ilimitadas'),
+            _buildPremiumFeature('🚫 Sin anuncios'),
+            _buildPremiumFeature('📊 Estadísticas avanzadas'),
+            _buildPremiumFeature('🎧 Audiolibros completos'),
+            _buildPremiumFeature('🏆 Logros exclusivos'),
+            _buildPremiumFeature('💬 Soporte prioritario'),
+            const SizedBox(height: 16),
+            Container(
+              padding: const EdgeInsets.all(12),
+              decoration: BoxDecoration(
+                color: const Color(0xFFFFD700).withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(color: const Color(0xFFFFD700)),
+              ),
+              child: const Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.local_offer, color: Color(0xFFFF8C00), size: 20),
+                  SizedBox(width: 8),
+                  Text(
+                    '¡50% de descuento por tiempo limitado!',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Color(0xFFFF8C00),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(context).pop(),
+            child: const Text('Más tarde'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              Navigator.of(context).pop();
+              _processPremiumPurchase(context);
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: const Color(0xFFFF8C00),
+              foregroundColor: AppColors.primaryWhite,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+            ),
+            child: const Text(
+              '¡Suscribirse Ahora!',
+              style: TextStyle(fontWeight: FontWeight.bold),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildPremiumFeature(String feature) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 4),
+      child: Row(
+        children: [
+          const Icon(Icons.check_circle, color: Color(0xFFFF8C00), size: 20),
+          const SizedBox(width: 12),
+          Text(feature, style: const TextStyle(fontSize: 14)),
+        ],
+      ),
+    );
+  }
+
+  void _processPremiumPurchase(BuildContext context) {
+    // TODO: Implementar lógica de compra premium
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(
+        content: Text('¡Funcionalidad de suscripción premium próximamente!'),
+        backgroundColor: Color(0xFFFF8C00),
+        duration: Duration(seconds: 3),
+      ),
     );
   }
 
