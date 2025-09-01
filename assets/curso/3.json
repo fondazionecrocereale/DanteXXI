@@ -1,0 +1,23 @@
+{
+  "title": "Selección Múltiple Básica",
+  "content": [
+    {
+      "exerciseType": "multiple_choice",
+      "question": "¿Cuál es la capital de Italia?",
+      "sound": "",
+      "options": ["Roma", "Milán", "Nápoles", "Florencia"],
+      "correctAnswer": "Roma",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "multiple_choice",
+      "question": "¿Cómo se dice 'Buenos días' en italiano?",
+      "sound": "",
+      "options": ["Buongiorno", "Buonasera", "Buonanotte", "Arrivederci"],
+      "correctAnswer": "Buongiorno",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    }
+  ]
+}

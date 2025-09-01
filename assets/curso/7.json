@@ -1,0 +1,14 @@
+{
+  "title": "Traducción",
+  "content": [
+    {
+      "exerciseType": "translation",
+      "question": "Ciao, come stai?",
+      "sound": "",
+      "wordOptions": ["Hola", "como", "estás", "bien", "mal", "gracias"],
+      "correctAnswer": ["Hola", "como", "estás"],
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    }
+  ]
+}

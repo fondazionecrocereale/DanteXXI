@@ -1,0 +1,23 @@
+{
+  "title": "Completar Espacios",
+  "content": [
+    {
+      "exerciseType": "fill_in_the_blank",
+      "question": "Mi chiamo _____ (My name is)",
+      "sound": "",
+      "options": ["Marco", "Maria", "Giuseppe", "Anna"],
+      "correctAnswer": "Marco",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "fill_in_the_blank",
+      "question": "Ho _____ anni (I am ... years old)",
+      "sound": "",
+      "options": ["venti", "venticinque", "trenta", "quaranta"],
+      "correctAnswer": "venti",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    }
+  ]
+}

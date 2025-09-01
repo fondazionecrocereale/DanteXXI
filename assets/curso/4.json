@@ -1,0 +1,23 @@
+{
+  "title": "Significados y Traducciones",
+  "content": [
+    {
+      "exerciseType": "multiple_choice_alt",
+      "question": "¿Qué significa 'Ciao' en italiano?",
+      "sound": "",
+      "options": ["Hola/Adiós", "Gracias", "Por favor", "Buenos días"],
+      "correctAnswer": "Hola/Adiós",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "multiple_choice_alt",
+      "question": "¿Cómo se dice 'Gracias' en italiano?",
+      "sound": "",
+      "options": ["Prego", "Grazie", "Scusa", "Per favore"],
+      "correctAnswer": "Grazie",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    }
+  ]
+}

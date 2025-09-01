@@ -1,0 +1,24 @@
+{
+  "title": "Emparejar Palabras",
+  "content": [
+    {
+      "exerciseType": "matching_pairs",
+      "question": "Empareja los números con sus nombres en italiano",
+      "sound": "",
+      "options": [
+        {"left": "1", "right": "uno"},
+        {"left": "2", "right": "due"},
+        {"left": "3", "right": "tre"},
+        {"left": "4", "right": "quattro"}
+      ],
+      "correctPairs": [
+        {"left": "1", "right": "uno"},
+        {"left": "2", "right": "due"},
+        {"left": "3", "right": "tre"},
+        {"left": "4", "right": "quattro"}
+      ],
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    }
+  ]
+}

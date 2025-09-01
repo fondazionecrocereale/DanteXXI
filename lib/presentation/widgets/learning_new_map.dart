@@ -3,6 +3,7 @@ import 'package:shimmer/shimmer.dart';
 import '../../domain/entities/divine_comedy_model.dart';
 import 'learning_node.dart';
 import 'learning_path_painter.dart';
+import '../pages/splash_view.dart';
 
 class LearningNewMap extends StatefulWidget {
   final DivineComedyModel section;
@@ -75,11 +76,12 @@ class _LearningNewMapState extends State<LearningNewMap> {
                   onTap: () {
                     if (lesson.isUnlocked) {
                       debugPrint('Tapped lesson: ${lesson.title}');
-                      // Aquí puedes implementar la navegación a la lección
-                      ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(
-                          content: Text('Iniziando: ${lesson.title}'),
-                          backgroundColor: Colors.blue,
+                      // Navegar a SplashView para cargar la lección
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                              SplashView(id: lesson.id, title: lesson.title),
                         ),
                       );
                     }

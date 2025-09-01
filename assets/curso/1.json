@@ -1,0 +1,23 @@
+{
+  "title": "Saluti e Presentazioni",
+  "content": [
+    {
+      "exerciseType": "multiple_choice",
+      "question": "¿Cuál es la forma correcta de saludar en italiano?",
+      "sound": "",
+      "options": ["Ciao", "Grazie", "Prego", "Arrivederci"],
+      "correctAnswer": "Ciao",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "translation",
+      "question": "Ciao, come stai?",
+      "sound": "",
+      "wordOptions": ["Hola", "como", "estás", "bien", "mal", "gracias"],
+      "correctAnswer": ["Hola", "como", "estás"],
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    }
+  ]
+}

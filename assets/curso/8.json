@@ -1,0 +1,60 @@
+{
+  "title": "Prueba de Todos los Tipos",
+  "content": [
+    {
+      "exerciseType": "multiple_choice",
+      "question": "¿Cuál es la capital de Italia?",
+      "sound": "",
+      "options": ["Roma", "Milán", "Nápoles", "Florencia"],
+      "correctAnswer": "Roma",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "multiple_choice_alt",
+      "question": "¿Qué significa 'Ciao' en italiano?",
+      "sound": "",
+      "options": ["Hola/Adiós", "Gracias", "Por favor", "Buenos días"],
+      "correctAnswer": "Hola/Adiós",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "fill_in_the_blank",
+      "question": "Mi chiamo _____ (My name is)",
+      "sound": "",
+      "options": ["Marco", "Maria", "Giuseppe", "Anna"],
+      "correctAnswer": "Marco",
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "matching_pairs",
+      "question": "Empareja los números con sus nombres en italiano",
+      "sound": "",
+      "options": [
+        {"left": "1", "right": "uno"},
+        {"left": "2", "right": "due"},
+        {"left": "3", "right": "tre"},
+        {"left": "4", "right": "quattro"}
+      ],
+      "correctPairs": [
+        {"left": "1", "right": "uno"},
+        {"left": "2", "right": "due"},
+        {"left": "3", "right": "tre"},
+        {"left": "4", "right": "quattro"}
+      ],
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    },
+    {
+      "exerciseType": "translation",
+      "question": "Ciao, come stai?",
+      "sound": "",
+      "wordOptions": ["Hola", "como", "estás", "bien", "mal", "gracias"],
+      "correctAnswer": ["Hola", "como", "estás"],
+      "soundWrongAnswer": "wrong.mp3",
+      "soundCorrectAnswer": "correct.mp3"
+    }
+  ]
+}

@@ -42,7 +42,7 @@
           "nextLessonIds": [3],
           "position": {"x": 0.8, "y": 0.2},
           "description": "Conta fino a dieci in italiano",
-          "exerciseTypes": ["fill_in_blank", "matching"]
+          "exerciseTypes": ["fill_in_the_blank", "matching_pairs"]
         },
         {
           "id": 3,
@@ -66,7 +66,7 @@
           "nextLessonIds": [5],
           "position": {"x": 0.8, "y": 0.4},
           "description": "Membri della famiglia",
-          "exerciseTypes": ["translation", "listening"]
+          "exerciseTypes": ["translation", "multiple_choice"]
         },
         {
           "id": 5,
@@ -78,7 +78,7 @@
           "nextLessonIds": [6],
           "position": {"x": 0.2, "y": 0.5},
           "description": "Alimenti e bevande base",
-          "exerciseTypes": ["multiple_choice", "fill_in_blank"]
+          "exerciseTypes": ["multiple_choice", "fill_in_the_blank"]
         },
         {
           "id": 6,
@@ -90,7 +90,7 @@
           "nextLessonIds": [7],
           "position": {"x": 0.8, "y": 0.6},
           "description": "Animali domestici comuni",
-          "exerciseTypes": ["matching", "listening"]
+          "exerciseTypes": ["matching_pairs", "multiple_choice"]
         },
         {
           "id": 7,
@@ -114,7 +114,7 @@
           "nextLessonIds": [9],
           "position": {"x": 0.8, "y": 0.8},
           "description": "Tipi di vestiti e accessori",
-          "exerciseTypes": ["matching_pairs", "fill_in_blank"]
+          "exerciseTypes": ["matching_pairs", "fill_in_the_blank"]
         },
         {
           "id": 9,

@@ -1,0 +1,9 @@
+Archivos de audio necesarios para los ejercicios:
+
+1. correct.mp3 - Sonido cuando la respuesta es correcta
+2. wrong.mp3 - Sonido cuando la respuesta es incorrecta
+3. splash.mp3 - Sonido del SplashView
+
+Estos archivos deben estar en la carpeta assets/audio/ para que funcionen los ejercicios.
+
+Por ahora, si no tienes estos archivos, los ejercicios funcionarán sin sonido.
