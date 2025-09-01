@@ -5,6 +5,7 @@ import 'di/injection_container.dart' as di;
 import 'core/services/storage_service.dart';
 import 'presentation/blocs/auth/auth_bloc.dart';
 import 'presentation/pages/splash_page.dart';
+import 'routes/route_generator.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,6 +41,8 @@ class DanteXXIApp extends StatelessWidget {
             ),
           ),
         ),
+        initialRoute: RouteGenerator.home,
+        onGenerateRoute: RouteGenerator.generateRoute,
         home: const SplashPage(),
       ),
     );

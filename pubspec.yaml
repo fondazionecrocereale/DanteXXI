@@ -61,6 +61,15 @@ dependencies:
   # Audio/Video
   just_audio: ^0.10.4
   video_player: ^2.8.2
+  # chewie: ^1.7.4 # Removed
+  # webview_flutter: ^4.7.0 # Replaced with youtube_player_iframe
+  youtube_player_iframe: ^5.2.2
+  
+  # Image/File Picker
+  image_picker: ^1.0.7
+  
+  # URL Launcher
+  url_launcher: ^6.2.5
   
   # Navigation
   go_router: ^16.2.1

@@ -130,7 +130,7 @@ class HomeContent extends StatelessWidget {
               const SizedBox(height: 32),
 
               // Contenido destacado
-              _buildFeaturedContent(),
+              _buildFeaturedContent(context),
             ],
           ),
         ),
@@ -467,7 +467,7 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget _buildFeaturedContent() {
+  Widget _buildFeaturedContent(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -510,9 +510,7 @@ class HomeContent extends StatelessWidget {
                     ),
                     const SizedBox(height: 16),
                     CustomButton(
-                      onPressed: () {
-                        // TODO: Navegar a reels
-                      },
+                      onPressed: () => Navigator.pushNamed(context, '/reels'),
                       text: 'Explorar',
                       backgroundColor: AppColors.primaryWhite,
                       textColor: AppColors.primaryBlue,

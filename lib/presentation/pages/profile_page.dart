@@ -121,6 +121,8 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Future<void> _pickImage() async {
     try {
+      print('📸 ProfilePage._pickImage() - Iniciando selección de imagen...');
+
       final XFile? image = await _imagePicker.pickImage(
         source: ImageSource.gallery,
         maxWidth: 512,
@@ -129,15 +131,46 @@ class _ProfilePageState extends State<ProfilePage> {
       );
 
       if (image != null) {
+        print(
+          '📸 ProfilePage._pickImage() - Imagen seleccionada: ${image.path}',
+        );
+
+        // Mostrar indicador de carga
+        if (mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+              content: Text('Guardando imagen...'),
+              duration: Duration(seconds: 1),
+            ),
+          );
+        }
+
+        // Guardar imagen en el perfil
         await ProfileService.saveProfileImage(image.path);
-        setState(() {});
-        ErrorHandlerService.showSuccessSnackBar(context, 'Imagen actualizada');
+
+        // Recargar el perfil para mostrar la nueva imagen
+        await _loadProfile();
+
+        if (mounted) {
+          ErrorHandlerService.showSuccessSnackBar(
+            context,
+            'Imagen de perfil actualizada exitosamente',
+          );
+        }
+
+        print('✅ ProfilePage._pickImage() - Imagen guardada exitosamente');
+      } else {
+        print('📸 ProfilePage._pickImage() - No se seleccionó imagen');
       }
     } catch (e) {
-      ErrorHandlerService.showErrorSnackBar(
-        context,
-        'Error al seleccionar imagen',
-      );
+      print('❌ ProfilePage._pickImage() - Error: $e');
+
+      if (mounted) {
+        ErrorHandlerService.showErrorSnackBar(
+          context,
+          'Error al seleccionar imagen: $e',
+        );
+      }
     }
   }
 
@@ -394,7 +427,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 CircleAvatar(
                   radius: 60,
                   backgroundImage: _profile?.avatar != null
-                      ? NetworkImage(_profile!.avatar!)
+                      ? FileImage(File(_profile!.avatar!))
                       : null,
                   child: _profile?.avatar == null
                       ? Text(
@@ -411,15 +444,35 @@ class _ProfilePageState extends State<ProfilePage> {
                     bottom: 0,
                     right: 0,
                     child: Container(
-                      padding: const EdgeInsets.all(4),
+                      padding: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
                         color: AppColors.primaryBlue,
                         shape: BoxShape.circle,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withValues(alpha: 0.3),
+                            blurRadius: 4,
+                            offset: const Offset(0, 2),
+                          ),
+                        ],
                       ),
                       child: const Icon(
                         Icons.camera_alt,
                         color: Colors.white,
-                        size: 20,
+                        size: 24,
+                      ),
+                    ),
+                  ),
+                // Indicador de que se puede tocar cuando está editando
+                if (_isEditing)
+                  Positioned.fill(
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: Colors.black.withValues(alpha: 0.1),
+                        shape: BoxShape.circle,
+                      ),
+                      child: const Center(
+                        child: Icon(Icons.edit, color: Colors.white, size: 32),
                       ),
                     ),
                   ),
@@ -435,6 +488,27 @@ class _ProfilePageState extends State<ProfilePage> {
             _profile?.email ?? '',
             style: TextStyle(fontSize: 16, color: Colors.grey[600]),
           ),
+          if (_isEditing) ...[
+            const SizedBox(height: 8),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+              decoration: BoxDecoration(
+                color: AppColors.primaryBlue.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: AppColors.primaryBlue.withValues(alpha: 0.3),
+                ),
+              ),
+              child: Text(
+                'Toca la imagen para cambiarla',
+                style: TextStyle(
+                  fontSize: 12,
+                  color: AppColors.primaryBlue,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ),
+          ],
         ],
       ),
     );

@@ -135,8 +135,31 @@ class ProfileService {
 
   // Guardar imagen de perfil
   static Future<void> saveProfileImage(String imagePath) async {
-    final prefs = await SharedPreferences.getInstance();
-    await prefs.setString(_profileImageKey, imagePath);
+    try {
+      print(
+        '🖼️ ProfileService.saveProfileImage() - Guardando imagen: $imagePath',
+      );
+
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setString(_profileImageKey, imagePath);
+
+      // También actualizar el campo avatar del perfil actual
+      final currentProfile = await getProfile();
+      if (currentProfile != null) {
+        final updatedProfile = currentProfile.copyWith(avatar: imagePath);
+        await saveProfile(updatedProfile);
+        print(
+          '✅ ProfileService.saveProfileImage() - Avatar actualizado en perfil',
+        );
+      }
+
+      print(
+        '✅ ProfileService.saveProfileImage() - Imagen guardada exitosamente',
+      );
+    } catch (e) {
+      print('❌ ProfileService.saveProfileImage() - Error: $e');
+      rethrow;
+    }
   }
 
   // Obtener imagen de perfil
