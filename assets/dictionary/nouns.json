@@ -1,0 +1,99 @@
+{
+  "nouns": [
+    {
+      "word": "mela",
+      "meaning": "frutto rotondo con buccia rossa o verde e interno biancastro",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈmɛ.la",
+      "category": "frutta",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "manzana",
+        "french": "pomme",
+        "german": "Apfel",
+        "english": "apple"
+      },
+      "examples": [
+        "Ha mangiato una mela come spuntino.",
+        "Ci sono molte varietà diverse di mele."
+      ]
+    },
+    {
+      "word": "birra",
+      "meaning": "bevanda alcolica ottenuta dalla fermentazione di cereali maltati",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈbir.ra",
+      "category": "bevande",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "cerveza",
+        "french": "bière",
+        "german": "Bier",
+        "english": "beer"
+      },
+      "examples": [
+        "Prendiamo sempre una birra fredda quando siamo al mare.",
+        "Ha organizzato una festa con tanto cibo e birra."
+      ]
+    },
+    {
+      "word": "libro",
+      "meaning": "opera letteraria, scientifica o artistica stampata o manoscritta",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈli.bro",
+      "category": "oggetti",
+      "gender": "maschile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "libro",
+        "french": "livre",
+        "german": "Buch",
+        "english": "book"
+      },
+      "examples": [
+        "Ho letto un libro molto interessante sulla storia di Roma.",
+        "Questo libro è il mio preferito."
+      ]
+    },
+    {
+      "word": "casa",
+      "meaning": "edificio destinato ad abitazione",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈka.za",
+      "category": "luoghi",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "casa",
+        "french": "maison",
+        "german": "Haus",
+        "english": "house"
+      },
+      "examples": [
+        "La mia casa è in centro città.",
+        "Abbiamo comprato una casa nuova."
+      ]
+    },
+    {
+      "word": "macchina",
+      "meaning": "veicolo a motore per il trasporto di persone",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈmak.ki.na",
+      "category": "trasporti",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "coche",
+        "french": "voiture",
+        "german": "Auto",
+        "english": "car"
+      },
+      "examples": [
+        "Ho parcheggiato la macchina davanti al negozio.",
+        "La sua macchina è molto veloce."
+      ]
+    }
+  ]
+}

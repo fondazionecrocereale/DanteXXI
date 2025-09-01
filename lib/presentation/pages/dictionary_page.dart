@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
+import 'package:flutter/services.dart';
 
 import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_texts.dart';
+import 'verb_conjugation_page.dart';
+import 'noun_details_page.dart';
 
 class DictionaryPage extends StatefulWidget {
   const DictionaryPage({super.key});
@@ -14,156 +17,66 @@ class _DictionaryPageState extends State<DictionaryPage> {
   final TextEditingController _searchController = TextEditingController();
   int _selectedCategoryIndex = 0;
   String _searchQuery = '';
+  List<DictionaryWord> _allWords = [];
+  List<DictionaryWord> _filteredWords = [];
+  bool _isLoading = true;
 
   final List<WordCategory> _categories = [
     WordCategory(
-      name: 'Saludos',
-      icon: Icons.waving_hand,
+      name: 'Todos',
+      icon: Icons.language,
       color: AppColors.primaryBlue,
-      wordCount: 25,
+      wordCount: 0,
+      jsonFile: '', // No necesita archivo específico
     ),
     WordCategory(
-      name: 'Números',
-      icon: Icons.numbers,
+      name: 'Verbos',
+      icon: Icons.run_circle,
       color: AppColors.secondaryGreen,
-      wordCount: 30,
+      wordCount: 0,
+      jsonFile: 'assets/dictionary/verbs_conjugation.json',
     ),
     WordCategory(
-      name: 'Colores',
-      icon: Icons.palette,
+      name: 'Adjetivos',
+      icon: Icons.color_lens,
       color: AppColors.secondaryOrange,
-      wordCount: 15,
+      wordCount: 0,
+      jsonFile: 'assets/dictionary/adjectives.json',
     ),
     WordCategory(
-      name: 'Familia',
-      icon: Icons.family_restroom,
+      name: 'Sustantivos',
+      icon: Icons.category,
       color: AppColors.secondaryBlue,
-      wordCount: 20,
+      wordCount: 0,
+      jsonFile: 'assets/dictionary/nouns_detailed.json',
     ),
     WordCategory(
-      name: 'Comida',
-      icon: Icons.restaurant,
+      name: 'Conjunciones',
+      icon: Icons.link,
       color: AppColors.secondaryPurple,
-      wordCount: 40,
+      wordCount: 0,
+      jsonFile: 'assets/dictionary/conjunctions.json',
     ),
     WordCategory(
-      name: 'Animales',
-      icon: Icons.pets,
+      name: 'Interjecciones',
+      icon: Icons.sentiment_satisfied,
       color: AppColors.success,
-      wordCount: 35,
+      wordCount: 0,
+      jsonFile: 'assets/dictionary/interjections.json',
     ),
-  ];
-
-  final List<DictionaryWord> _words = [
-    DictionaryWord(
-      id: '1',
-      italian: 'Ciao',
-      spanish: 'Hola/Adiós',
-      english: 'Hello/Goodbye',
-      pronunciation: 'chào',
-      category: 'Saludos',
-      difficulty: 'A1',
-      isFavorite: true,
-      color: AppColors.primaryBlue,
+    WordCategory(
+      name: 'Adverbios',
+      icon: Icons.speed,
+      color: AppColors.warning,
+      wordCount: 0,
+      jsonFile: 'assets/dictionary/adverbs.json',
     ),
-    DictionaryWord(
-      id: '2',
-      italian: 'Buongiorno',
-      spanish: 'Buenos días',
-      english: 'Good morning',
-      pronunciation: 'bwon-yór-no',
-      category: 'Saludos',
-      difficulty: 'A1',
-      isFavorite: false,
-      color: AppColors.primaryBlue,
-    ),
-    DictionaryWord(
-      id: '3',
-      italian: 'Buonasera',
-      spanish: 'Buenas tardes',
-      english: 'Good evening',
-      pronunciation: 'bwo-na-sé-ra',
-      category: 'Saludos',
-      difficulty: 'A1',
-      isFavorite: false,
-      color: AppColors.primaryBlue,
-    ),
-    DictionaryWord(
-      id: '4',
-      italian: 'Uno',
-      spanish: 'Uno',
-      english: 'One',
-      pronunciation: 'ú-no',
-      category: 'Números',
-      difficulty: 'A1',
-      isFavorite: true,
-      color: AppColors.secondaryGreen,
-    ),
-    DictionaryWord(
-      id: '5',
-      italian: 'Due',
-      spanish: 'Dos',
-      english: 'Two',
-      pronunciation: 'dú-e',
-      category: 'Números',
-      difficulty: 'A1',
-      isFavorite: false,
-      color: AppColors.secondaryGreen,
-    ),
-    DictionaryWord(
-      id: '6',
-      italian: 'Rosso',
-      spanish: 'Rojo',
-      english: 'Red',
-      pronunciation: 'rós-so',
-      category: 'Colores',
-      difficulty: 'A1',
-      isFavorite: false,
-      color: AppColors.secondaryOrange,
-    ),
-    DictionaryWord(
-      id: '7',
-      italian: 'Verde',
-      spanish: 'Verde',
-      english: 'Green',
-      pronunciation: 'vér-de',
-      category: 'Colores',
-      difficulty: 'A1',
-      isFavorite: true,
-      color: AppColors.secondaryOrange,
-    ),
-    DictionaryWord(
-      id: '8',
-      italian: 'Mamma',
-      spanish: 'Mamá',
-      english: 'Mom',
-      pronunciation: 'mám-ma',
-      category: 'Familia',
-      difficulty: 'A1',
-      isFavorite: false,
-      color: AppColors.secondaryBlue,
-    ),
-    DictionaryWord(
-      id: '9',
-      italian: 'Pizza',
-      spanish: 'Pizza',
-      english: 'Pizza',
-      pronunciation: 'pít-tsa',
-      category: 'Comida',
-      difficulty: 'A1',
-      isFavorite: true,
-      color: AppColors.secondaryPurple,
-    ),
-    DictionaryWord(
-      id: '10',
-      italian: 'Gatto',
-      spanish: 'Gato',
-      english: 'Cat',
-      pronunciation: 'gát-to',
-      category: 'Animales',
-      difficulty: 'A1',
-      isFavorite: false,
-      color: AppColors.success,
+    WordCategory(
+      name: 'Preposiciones',
+      icon: Icons.arrow_forward,
+      color: AppColors.error,
+      wordCount: 0,
+      jsonFile: 'assets/dictionary/prepositions.json',
     ),
   ];
 
@@ -171,6 +84,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
   void initState() {
     super.initState();
     _searchController.addListener(_onSearchChanged);
+    _loadAllDictionaryData();
   }
 
   @override
@@ -179,9 +93,122 @@ class _DictionaryPageState extends State<DictionaryPage> {
     super.dispose();
   }
 
+  Future<void> _loadAllDictionaryData() async {
+    try {
+      List<DictionaryWord> allWords = [];
+
+      for (var category in _categories) {
+        // Saltar la categoría "Todos" ya que no tiene archivo específico
+        if (category.name == 'Todos') continue;
+
+        try {
+          final String jsonString = await rootBundle.loadString(
+            category.jsonFile,
+          );
+          final Map<String, dynamic> jsonData = jsonDecode(jsonString);
+
+          // Determinar qué array usar basado en el nombre de la categoría
+          String arrayKey = 'words'; // default
+          switch (category.name) {
+            case 'Verbos':
+              arrayKey = 'verbs';
+              break;
+            case 'Sustantivos':
+              arrayKey = 'nouns';
+              break;
+            case 'Adjetivos':
+              arrayKey = 'adjectives';
+              break;
+            case 'Conjunciones':
+              arrayKey = 'conjunctions';
+              break;
+            case 'Interjecciones':
+              arrayKey = 'interjections';
+              break;
+            case 'Adverbios':
+              arrayKey = 'adverbs';
+              break;
+            case 'Preposiciones':
+              arrayKey = 'prepositions';
+              break;
+          }
+
+          final List<dynamic> wordsList = jsonData[arrayKey] ?? [];
+          for (int i = 0; i < wordsList.length; i++) {
+            var wordData = Map<String, dynamic>.from(wordsList[i]);
+            // Agregar la categoría y un ID único al wordData
+            wordData['category'] = category.name;
+            wordData['id'] = '${category.name.toLowerCase()}_${i + 1}';
+            allWords.add(DictionaryWord.fromJson(wordData, category.color));
+          }
+        } catch (e) {
+          debugPrint('Error loading ${category.jsonFile}: $e');
+        }
+      }
+
+      setState(() {
+        _allWords = allWords;
+        _filteredWords = allWords;
+        _isLoading = false;
+        _updateCategoryCounts();
+      });
+    } catch (e) {
+      debugPrint('Error loading dictionary data: $e');
+      setState(() {
+        _isLoading = false;
+      });
+    }
+  }
+
+  void _updateCategoryCounts() {
+    for (int i = 0; i < _categories.length; i++) {
+      final categoryName = _categories[i].name;
+      int count;
+
+      if (categoryName == 'Todos') {
+        // Para "Todos", contar todas las palabras
+        count = _allWords.length;
+      } else {
+        // Para otras categorías, contar solo las palabras de esa categoría
+        count = _allWords.where((word) => word.category == categoryName).length;
+      }
+
+      _categories[i] = _categories[i].copyWith(wordCount: count);
+    }
+  }
+
   void _onSearchChanged() {
     setState(() {
       _searchQuery = _searchController.text.toLowerCase();
+      _filterWords();
+    });
+  }
+
+  void _filterWords() {
+    if (_searchQuery.isEmpty && _selectedCategoryIndex == 0) {
+      // Si no hay búsqueda y está seleccionada "Todos", mostrar todas las palabras
+      _filteredWords = _allWords;
+    } else {
+      _filteredWords = _allWords.where((word) {
+        final matchesSearch =
+            _searchQuery.isEmpty ||
+            word.word.toLowerCase().contains(_searchQuery) ||
+            word.spanish.toLowerCase().contains(_searchQuery) ||
+            word.english.toLowerCase().contains(_searchQuery);
+
+        final matchesCategory =
+            _selectedCategoryIndex == 0 || // "Todos" siempre coincide
+            word.category == _categories[_selectedCategoryIndex].name;
+
+        return matchesSearch && matchesCategory;
+      }).toList();
+    }
+  }
+
+  void _onCategorySelected(int index) {
+    setState(() {
+      _selectedCategoryIndex = index;
+      _filterWords();
     });
   }
 
@@ -189,7 +216,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Diccionario'),
+        title: const Text('Diccionario Gramatical'),
         backgroundColor: Colors.transparent,
         elevation: 0,
         centerTitle: true,
@@ -252,7 +279,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
 
   Widget _buildCategoryTabs() {
     return Container(
-      height: 80,
+      height: 125,
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
@@ -262,13 +289,9 @@ class _DictionaryPageState extends State<DictionaryPage> {
           final isSelected = _selectedCategoryIndex == index;
 
           return GestureDetector(
-            onTap: () {
-              setState(() {
-                _selectedCategoryIndex = index;
-              });
-            },
+            onTap: () => _onCategorySelected(index),
             child: Container(
-              width: 100,
+              width: category.name == 'Todos' ? 80 : 100,
               margin: const EdgeInsets.only(right: 12),
               padding: const EdgeInsets.all(12),
               decoration: BoxDecoration(
@@ -306,7 +329,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
                   Text(
                     category.name,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: category.name == 'Todos' ? 11 : 12,
                       fontWeight: FontWeight.w600,
                       color: isSelected
                           ? AppColors.primaryWhite
@@ -315,6 +338,15 @@ class _DictionaryPageState extends State<DictionaryPage> {
                     textAlign: TextAlign.center,
                     maxLines: 1,
                     overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    '${category.wordCount}',
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: isSelected
+                          ? AppColors.primaryWhite.withValues(alpha: 0.8)
+                          : AppColors.textSecondary,
+                    ),
                   ),
                 ],
               ),
@@ -326,21 +358,11 @@ class _DictionaryPageState extends State<DictionaryPage> {
   }
 
   Widget _buildWordsList() {
-    final filteredWords = _words.where((word) {
-      final matchesSearch =
-          _searchQuery.isEmpty ||
-          word.italian.toLowerCase().contains(_searchQuery) ||
-          word.spanish.toLowerCase().contains(_searchQuery) ||
-          word.english.toLowerCase().contains(_searchQuery);
+    if (_isLoading) {
+      return const Center(child: CircularProgressIndicator());
+    }
 
-      final matchesCategory =
-          _selectedCategoryIndex == 0 ||
-          word.category == _categories[_selectedCategoryIndex].name;
-
-      return matchesSearch && matchesCategory;
-    }).toList();
-
-    if (filteredWords.isEmpty) {
+    if (_filteredWords.isEmpty) {
       return Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -368,9 +390,9 @@ class _DictionaryPageState extends State<DictionaryPage> {
 
     return ListView.builder(
       padding: const EdgeInsets.all(16),
-      itemCount: filteredWords.length,
+      itemCount: _filteredWords.length,
       itemBuilder: (context, index) {
-        final word = filteredWords[index];
+        final word = _filteredWords[index];
         return _buildWordCard(word);
       },
     );
@@ -408,7 +430,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            word.italian,
+                            word.word,
                             style: const TextStyle(
                               fontSize: 24,
                               fontWeight: FontWeight.bold,
@@ -476,7 +498,9 @@ class _DictionaryPageState extends State<DictionaryPage> {
                     Expanded(
                       child: _buildTranslation(
                         label: 'Español',
-                        text: word.spanish,
+                        text: word.translation['spanish'] is String
+                            ? word.translation['spanish']
+                            : word.translation['spanish']?['word'] ?? '',
                         color: AppColors.primaryBlue,
                       ),
                     ),
@@ -486,7 +510,9 @@ class _DictionaryPageState extends State<DictionaryPage> {
                     Expanded(
                       child: _buildTranslation(
                         label: 'English',
-                        text: word.english,
+                        text: word.translation['english'] is String
+                            ? word.translation['english']
+                            : word.translation['english']?['word'] ?? '',
                         color: AppColors.secondaryGreen,
                       ),
                     ),
@@ -517,28 +543,49 @@ class _DictionaryPageState extends State<DictionaryPage> {
                       ),
                     ),
 
-                    const SizedBox(width: 12),
-
-                    Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 8,
-                        vertical: 4,
-                      ),
-                      decoration: BoxDecoration(
-                        color: _getDifficultyColor(
-                          word.difficulty,
-                        ).withValues(alpha: 0.1),
-                        borderRadius: BorderRadius.circular(12),
-                      ),
-                      child: Text(
-                        word.difficulty,
-                        style: TextStyle(
-                          color: _getDifficultyColor(word.difficulty),
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
+                    if (word.gender.isNotEmpty) ...[
+                      const SizedBox(width: 12),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.backgroundSecondary,
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          word.gender,
+                          style: const TextStyle(
+                            color: AppColors.textSecondary,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
                         ),
                       ),
-                    ),
+                    ],
+
+                    if (word.abbreviation.isNotEmpty) ...[
+                      const SizedBox(width: 12),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: AppColors.success.withValues(alpha: 0.1),
+                          borderRadius: BorderRadius.circular(12),
+                        ),
+                        child: Text(
+                          word.abbreviation,
+                          style: TextStyle(
+                            color: AppColors.success,
+                            fontSize: 12,
+                            fontWeight: FontWeight.w600,
+                          ),
+                        ),
+                      ),
+                    ],
                   ],
                 ),
               ],
@@ -598,7 +645,6 @@ class _DictionaryPageState extends State<DictionaryPage> {
 
   void _toggleFavorite(DictionaryWord word) {
     setState(() {
-      // En una implementación real, esto se guardaría en la base de datos
       word.isFavorite = !word.isFavorite;
     });
 
@@ -606,8 +652,8 @@ class _DictionaryPageState extends State<DictionaryPage> {
       SnackBar(
         content: Text(
           word.isFavorite
-              ? '${word.italian} agregado a favoritos'
-              : '${word.italian} removido de favoritos',
+              ? '${word.word} agregado a favoritos'
+              : '${word.word} removido de favoritos',
         ),
         backgroundColor: word.color,
         duration: const Duration(seconds: 1),
@@ -616,6 +662,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
   }
 
   void _showWordDetails(DictionaryWord word) {
+    // Siempre mostrar el modal primero
     showModalBottomSheet(
       context: context,
       isScrollControlled: true,
@@ -656,7 +703,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
                     child: Column(
                       children: [
                         Text(
-                          word.italian,
+                          word.word,
                           style: const TextStyle(
                             fontSize: 36,
                             fontWeight: FontWeight.bold,
@@ -680,58 +727,80 @@ class _DictionaryPageState extends State<DictionaryPage> {
 
                   const SizedBox(height: 32),
 
-                  // Traducciones detalladas
-                  _buildDetailedTranslation(
-                    label: 'Español',
-                    text: word.spanish,
-                    color: AppColors.primaryBlue,
-                  ),
+                  // Información de la palabra
+                  if (word.meaning.isNotEmpty)
+                    _buildDetailedTranslation(
+                      label: 'Significado',
+                      text: word.meaning,
+                      color: AppColors.primaryBlue,
+                    ),
 
-                  const SizedBox(height: 16),
+                  if (word.meaning.isNotEmpty) const SizedBox(height: 16),
 
-                  _buildDetailedTranslation(
-                    label: 'English',
-                    text: word.english,
-                    color: AppColors.secondaryGreen,
-                  ),
+                 
+                  // Ejemplos
+                  if (word.examples.isNotEmpty)
+                    _buildDetailedTranslation(
+                      label: 'Ejemplos',
+                      text: word.examples.join('\n'),
+                      color: AppColors.success,
+                    ),
 
                   const SizedBox(height: 32),
 
                   // Botones de acción
-                  Row(
+                  Column(
                     children: [
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed: () => _playAudio(word),
-                          icon: const Icon(Icons.volume_up),
-                          label: const Text('Escuchar'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: word.color,
-                            foregroundColor: AppColors.primaryWhite,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
+                      // Botones específicos según categoría
+                      if (word.category == 'Verbos') ...[
+                        Row(
+                          children: [
+                            Expanded(
+                              child: ElevatedButton.icon(
+                                onPressed: () => _showVerbConjugation(word),
+                                icon: const Icon(Icons.table_chart),
+                                label: const Text('Ver Tabla de Conjugación'),
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor: AppColors.success,
+                                  foregroundColor: AppColors.primaryWhite,
+                                  padding: const EdgeInsets.symmetric(
+                                    vertical: 16,
+                                  ),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                      ],
+
+                      
+
+                      // Botones generales
+                      Row(
+                        children: [
+                          Expanded(
+                            child: ElevatedButton.icon(
+                              onPressed: () => _playAudio(word),
+                              icon: const Icon(Icons.volume_up),
+                              label: const Text('Escuchar'),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: word.color,
+                                foregroundColor: AppColors.primaryWhite,
+                                padding: const EdgeInsets.symmetric(
+                                  vertical: 16,
+                                ),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                ),
+                              ),
                             ),
                           ),
-                        ),
-                      ),
 
-                      const SizedBox(width: 16),
-
-                      Expanded(
-                        child: ElevatedButton.icon(
-                          onPressed: () => _practiceWord(word),
-                          icon: const Icon(Icons.school),
-                          label: const Text('Practicar'),
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: AppColors.backgroundSecondary,
-                            foregroundColor: AppColors.textPrimary,
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
@@ -771,6 +840,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
           Text(
             text,
             style: const TextStyle(fontSize: 18, color: AppColors.textPrimary),
+            textAlign: TextAlign.left,
           ),
         ],
       ),
@@ -781,7 +851,7 @@ class _DictionaryPageState extends State<DictionaryPage> {
     // TODO: Implementar reproducción de audio
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Reproduciendo audio: ${word.italian}'),
+        content: Text('Reproduciendo audio: ${word.word}'),
         backgroundColor: word.color,
       ),
     );
@@ -791,8 +861,34 @@ class _DictionaryPageState extends State<DictionaryPage> {
     // TODO: Implementar práctica de la palabra
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('Iniciando práctica: ${word.italian}'),
+        content: Text('Iniciando práctica: ${word.word}'),
         backgroundColor: word.color,
+      ),
+    );
+  }
+
+  void _showVerbConjugation(DictionaryWord word) {
+    Navigator.pop(context); // Cerrar el modal
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => VerbConjugationPage(
+          verbInfinito: word.word,
+          jsonPath: 'assets/dictionary/verbs_conjugation.json',
+        ),
+      ),
+    );
+  }
+
+  void _showNounDetails(DictionaryWord word) {
+    Navigator.pop(context); // Cerrar el modal
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => NounDetailsPage(
+          nounWord: word.word,
+          jsonPath: 'assets/dictionary/nouns_detailed.json',
+        ),
       ),
     );
   }
@@ -803,35 +899,115 @@ class WordCategory {
   final IconData icon;
   final Color color;
   final int wordCount;
+  final String jsonFile;
 
   WordCategory({
     required this.name,
     required this.icon,
     required this.color,
     required this.wordCount,
+    required this.jsonFile,
   });
+
+  WordCategory copyWith({
+    String? name,
+    IconData? icon,
+    Color? color,
+    int? wordCount,
+    String? jsonFile,
+  }) {
+    return WordCategory(
+      name: name ?? this.name,
+      icon: icon ?? this.icon,
+      color: color ?? this.color,
+      wordCount: wordCount ?? this.wordCount,
+      jsonFile: jsonFile ?? this.jsonFile,
+    );
+  }
 }
 
 class DictionaryWord {
   final String id;
-  final String italian;
-  final String spanish;
-  final String english;
+  final String word;
+  final String meaning;
+  final String abbreviation;
   final String pronunciation;
   final String category;
-  final String difficulty;
+  final String gender;
+  final String lingua;
+  final Map<String, dynamic> translation;
+  final List<String> examples;
   bool isFavorite;
   final Color color;
+  final Map<String, dynamic>? additionalData;
 
   DictionaryWord({
     required this.id,
-    required this.italian,
-    required this.spanish,
-    required this.english,
+    required this.word,
+    required this.meaning,
+    required this.abbreviation,
     required this.pronunciation,
     required this.category,
-    required this.difficulty,
+    required this.gender,
+    required this.lingua,
+    required this.translation,
+    required this.examples,
     required this.isFavorite,
     required this.color,
+    this.additionalData,
   });
+
+  factory DictionaryWord.fromJson(Map<String, dynamic> json, Color color) {
+    final String category = json['category'] ?? '';
+
+    // Determinar la palabra visible
+    String resolvedWord = json['word'] ?? '';
+    if (category == 'Verbos' && (resolvedWord.isEmpty)) {
+      resolvedWord = json['infinito'] ?? '';
+    }
+
+    // Significado / definición
+    String resolvedMeaning = json['meaning'] ?? '';
+    if (resolvedMeaning.isEmpty && category == 'Verbos') {
+      resolvedMeaning = json['definizione'] ?? '';
+    }
+
+    // Abreviatura / tipo (v., agg., etc.)
+    String resolvedAbbreviation = json['abbreviation'] ?? '';
+    if (resolvedAbbreviation.isEmpty && category == 'Verbos') {
+      resolvedAbbreviation = json['tipo'] ?? '';
+    }
+
+    // Traducciones: para verbos mapear 'traduzione' -> spanish si no hay estructura 'translation'
+    Map<String, dynamic> resolvedTranslation = {};
+    if (json['translation'] is Map<String, dynamic>) {
+      resolvedTranslation = Map<String, dynamic>.from(json['translation']);
+    } else if (category == 'Verbos' && json['traduzione'] != null) {
+      resolvedTranslation = {'spanish': json['traduzione']};
+    }
+
+    return DictionaryWord(
+      id: json['id'] ?? '',
+      word: resolvedWord,
+      meaning: resolvedMeaning,
+      abbreviation: resolvedAbbreviation,
+      pronunciation: json['pronunciation'] ?? '',
+      category: category,
+      gender: json['gender'] ?? '',
+      lingua: json['lingua'] ?? '',
+      translation: resolvedTranslation,
+      examples: List<String>.from(json['examples'] ?? []),
+      isFavorite: json['isFavorite'] ?? false,
+      color: color,
+      additionalData: json,
+    );
+  }
+
+  // Getters para compatibilidad con el código existente
+  String get italian => word;
+  String get spanish =>
+      translation['spanish']?['word'] ?? translation['spanish'] ?? '';
+  String get english =>
+      translation['english']?['word'] ?? translation['english'] ?? '';
+  String get difficulty => 'A1';
 }

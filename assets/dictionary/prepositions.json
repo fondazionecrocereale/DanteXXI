@@ -1,0 +1,94 @@
+{
+  "prepositions": [
+    {
+      "word": "di",
+      "meaning": "preposizione che indica possesso, origine, materia o specificazione",
+      "abbreviation": "prep.",
+      "pronunciation": "di",
+      "category": "semplici",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "de",
+        "french": "de",
+        "german": "von",
+        "english": "of/from"
+      },
+      "examples": [
+        "Il libro di Marco.",
+        "Sono di Roma."
+      ]
+    },
+    {
+      "word": "a",
+      "meaning": "preposizione che indica direzione, luogo, tempo o scopo",
+      "abbreviation": "prep.",
+      "pronunciation": "a",
+      "category": "semplici",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "a",
+        "french": "à",
+        "german": "zu/nach",
+        "english": "to/at"
+      },
+      "examples": [
+        "Vado a Roma.",
+        "Studio a casa."
+      ]
+    },
+    {
+      "word": "da",
+      "meaning": "preposizione che indica origine, provenienza o agente",
+      "abbreviation": "prep.",
+      "pronunciation": "da",
+      "category": "semplici",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "de/desde",
+        "french": "de",
+        "german": "von",
+        "english": "from/by"
+      },
+      "examples": [
+        "Vengo da Milano.",
+        "Un libro da leggere."
+      ]
+    },
+    {
+      "word": "in",
+      "meaning": "preposizione che indica luogo, tempo o stato",
+      "abbreviation": "prep.",
+      "pronunciation": "in",
+      "category": "semplici",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "en",
+        "french": "en",
+        "german": "in",
+        "english": "in"
+      },
+      "examples": [
+        "Sono in casa.",
+        "In estate fa caldo."
+      ]
+    },
+    {
+      "word": "con",
+      "meaning": "preposizione che indica compagnia, mezzo o modo",
+      "abbreviation": "prep.",
+      "pronunciation": "kon",
+      "category": "semplici",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "con",
+        "french": "avec",
+        "german": "mit",
+        "english": "with"
+      },
+      "examples": [
+        "Vado con te.",
+        "Scrivo con la penna."
+      ]
+    }
+  ]
+}

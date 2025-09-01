@@ -1,0 +1,94 @@
+{
+  "conjunctions": [
+    {
+      "word": "e",
+      "meaning": "congiunzione coordinativa che unisce elementi della stessa natura",
+      "abbreviation": "cong.",
+      "pronunciation": "e",
+      "category": "coordinanti",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "y",
+        "french": "et",
+        "german": "und",
+        "english": "and"
+      },
+      "examples": [
+        "Marco e Paolo sono amici.",
+        "Ho mangiato pane e formaggio."
+      ]
+    },
+    {
+      "word": "ma",
+      "meaning": "congiunzione avversativa che introduce un'opposizione o un contrasto",
+      "abbreviation": "cong.",
+      "pronunciation": "ma",
+      "category": "avversative",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "pero",
+        "french": "mais",
+        "german": "aber",
+        "english": "but"
+      },
+      "examples": [
+        "È bello ma costoso.",
+        "Vorrei venire ma non posso."
+      ]
+    },
+    {
+      "word": "o",
+      "meaning": "congiunzione disgiuntiva che indica alternativa o scelta",
+      "abbreviation": "cong.",
+      "pronunciation": "o",
+      "category": "disgiuntive",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "o",
+        "french": "ou",
+        "german": "oder",
+        "english": "or"
+      },
+      "examples": [
+        "Vuoi caffè o tè?",
+        "Possiamo andare al cinema o al ristorante."
+      ]
+    },
+    {
+      "word": "se",
+      "meaning": "congiunzione condizionale che introduce una condizione",
+      "abbreviation": "cong.",
+      "pronunciation": "se",
+      "category": "condizionali",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "si",
+        "french": "si",
+        "german": "wenn",
+        "english": "if"
+      },
+      "examples": [
+        "Se piove, rimango a casa.",
+        "Se hai tempo, vieni a trovarmi."
+      ]
+    },
+    {
+      "word": "perché",
+      "meaning": "congiunzione causale che introduce la causa o il motivo",
+      "abbreviation": "cong.",
+      "pronunciation": "perˈke",
+      "category": "causali",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "porque",
+        "french": "parce que",
+        "german": "weil",
+        "english": "because"
+      },
+      "examples": [
+        "Non esco perché piove.",
+        "Ho studiato perché volevo imparare."
+      ]
+    }
+  ]
+}

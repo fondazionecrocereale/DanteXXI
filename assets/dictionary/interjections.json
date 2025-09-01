@@ -1,0 +1,94 @@
+{
+  "interjections": [
+    {
+      "word": "ciao",
+      "meaning": "saluto informale di arrivo o partenza",
+      "abbreviation": "inter.",
+      "pronunciation": "ˈtʃa.o",
+      "category": "saluti",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "hola/adiós",
+        "french": "salut",
+        "german": "hallo/tschüss",
+        "english": "hello/goodbye"
+      },
+      "examples": [
+        "Ciao! Come stai?",
+        "Ciao, a presto!"
+      ]
+    },
+    {
+      "word": "ehi",
+      "meaning": "esclamazione per attirare l'attenzione",
+      "abbreviation": "inter.",
+      "pronunciation": "ˈe.i",
+      "category": "attenzione",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "eh",
+        "french": "hé",
+        "german": "hey",
+        "english": "hey"
+      },
+      "examples": [
+        "Ehi! Aspetta un momento!",
+        "Ehi, dove vai?"
+      ]
+    },
+    {
+      "word": "oh",
+      "meaning": "esclamazione di sorpresa, stupore o meraviglia",
+      "abbreviation": "inter.",
+      "pronunciation": "o",
+      "category": "sorpresa",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "oh",
+        "french": "oh",
+        "german": "oh",
+        "english": "oh"
+      },
+      "examples": [
+        "Oh! Che bello!",
+        "Oh, non lo sapevo!"
+      ]
+    },
+    {
+      "word": "ah",
+      "meaning": "esclamazione di comprensione, realizzazione o dolore",
+      "abbreviation": "inter.",
+      "pronunciation": "a",
+      "category": "comprensione",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "ah",
+        "french": "ah",
+        "german": "ah",
+        "english": "ah"
+      },
+      "examples": [
+        "Ah, ora capisco!",
+        "Ah, che dolore!"
+      ]
+    },
+    {
+      "word": "uffa",
+      "meaning": "esclamazione di fastidio, noia o impazienza",
+      "abbreviation": "inter.",
+      "pronunciation": "ˈuf.fa",
+      "category": "fastidio",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "uf",
+        "french": "pfff",
+        "german": "uff",
+        "english": "ugh"
+      },
+      "examples": [
+        "Uffa, che noia!",
+        "Uffa, devo aspettare ancora?"
+      ]
+    }
+  ]
+}

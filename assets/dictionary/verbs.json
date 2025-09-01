@@ -1,0 +1,94 @@
+{
+  "verbs": [
+    {
+      "word": "parlare",
+      "meaning": "Discorso (in quanto espressione o comunicazione verbale).",
+      "abbreviation": "v.",
+      "pronunciation": "par-là-re",
+      "category": "comunicazione",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "hablar",
+        "french": "parler",
+        "german": "sprechen",
+        "english": "to speak"
+      },
+      "examples": [
+        "Parlo italiano.",
+        "Non parli troppo veloce."
+      ]
+    },
+    {
+      "word": "mangiare",
+      "meaning": "Ingerire sostanze alimentari solide o semisolide a scopo di sostentamento",
+      "abbreviation": "v.",
+      "pronunciation": "man-già-re",
+      "category": "alimentazione",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "comer",
+        "french": "manger",
+        "german": "essen",
+        "english": "to eat"
+      },
+      "examples": [
+        "Mangio la pizza.",
+        "Non mangio carne."
+      ]
+    },
+    {
+      "word": "essere",
+      "meaning": "Verbo copulativo che indica esistenza, identità o stato",
+      "abbreviation": "v.",
+      "pronunciation": "és-se-re",
+      "category": "essere",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "ser/estar",
+        "french": "être",
+        "german": "sein",
+        "english": "to be"
+      },
+      "examples": [
+        "Sono italiano.",
+        "Sono a casa."
+      ]
+    },
+    {
+      "word": "avere",
+      "meaning": "Verbo che indica possesso, esistenza o stato",
+      "abbreviation": "v.",
+      "pronunciation": "a-vé-re",
+      "category": "avere",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "tener/haber",
+        "french": "avoir",
+        "german": "haben",
+        "english": "to have"
+      },
+      "examples": [
+        "Ho una macchina.",
+        "Ho fame."
+      ]
+    },
+    {
+      "word": "fare",
+      "meaning": "Realizzare, compiere un'azione o un'attività",
+      "abbreviation": "v.",
+      "pronunciation": "fà-re",
+      "category": "azione",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "hacer",
+        "french": "faire",
+        "german": "machen",
+        "english": "to do/make"
+      },
+      "examples": [
+        "Faccio i compiti.",
+        "Faccio colazione."
+      ]
+    }
+  ]
+}

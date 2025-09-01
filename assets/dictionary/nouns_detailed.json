@@ -1,0 +1,164 @@
+{
+  "nouns": [
+    {
+      "word": "mela",
+      "meaning": "frutto rotondo con buccia rossa o verde e interno biancastro",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈmɛ.la",
+      "image": "https://firebasestorage.googleapis.com/v0/b/dante-89c62.appspot.com/o/DictionarioImagenes%2Fmela.png?alt=media&token=6bb3635f-b111-4807-abec-f80c06926076",
+      "category": "frutta",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": {
+          "word": "manzana",
+          "gender": "feminine"
+        },
+        "french": {
+          "word": "pomme",
+          "gender": "feminine"
+        },
+        "german": {
+          "word": "Apfel",
+          "gender": "masculine"
+        },
+        "english": {
+          "word": "apple",
+          "gender": "feminine"
+        }
+      },
+      "examples": [
+        "Ha mangiato una mela come spuntino.",
+        "Ci sono molte varietà diverse di mele."
+      ]
+    },
+    {
+      "word": "birra",
+      "meaning": "bevanda alcolica ottenuta dalla fermentazione di cereali maltati",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈbir.ra",
+      "image": "https://firebasestorage.googleapis.com/v0/b/dante-89c62.appspot.com/o/DictionarioImagenes%2Fbirra.png?alt=media&token=3cf5e986-84a2-4dc4-baed-4a046b511cbc",
+      "category": "bevande",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": {
+          "word": "cerveza",
+          "gender": "feminine"
+        },
+        "french": {
+          "word": "bière",
+          "gender": "feminine"
+        },
+        "german": {
+          "word": "Bier",
+          "gender": "neuter"
+        },
+        "english": {
+          "word": "beer",
+          "gender": "feminine"
+        }
+      },
+      "examples": [
+        "Prendiamo sempre una birra fredda quando siamo al mare.",
+        "Ha organizzato una festa con tanto cibo e birra."
+      ]
+    },
+    {
+      "word": "libro",
+      "meaning": "opera letteraria, scientifica o artistica stampata o manoscritta",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈli.bro",
+      "image": "https://firebasestorage.googleapis.com/v0/b/dante-89c62.appspot.com/o/DictionarioImagenes%2Flibro.png?alt=media&token=example123",
+      "category": "oggetti",
+      "gender": "maschile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": {
+          "word": "libro",
+          "gender": "masculine"
+        },
+        "french": {
+          "word": "livre",
+          "gender": "masculine"
+        },
+        "german": {
+          "word": "Buch",
+          "gender": "neuter"
+        },
+        "english": {
+          "word": "book",
+          "gender": "masculine"
+        }
+      },
+      "examples": [
+        "Ho letto un libro molto interessante sulla storia di Roma.",
+        "Questo libro è il mio preferito."
+      ]
+    },
+    {
+      "word": "casa",
+      "meaning": "edificio destinato ad abitazione",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈka.za",
+      "image": "https://firebasestorage.googleapis.com/v0/b/dante-89c62.appspot.com/o/DictionarioImagenes%2Fcasa.png?alt=media&token=example456",
+      "category": "luoghi",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": {
+          "word": "casa",
+          "gender": "feminine"
+        },
+        "french": {
+          "word": "maison",
+          "gender": "feminine"
+        },
+        "german": {
+          "word": "Haus",
+          "gender": "neuter"
+        },
+        "english": {
+          "word": "house",
+          "gender": "feminine"
+        }
+      },
+      "examples": [
+        "La mia casa è in centro città.",
+        "Abbiamo comprato una casa nuova."
+      ]
+    },
+    {
+      "word": "macchina",
+      "meaning": "veicolo a motore per il trasporto di persone",
+      "abbreviation": "sostantivo",
+      "pronunciation": "ˈmak.ki.na",
+      "image": "https://firebasestorage.googleapis.com/v0/b/dante-89c62.appspot.com/o/DictionarioImagenes%2Fmacchina.png?alt=media&token=example789",
+      "category": "trasporti",
+      "gender": "feminile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": {
+          "word": "coche",
+          "gender": "masculine"
+        },
+        "french": {
+          "word": "voiture",
+          "gender": "feminine"
+        },
+        "german": {
+          "word": "Auto",
+          "gender": "neuter"
+        },
+        "english": {
+          "word": "car",
+          "gender": "feminine"
+        }
+      },
+      "examples": [
+        "Ho parcheggiato la macchina davanti al negozio.",
+        "La sua macchina è molto veloce."
+      ]
+    }
+  ]
+}

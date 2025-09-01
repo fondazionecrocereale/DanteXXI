@@ -1,0 +1,382 @@
+{
+  "verbs": [
+    {
+      "infinito": "parlare",
+      "participioPresente": "parlante",
+      "gerundio": "parlando",
+      "gerundioPassato": "avendo parlato",
+      "participioPassato": "parlato",
+      "traduzione": "hablar",
+      "definizione": "Discorso (in quanto espressione o comunicazione verbale).",
+      "pronunciation": "par-là-re",
+      "tipo": "v.",
+      "lingua": "italiano",
+      "conjugations": {
+        "presente": {
+          "io": "parlo",
+          "tu": "parli",
+          "lui/lei": "parla",
+          "noi": "parliamo",
+          "voi": "parlate",
+          "loro": "parlano"
+        },
+        "passatoProssimo": {
+          "io": "ho parlato",
+          "tu": "hai parlato",
+          "lui/lei": "ha parlato",
+          "noi": "abbiamo parlato",
+          "voi": "avete parlato",
+          "loro": "hanno parlato"
+        },
+        "imperfetto": {
+          "io": "parlavo",
+          "tu": "parlavi",
+          "lui/lei": "parlava",
+          "noi": "parlavamo",
+          "voi": "parlavate",
+          "loro": "parlavano"
+        },
+        "trapassatoProssimo": {
+          "io": "avevo parlato",
+          "tu": "avevi parlato",
+          "lui/lei": "aveva parlato",
+          "noi": "avevamo parlato",
+          "voi": "avevate parlato",
+          "loro": "avevano parlato"
+        },
+        "futuro": {
+          "io": "parlerò",
+          "tu": "parlerai",
+          "lui/lei": "parlerà",
+          "noi": "parleremo",
+          "voi": "parlerete",
+          "loro": "parleranno"
+        },
+        "futuroAnteriore": {
+          "io": "avrò parlato",
+          "tu": "avrai parlato",
+          "lui/lei": "avrà parlato",
+          "noi": "avremo parlato",
+          "voi": "avrete parlato",
+          "loro": "avranno parlato"
+        },
+        "passatoRemoto": {
+          "io": "parlai",
+          "tu": "parlasti",
+          "lui/lei": "parlò",
+          "noi": "parlammo",
+          "voi": "parlaste",
+          "loro": "parlarono"
+        },
+        "presenteCongiuntivo": {
+          "io": "parli",
+          "tu": "parli",
+          "lui/lei": "parli",
+          "noi": "parliamo",
+          "voi": "parliate",
+          "loro": "parlino"
+        },
+        "passatoCongiuntivo": {
+          "io": "abbia parlato",
+          "tu": "abbia parlato",
+          "lui/lei": "abbia parlato",
+          "noi": "abbiamo parlato",
+          "voi": "abbiate parlato",
+          "loro": "abbiano parlato"
+        },
+        "imperfettoCongiuntivo": {
+          "io": "parlassi",
+          "tu": "parlassi",
+          "lui/lei": "parlasse",
+          "noi": "parlassimo",
+          "voi": "parlaste",
+          "loro": "parlassero"
+        },
+        "trapassatoCongiuntivo": {
+          "io": "avessi parlato",
+          "tu": "avessi parlato",
+          "lui/lei": "avesse parlato",
+          "noi": "avessimo parlato",
+          "voi": "aveste parlato",
+          "loro": "avessero parlato"
+        },
+        "condizionalePresente": {
+          "io": "parlerei",
+          "tu": "parleresti",
+          "lui/lei": "parlerebbe",
+          "noi": "parleremmo",
+          "voi": "parlereste",
+          "loro": "parlerebbero"
+        },
+        "condizionalePassato": {
+          "io": "avrei parlato",
+          "tu": "avresti parlato",
+          "lui/lei": "avrebbe parlato",
+          "noi": "avremmo parlato",
+          "voi": "avreste parlato",
+          "loro": "avrebbero parlato"
+        },
+        "imperativoPresente": {
+          "io": "",
+          "tu": "parla",
+          "lui/lei": "parli",
+          "noi": "parliamo",
+          "voi": "parlate",
+          "loro": "parlino"
+        }
+      }
+    },
+    {
+      "infinito": "mangiare",
+      "participioPresente": "mangiante",
+      "gerundio": "mangiando",
+      "gerundioPassato": "avendo mangiato",
+      "participioPassato": "mangiato",
+      "traduzione": "comer",
+      "definizione": "Ingerire sostanze alimentari solide o semisolide a scopo di sostentamento, masticando e deglutendo",
+      "pronunciation": "man-già-re",
+      "tipo": "v.",
+      "lingua": "italiano",
+      "conjugations": {
+        "presente": {
+          "io": "mangio",
+          "tu": "mangi",
+          "lui/lei": "mangia",
+          "noi": "mangiamo",
+          "voi": "mangiate",
+          "loro": "mangiano"
+        },
+        "passatoProssimo": {
+          "io": "ho mangiato",
+          "tu": "hai mangiato",
+          "lui/lei": "ha mangiato",
+          "noi": "abbiamo mangiato",
+          "voi": "avete mangiato",
+          "loro": "hanno mangiato"
+        },
+        "imperfetto": {
+          "io": "mangiavo",
+          "tu": "mangiavi",
+          "lui/lei": "mangiava",
+          "noi": "mangiavamo",
+          "voi": "mangiavate",
+          "loro": "mangiavano"
+        },
+        "trapassatoProssimo": {
+          "io": "avevo mangiato",
+          "tu": "avevi mangiato",
+          "lui/lei": "aveva mangiato",
+          "noi": "avevamo mangiato",
+          "voi": "avevate mangiato",
+          "loro": "avevano mangiato"
+        },
+        "futuro": {
+          "io": "mangerò",
+          "tu": "mangerai",
+          "lui/lei": "mangerà",
+          "noi": "mangeremo",
+          "voi": "mangerete",
+          "loro": "mangeranno"
+        },
+        "futuroAnteriore": {
+          "io": "avrò mangiato",
+          "tu": "avrai mangiato",
+          "lui/lei": "avrà mangiato",
+          "noi": "avremo mangiato",
+          "voi": "avrete mangiato",
+          "loro": "avranno mangiato"
+        },
+        "passatoRemoto": {
+          "io": "mangiai",
+          "tu": "mangiasti",
+          "lui/lei": "mangiò",
+          "noi": "mangiammo",
+          "voi": "mangiaste",
+          "loro": "mangiarono"
+        },
+        "presenteCongiuntivo": {
+          "io": "mangi",
+          "tu": "mangi",
+          "lui/lei": "mangi",
+          "noi": "mangiamo",
+          "voi": "mangiate",
+          "loro": "mangino"
+        },
+        "passatoCongiuntivo": {
+          "io": "abbia mangiato",
+          "tu": "abbia mangiato",
+          "lui/lei": "abbia mangiato",
+          "noi": "abbiamo mangiato",
+          "voi": "abbiate mangiato",
+          "loro": "abbiano mangiato"
+        },
+        "imperfettoCongiuntivo": {
+          "io": "mangiassi",
+          "tu": "mangiassi",
+          "lui/lei": "mangiasse",
+          "noi": "mangiassimo",
+          "voi": "mangiaste",
+          "loro": "mangiassero"
+        },
+        "trapassatoCongiuntivo": {
+          "io": "avessi mangiato",
+          "tu": "avessi mangiato",
+          "lui/lei": "avesse mangiato",
+          "noi": "avessimo mangiato",
+          "voi": "aveste mangiato",
+          "loro": "avessero mangiato"
+        },
+        "condizionalePresente": {
+          "io": "mangerei",
+          "tu": "mangeresti",
+          "lui/lei": "mangerebbe",
+          "noi": "mangeremmo",
+          "voi": "mangereste",
+          "loro": "mangerebbero"
+        },
+        "condizionalePassato": {
+          "io": "avrei mangiato",
+          "tu": "avresti mangiato",
+          "lui/lei": "avrebbe mangiato",
+          "noi": "avremmo mangiato",
+          "voi": "avreste mangiato",
+          "loro": "avrebbero mangiato"
+        },
+        "imperativoPresente": {
+          "io": "",
+          "tu": "mangia",
+          "lui/lei": "mangi",
+          "noi": "mangiamo",
+          "voi": "mangiate",
+          "loro": "mangino"
+        }
+      }
+    },
+    {
+      "infinito": "essere",
+      "participioPresente": "essente",
+      "gerundio": "essendo",
+      "gerundioPassato": "essendo stato",
+      "participioPassato": "stato",
+      "traduzione": "ser/estar",
+      "definizione": "Verbo copulativo che indica esistenza, identità o stato",
+      "pronunciation": "és-se-re",
+      "tipo": "v.",
+      "lingua": "italiano",
+      "conjugations": {
+        "presente": {
+          "io": "sono",
+          "tu": "sei",
+          "lui/lei": "è",
+          "noi": "siamo",
+          "voi": "siete",
+          "loro": "sono"
+        },
+        "passatoProssimo": {
+          "io": "sono stato",
+          "tu": "sei stato",
+          "lui/lei": "è stato",
+          "noi": "siamo stati",
+          "voi": "siete stati",
+          "loro": "sono stati"
+        },
+        "imperfetto": {
+          "io": "ero",
+          "tu": "eri",
+          "lui/lei": "era",
+          "noi": "eravamo",
+          "voi": "eravate",
+          "loro": "erano"
+        },
+        "trapassatoProssimo": {
+          "io": "ero stato",
+          "tu": "eri stato",
+          "lui/lei": "era stato",
+          "noi": "eravamo stati",
+          "voi": "eravate stati",
+          "loro": "erano stati"
+        },
+        "futuro": {
+          "io": "sarò",
+          "tu": "sarai",
+          "lui/lei": "sarà",
+          "noi": "saremo",
+          "voi": "sarete",
+          "loro": "saranno"
+        },
+        "futuroAnteriore": {
+          "io": "sarò stato",
+          "tu": "sarai stato",
+          "lui/lei": "sarà stato",
+          "noi": "saremo stati",
+          "voi": "sarete stati",
+          "loro": "saranno stati"
+        },
+        "passatoRemoto": {
+          "io": "fui",
+          "tu": "fosti",
+          "lui/lei": "fu",
+          "noi": "fummo",
+          "voi": "foste",
+          "loro": "furono"
+        },
+        "presenteCongiuntivo": {
+          "io": "sia",
+          "tu": "sia",
+          "lui/lei": "sia",
+          "noi": "siamo",
+          "voi": "siate",
+          "loro": "siano"
+        },
+        "passatoCongiuntivo": {
+          "io": "sia stato",
+          "tu": "sia stato",
+          "lui/lei": "sia stato",
+          "noi": "siamo stati",
+          "voi": "siate stati",
+          "loro": "siano stati"
+        },
+        "imperfettoCongiuntivo": {
+          "io": "fossi",
+          "tu": "fossi",
+          "lui/lei": "fosse",
+          "noi": "fossimo",
+          "voi": "foste",
+          "loro": "fossero"
+        },
+        "trapassatoCongiuntivo": {
+          "io": "fossi stato",
+          "tu": "fossi stato",
+          "lui/lei": "fosse stato",
+          "noi": "fossimo stati",
+          "voi": "foste stati",
+          "loro": "fossero stati"
+        },
+        "condizionalePresente": {
+          "io": "sarei",
+          "tu": "saresti",
+          "lui/lei": "sarebbe",
+          "noi": "saremmo",
+          "voi": "sareste",
+          "loro": "sarebbero"
+        },
+        "condizionalePassato": {
+          "io": "sarei stato",
+          "tu": "saresti stato",
+          "lui/lei": "sarebbe stato",
+          "noi": "saremmo stati",
+          "voi": "sareste stati",
+          "loro": "sarebbero stati"
+        },
+        "imperativoPresente": {
+          "io": "",
+          "tu": "sii",
+          "lui/lei": "sia",
+          "noi": "siamo",
+          "voi": "siate",
+          "loro": "siano"
+        }
+      }
+    }
+  ]
+}

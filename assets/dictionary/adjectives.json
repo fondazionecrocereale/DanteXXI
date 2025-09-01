@@ -1,0 +1,99 @@
+{
+  "adjectives": [
+    {
+      "word": "bello",
+      "meaning": "che ha qualità gradevoli alla vista, all'udito o al tatto",
+      "abbreviation": "agg.",
+      "pronunciation": "ˈbel.lo",
+      "category": "qualità",
+      "gender": "maschile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "hermoso",
+        "french": "beau",
+        "german": "schön",
+        "english": "beautiful"
+      },
+      "examples": [
+        "È un ragazzo molto bello.",
+        "Hai una bella casa."
+      ]
+    },
+    {
+      "word": "grande",
+      "meaning": "che ha dimensioni notevoli, ampio, vasto",
+      "abbreviation": "agg.",
+      "pronunciation": "ˈɡran.de",
+      "category": "dimensioni",
+      "gender": "invariabile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "grande",
+        "french": "grand",
+        "german": "groß",
+        "english": "big"
+      },
+      "examples": [
+        "È una grande città.",
+        "Ha un grande cuore."
+      ]
+    },
+    {
+      "word": "nuovo",
+      "meaning": "che non è mai stato usato, fresco, recente",
+      "abbreviation": "agg.",
+      "pronunciation": "ˈnwo.vo",
+      "category": "stato",
+      "gender": "maschile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "nuevo",
+        "french": "nouveau",
+        "german": "neu",
+        "english": "new"
+      },
+      "examples": [
+        "Ho comprato una macchina nuova.",
+        "È una notizia nuova."
+      ]
+    },
+    {
+      "word": "buono",
+      "meaning": "che ha qualità positive, valido, efficace",
+      "abbreviation": "agg.",
+      "pronunciation": "ˈbwo.no",
+      "category": "qualità",
+      "gender": "maschile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "bueno",
+        "french": "bon",
+        "german": "gut",
+        "english": "good"
+      },
+      "examples": [
+        "È un buon libro.",
+        "Hai fatto un buon lavoro."
+      ]
+    },
+    {
+      "word": "piccolo",
+      "meaning": "che ha dimensioni ridotte, minuto, minuscolo",
+      "abbreviation": "agg.",
+      "pronunciation": "ˈpik.ko.lo",
+      "category": "dimensioni",
+      "gender": "maschile",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "pequeño",
+        "french": "petit",
+        "german": "klein",
+        "english": "small"
+      },
+      "examples": [
+        "È un piccolo problema.",
+        "Vive in una piccola città."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,94 @@
+{
+  "adverbs": [
+    {
+      "word": "molto",
+      "meaning": "in grande quantità o misura, assai, parecchio",
+      "abbreviation": "avv.",
+      "pronunciation": "ˈmol.to",
+      "category": "quantità",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "muy/mucho",
+        "french": "très/beaucoup",
+        "german": "sehr/viel",
+        "english": "very/much"
+      },
+      "examples": [
+        "È molto bello.",
+        "Ho molto lavoro da fare."
+      ]
+    },
+    {
+      "word": "bene",
+      "meaning": "in modo corretto, adeguato o soddisfacente",
+      "abbreviation": "avv.",
+      "pronunciation": "ˈbe.ne",
+      "category": "modo",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "bien",
+        "french": "bien",
+        "german": "gut",
+        "english": "well"
+      },
+      "examples": [
+        "Parli italiano molto bene.",
+        "Hai fatto bene il lavoro."
+      ]
+    },
+    {
+      "word": "oggi",
+      "meaning": "nel giorno corrente, in questo giorno",
+      "abbreviation": "avv.",
+      "pronunciation": "ˈod.dʒi",
+      "category": "tempo",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "hoy",
+        "french": "aujourd'hui",
+        "german": "heute",
+        "english": "today"
+      },
+      "examples": [
+        "Oggi è una bella giornata.",
+        "Oggi non lavoro."
+      ]
+    },
+    {
+      "word": "qui",
+      "meaning": "in questo luogo, in questo posto",
+      "abbreviation": "avv.",
+      "pronunciation": "kwi",
+      "category": "luogo",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "aquí",
+        "french": "ici",
+        "german": "hier",
+        "english": "here"
+      },
+      "examples": [
+        "Vieni qui!",
+        "Qui fa molto caldo."
+      ]
+    },
+    {
+      "word": "sempre",
+      "meaning": "in ogni momento, continuamente, senza interruzione",
+      "abbreviation": "avv.",
+      "pronunciation": "ˈsem.pre",
+      "category": "tempo",
+      "lingua": "italiano",
+      "translation": {
+        "spanish": "siempre",
+        "french": "toujours",
+        "german": "immer",
+        "english": "always"
+      },
+      "examples": [
+        "Sempre puntuale.",
+        "Ti amo sempre."
+      ]
+    }
+  ]
+}
