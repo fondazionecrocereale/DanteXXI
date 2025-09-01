@@ -405,8 +405,8 @@ class _ProfilePageState extends State<ProfilePage> {
               _buildPersonalInfoSection(),
               const SizedBox(height: 24),
               _buildLearningPreferencesSection(),
-              const SizedBox(height: 24),
-              _buildNotificationSettingsSection(),
+              //const SizedBox(height: 24),
+              //_buildNotificationSettingsSection(),
               const SizedBox(height: 24),
               _buildInterestsSection(),
             ],
@@ -545,20 +545,20 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ],
         ),
-        const SizedBox(height: 16),
-        CustomTextField(
-          controller: _bioController,
-          labelText: 'Biografía',
-          readOnly: !_isEditing,
-          maxLines: 3,
-        ),
-        const SizedBox(height: 16),
-        CustomTextField(
-          controller: _phoneController,
-          labelText: 'Teléfono',
-          readOnly: !_isEditing,
-          keyboardType: TextInputType.phone,
-        ),
+        //const SizedBox(height: 16),
+       // CustomTextField(
+         // controller: _bioController,
+        //  labelText: 'Biografía',
+         // readOnly: !_isEditing,
+          //maxLines: 3,
+        //),
+        //const SizedBox(height: 16),
+        //CustomTextField(
+         // controller: _phoneController,
+          //labelText: 'Teléfono',
+          //readOnly: !_isEditing,
+         // keyboardType: TextInputType.phone,
+        //),
         const SizedBox(height: 16),
         Row(
           children: [
@@ -603,7 +603,7 @@ class _ProfilePageState extends State<ProfilePage> {
             ),
           ),
         // Botón de debug para verificar el estado actual
-        if (!_isEditing)
+        /*if (!_isEditing)
           SizedBox(
             width: double.infinity,
             child: ElevatedButton.icon(
@@ -616,7 +616,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 padding: const EdgeInsets.symmetric(vertical: 8),
               ),
             ),
-          ),
+          ),*/
         // Mostrar estado de sesión cuando estés logueado
         if (!_isEditing && _profile != null)
           Container(
@@ -660,25 +660,25 @@ class _ProfilePageState extends State<ProfilePage> {
               : null,
         ),
         const SizedBox(height: 16),
-        CustomTextField(
-          controller: _learningGoalController,
-          labelText: 'Meta de Aprendizaje',
-          readOnly: !_isEditing,
-          maxLines: 2,
-        ),
-        const SizedBox(height: 16),
-        CustomTextField(
-          controller: _dailyGoalController,
-          labelText: 'Meta Diaria (minutos)',
-          readOnly: !_isEditing,
-          keyboardType: TextInputType.number,
-          validator: (value) {
-            final minutes = int.tryParse(value ?? '');
-            if (minutes == null || minutes <= 0)
-              return 'Ingresa un número válido';
-            return null;
-          },
-        ),
+        //CustomTextField(
+          //controller: _learningGoalController,
+          //labelText: 'Meta de Aprendizaje',
+          //readOnly: !_isEditing,
+          //maxLines: 2,
+        //),
+        //const SizedBox(height: 16),
+        //CustomTextField(
+         // controller: _dailyGoalController,
+          //labelText: 'Meta Diaria (minutos)',
+          //readOnly: !_isEditing,
+          //keyboardType: TextInputType.number,
+          //validator: (value) {
+           // final minutes = int.tryParse(value ?? '');
+            //if (minutes == null || minutes <= 0)
+             // return 'Ingresa un número válido';
+            //return null;
+         // },
+        //),
       ],
     );
   }

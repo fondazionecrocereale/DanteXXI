@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'di/injection_container.dart' as di;
 import 'core/services/storage_service.dart';
+import 'core/services/word_of_day_service.dart';
 import 'presentation/blocs/auth/auth_bloc.dart';
 import 'presentation/pages/splash_page.dart';
 import 'routes/route_generator.dart';
@@ -15,6 +16,9 @@ void main() async {
 
   // Inicializar dependencias
   await di.init();
+
+  // Precargar la palabra del día en background
+  WordOfDayService.getWordOfDay();
 
   runApp(const DanteXXIApp());
 }

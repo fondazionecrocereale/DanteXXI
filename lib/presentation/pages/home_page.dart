@@ -7,6 +7,7 @@ import '../blocs/auth/auth_bloc.dart';
 import '../blocs/auth/auth_event.dart';
 import '../blocs/auth/auth_state.dart';
 import '../widgets/custom_button.dart';
+import '../widgets/word_of_day_widget.dart';
 import 'lessons_page.dart';
 import 'exercises_page.dart';
 import 'dictionary_page.dart';
@@ -14,6 +15,7 @@ import 'profile_page.dart';
 import 'settings_page.dart';
 import 'divine_comedy_screen.dart';
 import 'reels_page.dart';
+import 'audiobooks_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -121,13 +123,20 @@ class HomeContent extends StatelessWidget {
 
               const SizedBox(height: 32),
 
-              // Acciones rápidas
-              _buildQuickActions(context),
+              // Palabra del día
+              const WordOfDayWidget(),
 
+              
               const SizedBox(height: 32),
 
               // Lecciones recomendadas
               _buildRecommendedLessons(context),
+
+              //const SizedBox(height: 32),
+
+              // Acciones rápidas
+              //_buildQuickActions(context),
+
 
               const SizedBox(height: 32),
 
@@ -315,7 +324,7 @@ class HomeContent extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(
-              'Lecciones Recomendadas',
+              'Audiolibros',
               style: const TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
@@ -324,9 +333,9 @@ class HomeContent extends StatelessWidget {
             ),
             CustomTextButton(
               onPressed: () => Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => const LessonsPage()),
+                MaterialPageRoute(builder: (context) => const AudiobooksPage()),
               ),
-              text: 'Ver todas',
+              text: 'Ver todos',
               textColor: AppColors.primaryBlue,
             ),
           ],
@@ -337,28 +346,37 @@ class HomeContent extends StatelessWidget {
           child: ListView(
             scrollDirection: Axis.horizontal,
             children: [
-              _buildLessonCard(
-                title: 'Saludos Básicos',
-                description: 'Aprende a saludar en italiano',
-                level: 'A1',
-                progress: 0.8,
+              _buildAudiobookCard(
+                title: 'La Divina Commedia',
+                author: 'Dante Alighieri',
+                description: 'Obra maestra de la literatura italiana',
+                level: 'B2',
+                duration: '2:30:00',
                 color: AppColors.primaryBlue,
+                image:
+                    'https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Divina%20Commedia%2FInferno%2FDante%20Inferno%20cover.jpg?alt=media&token=example',
               ),
               const SizedBox(width: 16),
-              _buildLessonCard(
-                title: 'Números 1-20',
-                description: 'Cuenta en italiano',
-                level: 'A1',
-                progress: 0.6,
+              _buildAudiobookCard(
+                title: 'Pinocchio',
+                author: 'Carlo Collodi',
+                description: 'La famosa historia del muñeco de madera',
+                level: 'A2',
+                duration: '1:45:00',
                 color: AppColors.secondaryGreen,
+                image:
+                    'https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Pinocchio%2FPinocchio%20cover.jpg?alt=media&token=example',
               ),
               const SizedBox(width: 16),
-              _buildLessonCard(
-                title: 'Colores',
-                description: 'Los colores en italiano',
-                level: 'A1',
-                progress: 0.4,
+              _buildAudiobookCard(
+                title: 'Il Principe',
+                author: 'Niccolò Machiavelli',
+                description: 'Obra fundamental de filosofía política',
+                level: 'C1',
+                duration: '3:15:00',
                 color: AppColors.secondaryOrange,
+                image:
+                    'https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Il%20Principe%2FMachiavelli%20cover.jpg?alt=media&token=example',
               ),
             ],
           ),
@@ -367,12 +385,14 @@ class HomeContent extends StatelessWidget {
     );
   }
 
-  Widget _buildLessonCard({
+  Widget _buildAudiobookCard({
     required String title,
+    required String author,
     required String description,
     required String level,
-    required double progress,
+    required String duration,
     required Color color,
+    required String image,
   }) {
     return Container(
       width: 200,
@@ -413,7 +433,7 @@ class HomeContent extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                Icon(Icons.play_circle, color: color, size: 24),
+                Icon(Icons.headphones, color: color, size: 24),
               ],
             ),
             const SizedBox(height: 12),
@@ -424,42 +444,41 @@ class HomeContent extends StatelessWidget {
                 fontWeight: FontWeight.bold,
                 color: AppColors.textPrimary,
               ),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
+            ),
+            const SizedBox(height: 4),
+            Text(
+              author,
+              style: TextStyle(
+                fontSize: 12,
+                color: color,
+                fontWeight: FontWeight.w600,
+              ),
             ),
             const SizedBox(height: 4),
             Text(
               description,
-              style: TextStyle(fontSize: 12, color: AppColors.textSecondary),
+              style: TextStyle(fontSize: 11, color: AppColors.textSecondary),
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
             ),
             const Spacer(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Progreso',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: AppColors.textSecondary,
-                      ),
-                    ),
-                    Text(
-                      '${(progress * 100).toInt()}%',
-                      style: TextStyle(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w600,
-                        color: color,
-                      ),
-                    ),
-                  ],
+                Icon(
+                  Icons.access_time,
+                  size: 16,
+                  color: AppColors.textSecondary,
                 ),
-                const SizedBox(height: 8),
-                LinearProgressIndicator(
-                  value: progress,
-                  backgroundColor: AppColors.progressBackground,
-                  valueColor: AlwaysStoppedAnimation<Color>(color),
-                  borderRadius: BorderRadius.circular(4),
+                Text(
+                  duration,
+                  style: TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.textSecondary,
+                  ),
                 ),
               ],
             ),
