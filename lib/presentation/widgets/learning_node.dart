@@ -46,8 +46,9 @@ class LearningNode extends StatelessWidget {
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: isCompleted || isUnlocked ? Colors.white : Colors.grey,
+                color: isCompleted || isUnlocked ? Colors.green : Colors.grey,
                 fontSize: 12,
+                fontWeight: isCompleted || isUnlocked ? FontWeight.bold : FontWeight.bold ,
               ),
             ),
           ),

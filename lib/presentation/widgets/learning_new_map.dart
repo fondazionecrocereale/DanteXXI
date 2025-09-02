@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../domain/entities/divine_comedy_model.dart';
+import '../../domain/entities/lesson.dart';
 import 'learning_node.dart';
 import 'learning_path_painter.dart';
 import '../pages/splash_view.dart';
+import '../../core/services/learning_progress_service.dart';
 
 class LearningNewMap extends StatefulWidget {
   final DivineComedyModel section;
@@ -73,17 +75,37 @@ class _LearningNewMapState extends State<LearningNewMap> {
                   title: lesson.title,
                   isUnlocked: lesson.isUnlocked,
                   isCompleted: lesson.isCompleted,
-                  onTap: () {
+                  onTap: () async {
                     if (lesson.isUnlocked) {
                       debugPrint('Tapped lesson: ${lesson.title}');
+
+                      // Verificar si puede jugar la lección usando LearningProgressService
+                      final canPlay =
+                          await LearningProgressService.canPlayLesson();
+                      if (!canPlay) {
+                        if (mounted) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                              content: Text(
+                                'No tienes vidas suficientes. Espera 30 minutos para regenerar.',
+                              ),
+                              backgroundColor: Colors.orange,
+                            ),
+                          );
+                        }
+                        return;
+                      }
+
                       // Navegar a SplashView para cargar la lección
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) =>
-                              SplashView(id: lesson.id, title: lesson.title),
-                        ),
-                      );
+                      if (mounted) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) =>
+                                SplashView(id: lesson.id, title: lesson.title),
+                          ),
+                        );
+                      }
                     }
                   },
                 ),

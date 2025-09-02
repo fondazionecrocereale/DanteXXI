@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/constants/app_colors.dart';
 import '../../core/constants/app_texts.dart';
+import '../../domain/entities/lesson.dart';
 
 class LessonsPage extends StatefulWidget {
   const LessonsPage({super.key});
@@ -46,70 +47,130 @@ class _LessonsPageState extends State<LessonsPage> {
 
   final List<Lesson> _lessons = [
     Lesson(
-      id: '1',
+      id: 1,
       title: 'Saludos Básicos',
       description: 'Aprende a saludar en italiano',
-      level: 'A1',
-      duration: '15 min',
-      progress: 0.8,
+      livello: 'A1',
       isCompleted: false,
-      color: AppColors.primaryBlue,
-      icon: Icons.waving_hand,
+      isUnlocked: true,
+      nextLessonIds: [2],
+      position: const Position(x: 0.1, y: 0.1),
+      uid: '1',
+      exerciseTypes: ['vocabulary'],
+      lives: 3,
+      currentStreak: 0,
+      maxStreak: 0,
+      totalXP: 0,
+      timeSpent: 0,
+      isReplayable: false,
+      difficulty: 1,
+      estimatedTime: '15 min',
+      category: 'basic',
     ),
     Lesson(
-      id: '2',
+      id: 2,
       title: 'Números 1-20',
       description: 'Cuenta en italiano del 1 al 20',
-      level: 'A1',
-      duration: '20 min',
-      progress: 0.6,
+      livello: 'A1',
       isCompleted: false,
-      color: AppColors.secondaryGreen,
-      icon: Icons.numbers,
+      isUnlocked: true,
+      nextLessonIds: [3],
+      position: const Position(x: 0.3, y: 0.1),
+      uid: '2',
+      exerciseTypes: ['vocabulary'],
+      lives: 3,
+      currentStreak: 0,
+      maxStreak: 0,
+      totalXP: 0,
+      timeSpent: 0,
+      isReplayable: false,
+      difficulty: 1,
+      estimatedTime: '20 min',
+      category: 'basic',
     ),
     Lesson(
-      id: '3',
+      id: 3,
       title: 'Colores',
       description: 'Los colores básicos en italiano',
-      level: 'A1',
-      duration: '18 min',
-      progress: 0.4,
+      livello: 'A1',
       isCompleted: false,
-      color: AppColors.secondaryOrange,
-      icon: Icons.palette,
+      isUnlocked: true,
+      nextLessonIds: [4],
+      position: const Position(x: 0.5, y: 0.1),
+      uid: '3',
+      exerciseTypes: ['vocabulary'],
+      lives: 3,
+      currentStreak: 0,
+      maxStreak: 0,
+      totalXP: 0,
+      timeSpent: 0,
+      isReplayable: false,
+      difficulty: 1,
+      estimatedTime: '18 min',
+      category: 'basic',
     ),
     Lesson(
-      id: '4',
+      id: 4,
       title: 'Familia',
       description: 'Miembros de la familia en italiano',
-      level: 'A1',
-      duration: '25 min',
-      progress: 0.0,
+      livello: 'A1',
       isCompleted: false,
-      color: AppColors.secondaryBlue,
-      icon: Icons.family_restroom,
+      isUnlocked: true,
+      nextLessonIds: [5],
+      position: const Position(x: 0.7, y: 0.1),
+      uid: '4',
+      exerciseTypes: ['vocabulary'],
+      lives: 3,
+      currentStreak: 0,
+      maxStreak: 0,
+      totalXP: 0,
+      timeSpent: 0,
+      isReplayable: false,
+      difficulty: 1,
+      estimatedTime: '25 min',
+      category: 'basic',
     ),
     Lesson(
-      id: '5',
+      id: 5,
       title: 'Comida Básica',
       description: 'Alimentos y bebidas comunes',
-      level: 'A1',
-      duration: '22 min',
-      progress: 0.0,
+      livello: 'A1',
       isCompleted: false,
-      color: AppColors.primaryBlue,
-      icon: Icons.restaurant,
+      isUnlocked: true,
+      nextLessonIds: [6],
+      position: const Position(x: 0.9, y: 0.1),
+      uid: '5',
+      exerciseTypes: ['vocabulary'],
+      lives: 3,
+      currentStreak: 0,
+      maxStreak: 0,
+      totalXP: 0,
+      timeSpent: 0,
+      isReplayable: false,
+      difficulty: 1,
+      estimatedTime: '22 min',
+      category: 'basic',
     ),
     Lesson(
-      id: '6',
+      id: 6,
       title: 'Días de la Semana',
       description: 'Los 7 días de la semana',
-      level: 'A1',
-      duration: '16 min',
-      progress: 0.0,
+      livello: 'A1',
       isCompleted: false,
-      color: AppColors.secondaryGreen,
-      icon: Icons.calendar_today,
+      isUnlocked: true,
+      nextLessonIds: [],
+      position: const Position(x: 0.5, y: 0.3),
+      uid: '6',
+      exerciseTypes: ['vocabulary'],
+      lives: 3,
+      currentStreak: 0,
+      maxStreak: 0,
+      totalXP: 0,
+      timeSpent: 0,
+      isReplayable: false,
+      difficulty: 1,
+      estimatedTime: '16 min',
+      category: 'basic',
     ),
   ];
 
@@ -226,7 +287,7 @@ class _LessonsPageState extends State<LessonsPage> {
   Widget _buildLessonsContent() {
     final filteredLessons = _lessons.where((lesson) {
       final selectedCategory = _categories[_selectedCategoryIndex];
-      return lesson.level == selectedCategory.level;
+      return lesson.livello == selectedCategory.level;
     }).toList();
 
     if (filteredLessons.isEmpty) {
@@ -260,6 +321,9 @@ class _LessonsPageState extends State<LessonsPage> {
   }
 
   Widget _buildLessonCard(Lesson lesson) {
+    // Obtener el color basado en el nivel
+    Color lessonColor = _getColorForLevel(lesson.livello);
+
     return Container(
       margin: const EdgeInsets.only(bottom: 16),
       decoration: BoxDecoration(
@@ -287,10 +351,14 @@ class _LessonsPageState extends State<LessonsPage> {
                   width: 60,
                   height: 60,
                   decoration: BoxDecoration(
-                    color: lesson.color.withValues(alpha: 0.1),
+                    color: lessonColor.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(16),
                   ),
-                  child: Icon(lesson.icon, color: lesson.color, size: 30),
+                  child: Icon(
+                    _getIconForCategory(lesson.category),
+                    color: lessonColor,
+                    size: 30,
+                  ),
                 ),
 
                 const SizedBox(width: 16),
@@ -317,13 +385,13 @@ class _LessonsPageState extends State<LessonsPage> {
                               vertical: 4,
                             ),
                             decoration: BoxDecoration(
-                              color: lesson.color.withValues(alpha: 0.1),
+                              color: lessonColor.withValues(alpha: 0.1),
                               borderRadius: BorderRadius.circular(12),
                             ),
                             child: Text(
-                              lesson.level,
+                              lesson.livello,
                               style: TextStyle(
-                                color: lesson.color,
+                                color: lessonColor,
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
                               ),
@@ -335,7 +403,7 @@ class _LessonsPageState extends State<LessonsPage> {
                       const SizedBox(height: 4),
 
                       Text(
-                        lesson.description,
+                        lesson.description ?? 'Sin descripción',
                         style: TextStyle(
                           fontSize: 14,
                           color: AppColors.textSecondary,
@@ -353,7 +421,7 @@ class _LessonsPageState extends State<LessonsPage> {
                           ),
                           const SizedBox(width: 4),
                           Text(
-                            lesson.duration,
+                            lesson.estimatedTime,
                             style: TextStyle(
                               fontSize: 12,
                               color: AppColors.textLight,
@@ -394,23 +462,24 @@ class _LessonsPageState extends State<LessonsPage> {
                             )
                           else
                             Text(
-                              '${(lesson.progress * 100).toInt()}%',
+                              '${lesson.totalXP} XP',
                               style: TextStyle(
                                 fontSize: 12,
                                 fontWeight: FontWeight.w600,
-                                color: lesson.color,
+                                color: lessonColor,
                               ),
                             ),
                         ],
                       ),
 
-                      if (!lesson.isCompleted && lesson.progress > 0) ...[
+                      if (!lesson.isCompleted && lesson.totalXP > 0) ...[
                         const SizedBox(height: 8),
                         LinearProgressIndicator(
-                          value: lesson.progress,
+                          value:
+                              lesson.totalXP / 100, // Normalizar XP a progreso
                           backgroundColor: AppColors.progressBackground,
                           valueColor: AlwaysStoppedAnimation<Color>(
-                            lesson.color,
+                            lessonColor,
                           ),
                           borderRadius: BorderRadius.circular(4),
                         ),
@@ -426,11 +495,11 @@ class _LessonsPageState extends State<LessonsPage> {
                   width: 48,
                   height: 48,
                   decoration: BoxDecoration(
-                    color: lesson.color,
+                    color: lessonColor,
                     borderRadius: BorderRadius.circular(24),
                     boxShadow: [
                       BoxShadow(
-                        color: lesson.color.withValues(alpha: 0.3),
+                        color: lessonColor.withValues(alpha: 0.3),
                         blurRadius: 8,
                         offset: const Offset(0, 4),
                       ),
@@ -452,12 +521,43 @@ class _LessonsPageState extends State<LessonsPage> {
 
   void _openLesson(Lesson lesson) {
     // TODO: Implementar navegación a la lección específica
+    Color lessonColor = _getColorForLevel(lesson.livello);
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text('Abriendo lección: ${lesson.title}'),
-        backgroundColor: lesson.color,
+        backgroundColor: lessonColor,
       ),
     );
+  }
+
+  Color _getColorForLevel(String level) {
+    switch (level) {
+      case 'A1':
+        return AppColors.primaryBlue;
+      case 'A2':
+        return AppColors.secondaryGreen;
+      case 'B1':
+        return AppColors.secondaryOrange;
+      case 'B2':
+        return AppColors.secondaryBlue;
+      default:
+        return AppColors.primaryBlue;
+    }
+  }
+
+  IconData _getIconForCategory(String category) {
+    switch (category) {
+      case 'basic':
+        return Icons.school;
+      case 'vocabulary':
+        return Icons.book;
+      case 'grammar':
+        return Icons.edit;
+      case 'conversation':
+        return Icons.chat;
+      default:
+        return Icons.school;
+    }
   }
 }
 
@@ -474,29 +574,5 @@ class LessonCategory {
     required this.color,
     required this.lessonCount,
     required this.completedCount,
-  });
-}
-
-class Lesson {
-  final String id;
-  final String title;
-  final String description;
-  final String level;
-  final String duration;
-  final double progress;
-  final bool isCompleted;
-  final Color color;
-  final IconData icon;
-
-  Lesson({
-    required this.id,
-    required this.title,
-    required this.description,
-    required this.level,
-    required this.duration,
-    required this.progress,
-    required this.isCompleted,
-    required this.color,
-    required this.icon,
   });
 }

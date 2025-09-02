@@ -1,143 +1,126 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'lesson.dart';
 
-class DivineComedyModel {
-  final String title;
-  final List<String> cefrRange;
-  final ColorModel baseColor;
-  final ColorModel textColor;
-  final ColorModel cardColor;
-  final String backgroundImage;
-  final List<Lesson> lessons;
+// Importación explícita de archivos generados
+// Estos archivos son generados automáticamente por build_runner
+part 'divine_comedy_model.freezed.dart';
+part 'divine_comedy_model.g.dart';
 
-  DivineComedyModel({
-    required this.title,
-    required this.cefrRange,
-    required this.baseColor,
-    required this.textColor,
-    required this.cardColor,
-    required this.backgroundImage,
-    required this.lessons,
-  });
+@freezed
+class DivineComedyModel with _$DivineComedyModel {
+  const factory DivineComedyModel({
+    required String title,
+    required List<String> cefrRange,
+    required ColorModel baseColor,
+    required ColorModel textColor,
+    required ColorModel cardColor,
+    required String backgroundImage,
+    required List<Lesson> lessons,
+    @Default(0) int totalLessons,
+    @Default(0) int completedLessons,
+    @Default(0) double progressPercentage,
+  }) = _DivineComedyModel;
 
-  factory DivineComedyModel.fromJson(Map<String, dynamic> json) {
-    return DivineComedyModel(
-      title: json['title'],
-      cefrRange: List<String>.from(json['cefr_range']),
-      baseColor: ColorModel.fromJson(json['baseColor']),
-      textColor: ColorModel.fromJson(json['textColor']),
-      cardColor: ColorModel.fromJson(json['cardColor']),
-      backgroundImage: json['backgroundImage'],
-      lessons: (json['lessons'] as List<dynamic>)
-          .map((lesson) => Lesson.fromJson(lesson))
-          .toList(),
-    );
+  factory DivineComedyModel.fromJson(Map<String, dynamic> json) =>
+      _$DivineComedyModelFromJson(json);
+}
+
+@freezed
+class ColorModel with _$ColorModel {
+  const factory ColorModel({
+    required int red,
+    required int green,
+    required int blue,
+  }) = _ColorModel;
+
+  factory ColorModel.fromJson(Map<String, dynamic> json) =>
+      _$ColorModelFromJson(json);
+}
+
+// Nuevos tipos de ejercicios
+enum ExerciseType {
+  multipleChoice('multiple_choice', 'Opción Múltiple', Icons.check_circle),
+  translation('translation', 'Traducción', Icons.translate),
+  fillInTheBlank('fill_in_the_blank', 'Completar Espacios', Icons.edit),
+  matchingPairs('matching_pairs', 'Emparejar Pares', Icons.compare_arrows),
+  videoComprehension(
+    'video_comprehension',
+    'Comprensión de Video',
+    Icons.video_library,
+  ),
+  audioComprehension(
+    'audio_comprehension',
+    'Comprensión de Audio',
+    Icons.headphones,
+  ),
+  speaking('speaking', 'Pronunciación', Icons.mic),
+  writing('writing', 'Escritura', Icons.create),
+  listening('listening', 'Escucha', Icons.hearing),
+  reading('reading', 'Lectura', Icons.book),
+  conversation('conversation', 'Conversación', Icons.chat),
+  rolePlay('role_play', 'Juego de Roles', Icons.people),
+  vocabulary('vocabulary', 'Vocabulario', Icons.language),
+  grammar('grammar', 'Gramática', Icons.school),
+  analysis('analysis', 'Análisis', Icons.analytics),
+  discussion('discussion', 'Discusión', Icons.forum),
+  practice('practice', 'Práctica', Icons.fitness_center),
+  evaluation('evaluation', 'Evaluación', Icons.assessment),
+  feedback('feedback', 'Retroalimentación', Icons.feedback),
+  research('research', 'Investigación', Icons.search),
+  theory('theory', 'Teoría', Icons.science),
+  comparison('comparison', 'Comparación', Icons.compare),
+  criticism('criticism', 'Crítica', Icons.rate_review),
+  publication('publication', 'Publicación', Icons.publish),
+  pedagogy('pedagogy', 'Pedagogía', Icons.psychology),
+  creativeWriting('creative_writing', 'Escritura Creativa', Icons.brush),
+  advancedPractice('advanced_practice', 'Práctica Avanzada', Icons.trending_up),
+  interpretation('interpretation', 'Interpretación', Icons.psychology),
+  performance('performance', 'Interpretación', Icons.theater_comedy),
+  study('study', 'Estudio', Icons.school),
+  watching('watching', 'Visualización', Icons.visibility);
+
+  const ExerciseType(this.value, this.label, this.icon);
+  final String value;
+  final String label;
+  final IconData icon;
+}
+
+// Sistema de vidas y rachas
+class LivesSystem {
+  static const int maxLives = 5;
+  static const int livesRegenerationTime = 30; // minutos
+
+  static int getCurrentLives(int lives) => lives.clamp(0, maxLives);
+  static bool canPlayLesson(int lives) => lives > 0;
+  static int loseLife(int currentLives) =>
+      (currentLives - 1).clamp(0, maxLives);
+  static int gainLife(int currentLives) =>
+      (currentLives + 1).clamp(0, maxLives);
+}
+
+class StreakSystem {
+  static int calculateStreak(int currentStreak, bool lessonCompleted) {
+    if (lessonCompleted) {
+      return currentStreak + 1;
+    } else {
+      return 0; // Reset streak on failure
+    }
   }
 
-  factory DivineComedyModel.fromFirestore(Map<String, dynamic> data) {
-    return DivineComedyModel(
-      title: data['title'] ?? '',
-      cefrRange: List<String>.from(data['cefr_range'] ?? []),
-      baseColor: ColorModel.fromJson(data['baseColor'] ?? {}),
-      textColor: ColorModel.fromJson(data['textColor'] ?? {}),
-      cardColor: ColorModel.fromJson(data['cardColor'] ?? {}),
-      backgroundImage: data['backgroundImage'] ?? '',
-      lessons: (data['lessons'] as List<dynamic>? ?? [])
-          .map((lesson) => Lesson.fromJson(lesson))
-          .toList(),
-    );
+  static int updateMaxStreak(int currentMaxStreak, int currentStreak) {
+    return currentStreak > currentMaxStreak ? currentStreak : currentMaxStreak;
+  }
+
+  static int calculateXP(int baseXP, int streak, int difficulty) {
+    final streakMultiplier = 1 + (streak * 0.1); // 10% bonus per day in streak
+    final difficultyMultiplier =
+        1 + (difficulty * 0.2); // 20% bonus per difficulty level
+    return (baseXP * streakMultiplier * difficultyMultiplier).round();
   }
 }
 
-class Lesson {
-  final int id;
-  final bool isCompleted;
-  final bool isUnlocked;
-  final String livello;
-  final List<int> nextLessonIds;
-  final Position position;
-  final String title;
-  final String uid;
-
-  Lesson({
-    required this.id,
-    required this.isCompleted,
-    required this.isUnlocked,
-    required this.livello,
-    required this.nextLessonIds,
-    required this.position,
-    required this.title,
-    required this.uid,
-  });
-
-  factory Lesson.fromJson(Map<String, dynamic> json) {
-    return Lesson(
-      id: json['id'],
-      isCompleted: json['isCompleted'],
-      isUnlocked: json['isUnlocked'],
-      livello: json['livello'],
-      nextLessonIds: List<int>.from(json['nextLessonIds']),
-      position: Position.fromJson(json['position']),
-      title: json['title'],
-      uid: json['uid'],
-    );
-  }
-
-  factory Lesson.fromMap(Map<String, dynamic> data, {required String docId}) {
-    return Lesson(
-      id: data['id'] ?? 0,
-      isCompleted: data['isCompleted'] ?? false,
-      isUnlocked: data['isUnlocked'] ?? false,
-      livello: data['livello'] ?? '',
-      nextLessonIds: List<int>.from(data['nextLessonIds'] ?? []),
-      position: Position.fromJson(data['position'] ?? {'x': 0.0, 'y': 0.0}),
-      title: data['title'] ?? '',
-      uid: data['uid'] ?? '',
-    );
-  }
-
-  // Add dummy factory method
-  factory Lesson.dummy() {
-    return Lesson(
-      id: 0,
-      isCompleted: false,
-      isUnlocked: false,
-      livello: '',
-      nextLessonIds: [],
-      position: Position(x: 0.0, y: 0.0),
-      title: '',
-      uid: '',
-    );
-  }
-}
-
-class Position {
-  final double x;
-  final double y;
-
-  Position({required this.x, required this.y});
-
-  factory Position.fromJson(Map<String, dynamic> json) {
-    return Position(
-      x: (json['x'] as num).toDouble(),
-      y: (json['y'] as num).toDouble(),
-    );
-  }
-}
-
-class ColorModel {
-  final int red;
-  final int green;
-  final int blue;
-
-  ColorModel({required this.red, required this.green, required this.blue});
-
-  factory ColorModel.fromJson(Map<String, dynamic> json) {
-    return ColorModel(
-      red: json['red'] ?? 0,
-      green: json['green'] ?? 0,
-      blue: json['blue'] ?? 0,
-    );
-  }
-
+// Extension para convertir ColorModel a Color
+extension ColorModelExtension on ColorModel {
   Color toColor() => Color.fromRGBO(red, green, blue, 1.0);
 }

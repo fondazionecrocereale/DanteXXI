@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import '../../domain/entities/divine_comedy_model.dart';
+import '../../domain/entities/lesson.dart';
 import '../widgets/learning_new_map.dart';
 import 'dart:convert';
 import 'package:flutter/services.dart';
@@ -63,9 +64,9 @@ class _DivineComedyScreenState extends State<DivineComedyScreen> {
             blue: section['baseColor']?['blue'] ?? 21,
           ),
           textColor: ColorModel(
-            red: section['textColor']?['red'] ?? 255,
-            green: section['textColor']?['green'] ?? 255,
-            blue: section['textColor']?['blue'] ?? 255,
+            red: section['textColor']?['red'] ?? 0,
+            green: section['textColor']?['green'] ?? 0,
+            blue: section['textColor']?['blue'] ?? 0,
           ),
           cardColor: ColorModel(
             red: section['cardColor']?['red'] ?? 133,
@@ -98,7 +99,7 @@ class _DivineComedyScreenState extends State<DivineComedyScreen> {
         title: 'LVDVS A1',
         cefrRange: ['A1'],
         baseColor: ColorModel(red: 172, green: 21, blue: 21),
-        textColor: ColorModel(red: 255, green: 255, blue: 255),
+        textColor: ColorModel(red: 0, green: 0, blue: 0),
         cardColor: ColorModel(red: 133, green: 27, blue: 27),
         backgroundImage: 'assets/images/fresco2.png',
         lessons: [
@@ -200,7 +201,7 @@ class _DivineComedyScreenState extends State<DivineComedyScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromRGBO(133, 27, 27, 1),
+      backgroundColor: Colors.white,
       body: _isLoading
           ? shimmerSkeleton()
           : SingleChildScrollView(child: buildBody(context, _sections)),
@@ -317,11 +318,11 @@ class SectionCard extends StatelessWidget {
             image: AssetImage(section.backgroundImage),
             fit: BoxFit.cover,
             colorFilter: ColorFilter.mode(
-              Colors.black.withOpacity(0.2),
+              Colors.black.withValues(alpha: 0.2),
               BlendMode.dstATop,
             ),
           ),
-          color: section.cardColor.toColor().withOpacity(0.8),
+          color: Colors.white,
           borderRadius: BorderRadius.circular(12.0),
         ),
         child: Padding(
@@ -337,7 +338,7 @@ class SectionCard extends StatelessWidget {
                   color: section.textColor.toColor(),
                   shadows: [
                     Shadow(
-                      color: Colors.black.withOpacity(0.5),
+                      color: Colors.black.withValues(alpha: 0.5),
                       offset: const Offset(1, 1),
                       blurRadius: 2,
                     ),
@@ -352,7 +353,7 @@ class SectionCard extends StatelessWidget {
                   color: section.textColor.toColor(),
                   shadows: [
                     Shadow(
-                      color: Colors.black.withOpacity(0.5),
+                      color: Colors.black.withValues(alpha: 0.5),
                       offset: const Offset(1, 1),
                       blurRadius: 2,
                     ),

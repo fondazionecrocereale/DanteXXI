@@ -2,23 +2,28 @@
   "sections": [
     {
       "title": "CORSO D'ITALIANO A1",
-      "backgroundImage": "assets/images/fresco2.png",
+      "backgroundImage": "assets/images/DSCF2316_Dante_perdu.jpg",
       "baseColor": {
-        "red": 172,
-        "green": 21,
-        "blue": 21
-      },
-      "cardColor": {
-        "red": 133,
-        "green": 27,
-        "blue": 27
-      },
-      "textColor": {
         "red": 255,
         "green": 255,
         "blue": 255
       },
-      "cefr_range": ["A1"],
+      "cardColor": {
+        "red": 255,
+        "green": 255,
+        "blue": 255
+      },
+      "textColor": {
+        "red": 0,
+        "green": 0,
+        "blue": 0
+      },
+      "cefr_range": [
+        "A1"
+      ],
+      "totalLessons": 9,
+      "completedLessons": 2,
+      "progressPercentage": 22.2,
       "lessons": [
         {
           "id": 1,
@@ -27,10 +32,28 @@
           "livello": "A1",
           "isUnlocked": true,
           "isCompleted": true,
-          "nextLessonIds": [2],
-          "position": {"x": 0.2, "y": 0.1},
+          "nextLessonIds": [
+            2
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.1
+          },
           "description": "Impara a salutare e presentarti in italiano",
-          "exerciseTypes": ["multiple_choice", "translation"]
+          "exerciseTypes": [
+            "multiple_choice",
+            "translation",
+            "speaking"
+          ],
+          "lives": 5,
+          "currentStreak": 3,
+          "maxStreak": 5,
+          "totalXP": 150,
+          "timeSpent": 450,
+          "isReplayable": true,
+          "difficulty": 1,
+          "estimatedTime": "5 min",
+          "category": "Conversazione"
         },
         {
           "id": 2,
@@ -39,10 +62,28 @@
           "livello": "A1",
           "isUnlocked": true,
           "isCompleted": true,
-          "nextLessonIds": [3],
-          "position": {"x": 0.8, "y": 0.2},
+          "nextLessonIds": [
+            3
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.2
+          },
           "description": "Conta fino a dieci in italiano",
-          "exerciseTypes": ["fill_in_the_blank", "matching_pairs"]
+          "exerciseTypes": [
+            "fill_in_the_blank",
+            "matching_pairs",
+            "listening"
+          ],
+          "lives": 5,
+          "currentStreak": 2,
+          "maxStreak": 3,
+          "totalXP": 120,
+          "timeSpent": 380,
+          "isReplayable": true,
+          "difficulty": 1,
+          "estimatedTime": "4 min",
+          "category": "Vocabolario"
         },
         {
           "id": 3,
@@ -51,10 +92,28 @@
           "livello": "A1",
           "isUnlocked": true,
           "isCompleted": false,
-          "nextLessonIds": [4],
-          "position": {"x": 0.2, "y": 0.3},
+          "nextLessonIds": [
+            4
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.3
+          },
           "description": "Impara i colori base",
-          "exerciseTypes": ["multiple_choice", "matching_pairs"]
+          "exerciseTypes": [
+            "multiple_choice",
+            "matching_pairs",
+            "video_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 1,
+          "estimatedTime": "6 min",
+          "category": "Vocabolario"
         },
         {
           "id": 4,
@@ -63,10 +122,28 @@
           "livello": "A1",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [5],
-          "position": {"x": 0.8, "y": 0.4},
+          "nextLessonIds": [
+            5
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.4
+          },
           "description": "Membri della famiglia",
-          "exerciseTypes": ["translation", "multiple_choice"]
+          "exerciseTypes": [
+            "translation",
+            "multiple_choice",
+            "audio_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 2,
+          "estimatedTime": "7 min",
+          "category": "Vocabolario"
         },
         {
           "id": 5,
@@ -75,10 +152,28 @@
           "livello": "A1",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [6],
-          "position": {"x": 0.2, "y": 0.5},
+          "nextLessonIds": [
+            6
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.5
+          },
           "description": "Alimenti e bevande base",
-          "exerciseTypes": ["multiple_choice", "fill_in_the_blank"]
+          "exerciseTypes": [
+            "multiple_choice",
+            "fill_in_the_blank",
+            "conversation"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 2,
+          "estimatedTime": "8 min",
+          "category": "Vocabolario"
         },
         {
           "id": 6,
@@ -87,10 +182,28 @@
           "livello": "A1",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [7],
-          "position": {"x": 0.8, "y": 0.6},
+          "nextLessonIds": [
+            7
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.6
+          },
           "description": "Animali domestici comuni",
-          "exerciseTypes": ["matching_pairs", "multiple_choice"]
+          "exerciseTypes": [
+            "matching_pairs",
+            "multiple_choice",
+            "speaking"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 2,
+          "estimatedTime": "6 min",
+          "category": "Vocabolario"
         },
         {
           "id": 7,
@@ -99,10 +212,28 @@
           "livello": "A1",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [8],
-          "position": {"x": 0.2, "y": 0.7},
+          "nextLessonIds": [
+            8
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.7
+          },
           "description": "Parti della casa e mobili",
-          "exerciseTypes": ["multiple_choice", "translation"]
+          "exerciseTypes": [
+            "multiple_choice",
+            "translation",
+            "video_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 3,
+          "estimatedTime": "9 min",
+          "category": "Vocabolario"
         },
         {
           "id": 8,
@@ -111,10 +242,28 @@
           "livello": "A1",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [9],
-          "position": {"x": 0.8, "y": 0.8},
+          "nextLessonIds": [
+            9
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.8
+          },
           "description": "Tipi di vestiti e accessori",
-          "exerciseTypes": ["matching_pairs", "fill_in_the_blank"]
+          "exerciseTypes": [
+            "matching_pairs",
+            "fill_in_the_blank",
+            "audio_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 3,
+          "estimatedTime": "7 min",
+          "category": "Vocabolario"
         },
         {
           "id": 9,
@@ -124,15 +273,31 @@
           "isUnlocked": false,
           "isCompleted": false,
           "nextLessonIds": [],
-          "position": {"x": 0.2, "y": 0.9},
+          "position": {
+            "x": 0.2,
+            "y": 0.9
+          },
           "description": "Giorni, mesi e stagioni",
-          "exerciseTypes": ["multiple_choice", "translation"]
+          "exerciseTypes": [
+            "multiple_choice",
+            "translation",
+            "conversation"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 3,
+          "estimatedTime": "8 min",
+          "category": "Vocabolario"
         }
       ]
     },
     {
       "title": "CORSO D'ITALIANO A2",
-      "backgroundImage": "assets/images/fresco.jpeg",
+      "backgroundImage": "assets/images/DSCF2316_Dante_perdu.jpg",
       "baseColor": {
         "red": 172,
         "green": 21,
@@ -148,7 +313,12 @@
         "green": 255,
         "blue": 255
       },
-      "cefr_range": ["A2"],
+      "cefr_range": [
+        "A2"
+      ],
+      "totalLessons": 9,
+      "completedLessons": 0,
+      "progressPercentage": 0.0,
       "lessons": [
         {
           "id": 11,
@@ -157,10 +327,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [12],
-          "position": {"x": 0.2, "y": 0.1},
+          "nextLessonIds": [
+            12
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.1
+          },
           "description": "Pianifica un viaggio in Italia",
-          "exerciseTypes": ["conversation", "reading"]
+          "exerciseTypes": [
+            "conversation",
+            "reading",
+            "video_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 4,
+          "estimatedTime": "12 min",
+          "category": "Conversazione"
         },
         {
           "id": 12,
@@ -169,10 +357,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [13],
-          "position": {"x": 0.8, "y": 0.2},
+          "nextLessonIds": [
+            13
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.2
+          },
           "description": "Ordina al ristorante",
-          "exerciseTypes": ["role_play", "listening"]
+          "exerciseTypes": [
+            "role_play",
+            "listening",
+            "conversation"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 4,
+          "estimatedTime": "15 min",
+          "category": "Conversazione"
         },
         {
           "id": 13,
@@ -181,10 +387,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [14],
-          "position": {"x": 0.2, "y": 0.3},
+          "nextLessonIds": [
+            14
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.3
+          },
           "description": "Fai shopping in Italia",
-          "exerciseTypes": ["conversation", "vocabulary"]
+          "exerciseTypes": [
+            "conversation",
+            "vocabulary",
+            "audio_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 4,
+          "estimatedTime": "10 min",
+          "category": "Conversazione"
         },
         {
           "id": 14,
@@ -193,10 +417,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [15],
-          "position": {"x": 0.8, "y": 0.4},
+          "nextLessonIds": [
+            15
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.4
+          },
           "description": "Usa i mezzi pubblici",
-          "exerciseTypes": ["listening", "conversation"]
+          "exerciseTypes": [
+            "listening",
+            "conversation",
+            "reading"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 4,
+          "estimatedTime": "11 min",
+          "category": "Conversazione"
         },
         {
           "id": 15,
@@ -205,10 +447,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [16],
-          "position": {"x": 0.2, "y": 0.5},
+          "nextLessonIds": [
+            16
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.5
+          },
           "description": "Prenota un hotel",
-          "exerciseTypes": ["reading", "conversation"]
+          "exerciseTypes": [
+            "reading",
+            "conversation",
+            "role_play"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 5,
+          "estimatedTime": "13 min",
+          "category": "Conversazione"
         },
         {
           "id": 16,
@@ -217,10 +477,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [17],
-          "position": {"x": 0.8, "y": 0.6},
+          "nextLessonIds": [
+            17
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.6
+          },
           "description": "Attività di tempo libero",
-          "exerciseTypes": ["vocabulary", "conversation"]
+          "exerciseTypes": [
+            "vocabulary",
+            "conversation",
+            "video_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 5,
+          "estimatedTime": "12 min",
+          "category": "Conversazione"
         },
         {
           "id": 17,
@@ -229,10 +507,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [18],
-          "position": {"x": 0.2, "y": 0.7},
+          "nextLessonIds": [
+            18
+          ],
+          "position": {
+            "x": 0.2,
+            "y": 0.7
+          },
           "description": "Gestisci emergenze",
-          "exerciseTypes": ["role_play", "vocabulary"]
+          "exerciseTypes": [
+            "role_play",
+            "vocabulary",
+            "listening"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 5,
+          "estimatedTime": "14 min",
+          "category": "Conversazione"
         },
         {
           "id": 18,
@@ -241,10 +537,28 @@
           "livello": "A2",
           "isUnlocked": false,
           "isCompleted": false,
-          "nextLessonIds": [19],
-          "position": {"x": 0.8, "y": 0.8},
+          "nextLessonIds": [
+            19
+          ],
+          "position": {
+            "x": 0.8,
+            "y": 0.8
+          },
           "description": "Lavoro e studio in Italia",
-          "exerciseTypes": ["conversation", "reading"]
+          "exerciseTypes": [
+            "conversation",
+            "reading",
+            "writing"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 5,
+          "estimatedTime": "15 min",
+          "category": "Conversazione"
         },
         {
           "id": 19,
@@ -254,493 +568,25 @@
           "isUnlocked": false,
           "isCompleted": false,
           "nextLessonIds": [],
-          "position": {"x": 0.2, "y": 0.9},
+          "position": {
+            "x": 0.2,
+            "y": 0.9
+          },
           "description": "Tradizioni e cultura",
-          "exerciseTypes": ["reading", "discussion"]
-        }
-      ]
-    },
-    {
-      "title": "CORSO D'ITALIANO B1",
-      "backgroundImage": "assets/images/villa_dei_misteri_viii_-_31.jpg",
-      "baseColor": {
-        "red": 172,
-        "green": 21,
-        "blue": 21
-      },
-      "cardColor": {
-        "red": 133,
-        "green": 27,
-        "blue": 27
-      },
-      "textColor": {
-        "red": 255,
-        "green": 255,
-        "blue": 255
-      },
-      "cefr_range": ["B1"],
-      "lessons": [
-        {
-          "id": 20,
-          "title": "Grammatica Avanzata",
-          "uid": "italiano_b1_lezione_1",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [21],
-          "position": {"x": 0.2, "y": 0.1},
-          "description": "Strutture grammaticali complesse",
-          "exerciseTypes": ["grammar", "writing"]
-        },
-        {
-          "id": 21,
-          "title": "Letteratura Italiana",
-          "uid": "italiano_b1_lezione_2",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [22],
-          "position": {"x": 0.8, "y": 0.2},
-          "description": "Autori e opere famose",
-          "exerciseTypes": ["reading", "analysis"]
-        },
-        {
-          "id": 22,
-          "title": "Storia d'Italia",
-          "uid": "italiano_b1_lezione_3",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [23],
-          "position": {"x": 0.2, "y": 0.3},
-          "description": "Eventi storici importanti",
-          "exerciseTypes": ["reading", "discussion"]
-        },
-        {
-          "id": 23,
-          "title": "Arte e Architettura",
-          "uid": "italiano_b1_lezione_4",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [24],
-          "position": {"x": 0.8, "y": 0.4},
-          "description": "Capolavori artistici",
-          "exerciseTypes": ["vocabulary", "description"]
-        },
-        {
-          "id": 24,
-          "title": "Musica Italiana",
-          "uid": "italiano_b1_lezione_5",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [25],
-          "position": {"x": 0.2, "y": 0.5},
-          "description": "Opera e musica classica",
-          "exerciseTypes": ["listening", "vocabulary"]
-        },
-        {
-          "id": 25,
-          "title": "Cinema Italiano",
-          "uid": "italiano_b1_lezione_6",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [26],
-          "position": {"x": 0.8, "y": 0.6},
-          "description": "Film e registi famosi",
-          "exerciseTypes": ["watching", "discussion"]
-        },
-        {
-          "id": 26,
-          "title": "Giornalismo",
-          "uid": "italiano_b1_lezione_7",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [27],
-          "position": {"x": 0.2, "y": 0.7},
-          "description": "Leggi i giornali italiani",
-          "exerciseTypes": ["reading", "writing"]
-        },
-        {
-          "id": 27,
-          "title": "Scienza e Tecnologia",
-          "uid": "italiano_b1_lezione_8",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [28],
-          "position": {"x": 0.8, "y": 0.8},
-          "description": "Terminologia scientifica",
-          "exerciseTypes": ["vocabulary", "reading"]
-        },
-        {
-          "id": 28,
-          "title": "Filosofia Italiana",
-          "uid": "italiano_b1_lezione_9",
-          "livello": "B1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [],
-          "position": {"x": 0.2, "y": 0.9},
-          "description": "Pensatori e idee",
-          "exerciseTypes": ["reading", "discussion"]
-        }
-      ]
-    },
-    {
-      "title": "CORSO D'ITALIANO B2",
-      "backgroundImage": "assets/images/FRESCO3.png",
-      "baseColor": {
-        "red": 172,
-        "green": 21,
-        "blue": 21
-      },
-      "cardColor": {
-        "red": 133,
-        "green": 27,
-        "blue": 27
-      },
-      "textColor": {
-        "red": 255,
-        "green": 255,
-        "blue": 255
-      },
-      "cefr_range": ["B2"],
-      "lessons": [
-        {
-          "id": 31,
-          "title": "Poesia Italiana",
-          "uid": "italiano_b2_lezione_1",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [32],
-          "position": {"x": 0.2, "y": 0.1},
-          "description": "Analisi poetica avanzata",
-          "exerciseTypes": ["analysis", "writing"]
-        },
-        {
-          "id": 32,
-          "title": "Teatro e Drammaturgia",
-          "uid": "italiano_b2_lezione_2",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [33],
-          "position": {"x": 0.8, "y": 0.2},
-          "description": "Opere teatrali italiane",
-          "exerciseTypes": ["reading", "performance"]
-        },
-        {
-          "id": 33,
-          "title": "Saggistica",
-          "uid": "italiano_b2_lezione_3",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [34],
-          "position": {"x": 0.2, "y": 0.3},
-          "description": "Saggi e articoli accademici",
-          "exerciseTypes": ["reading", "analysis"]
-        },
-        {
-          "id": 34,
-          "title": "Traduzione",
-          "uid": "italiano_b2_lezione_4",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [35],
-          "position": {"x": 0.8, "y": 0.4},
-          "description": "Tecniche di traduzione",
-          "exerciseTypes": ["translation", "comparison"]
-        },
-        {
-          "id": 35,
-          "title": "Linguistica",
-          "uid": "italiano_b2_lezione_5",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [36],
-          "position": {"x": 0.2, "y": 0.5},
-          "description": "Struttura della lingua",
-          "exerciseTypes": ["analysis", "theory"]
-        },
-        {
-          "id": 36,
-          "title": "Dialetti Regionali",
-          "uid": "italiano_b2_lezione_6",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [37],
-          "position": {"x": 0.8, "y": 0.6},
-          "description": "Varietà linguistiche regionali",
-          "exerciseTypes": ["listening", "comparison"]
-        },
-        {
-          "id": 37,
-          "title": "Letteratura Contemporanea",
-          "uid": "italiano_b2_lezione_7",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [38],
-          "position": {"x": 0.2, "y": 0.7},
-          "description": "Autori moderni",
-          "exerciseTypes": ["reading", "criticism"]
-        },
-        {
-          "id": 38,
-          "title": "Critica Letteraria",
-          "uid": "italiano_b2_lezione_8",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [39],
-          "position": {"x": 0.8, "y": 0.8},
-          "description": "Analisi critica dei testi",
-          "exerciseTypes": ["analysis", "writing"]
-        },
-        {
-          "id": 39,
-          "title": "Scrittura Creativa",
-          "uid": "italiano_b2_lezione_9",
-          "livello": "B2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [],
-          "position": {"x": 0.2, "y": 0.9},
-          "description": "Crea testi originali",
-          "exerciseTypes": ["writing", "feedback"]
-        }
-      ]
-    },
-    {
-      "title": "CORSO D'ITALIANO C1",
-      "backgroundImage": "assets/images/fresco5.jpg",
-      "baseColor": {
-        "red": 172,
-        "green": 21,
-        "blue": 21
-      },
-      "cardColor": {
-        "red": 133,
-        "green": 27,
-        "blue": 27
-      },
-      "textColor": {
-        "red": 255,
-        "green": 255,
-        "blue": 255
-      },
-      "cefr_range": ["C1"],
-      "lessons": [
-        {
-          "id": 50,
-          "title": "Retorica Classica",
-          "uid": "italiano_c1_lezione_1",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [51],
-          "position": {"x": 0.2, "y": 0.1},
-          "description": "Arte della persuasione",
-          "exerciseTypes": ["analysis", "practice"]
-        },
-        {
-          "id": 51,
-          "title": "Oratoria",
-          "uid": "italiano_c1_lezione_2",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [52],
-          "position": {"x": 0.8, "y": 0.2},
-          "description": "Discorsi pubblici",
-          "exerciseTypes": ["speaking", "evaluation"]
-        },
-        {
-          "id": 52,
-          "title": "Debate e Argomentazione",
-          "uid": "italiano_c1_lezione_3",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [53],
-          "position": {"x": 0.2, "y": 0.3},
-          "description": "Tecniche di dibattito",
-          "exerciseTypes": ["debate", "analysis"]
-        },
-        {
-          "id": 53,
-          "title": "Stilistica",
-          "uid": "italiano_c1_lezione_4",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [54],
-          "position": {"x": 0.8, "y": 0.4},
-          "description": "Analisi stilistica avanzata",
-          "exerciseTypes": ["analysis", "writing"]
-        },
-        {
-          "id": 54,
-          "title": "Filologia",
-          "uid": "italiano_c1_lezione_5",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [55],
-          "position": {"x": 0.2, "y": 0.5},
-          "description": "Studio dei testi antichi",
-          "exerciseTypes": ["research", "analysis"]
-        },
-        {
-          "id": 55,
-          "title": "Paleografia",
-          "uid": "italiano_c1_lezione_6",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [56],
-          "position": {"x": 0.8, "y": 0.6},
-          "description": "Scritture antiche",
-          "exerciseTypes": ["study", "practice"]
-        },
-        {
-          "id": 56,
-          "title": "Esegesi Biblica",
-          "uid": "italiano_c1_lezione_7",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [57],
-          "position": {"x": 0.2, "y": 0.7},
-          "description": "Interpretazione dei testi sacri",
-          "exerciseTypes": ["reading", "interpretation"]
-        },
-        {
-          "id": 57,
-          "title": "Teologia",
-          "uid": "italiano_c1_lezione_8",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [58],
-          "position": {"x": 0.8, "y": 0.8},
-          "description": "Studi teologici",
-          "exerciseTypes": ["study", "discussion"]
-        },
-        {
-          "id": 58,
-          "title": "Filosofia Medievale",
-          "uid": "italiano_c1_lezione_9",
-          "livello": "C1",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [],
-          "position": {"x": 0.2, "y": 0.9},
-          "description": "Pensiero medievale italiano",
-          "exerciseTypes": ["reading", "analysis"]
-        }
-      ]
-    },
-    {
-      "title": "CORSO D'ITALIANO C2",
-      "backgroundImage": "assets/images/fresco7.png",
-      "baseColor": {
-        "red": 172,
-        "green": 21,
-        "blue": 21
-      },
-      "cardColor": {
-        "red": 133,
-        "green": 27,
-        "blue": 27
-      },
-      "textColor": {
-        "red": 255,
-        "green": 255,
-        "blue": 255
-      },
-      "cefr_range": ["C2"],
-      "lessons": [
-        {
-          "id": 60,
-          "title": "Maestria Linguistica",
-          "uid": "italiano_c2_lezione_1",
-          "livello": "C2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [61],
-          "position": {"x": 0.2, "y": 0.1},
-          "description": "Perfeziona la padronanza",
-          "exerciseTypes": ["advanced_practice", "evaluation"]
-        },
-        {
-          "id": 61,
-          "title": "Composizione Letteraria",
-          "uid": "italiano_c2_lezione_2",
-          "livello": "C2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [62],
-          "position": {"x": 0.8, "y": 0.2},
-          "description": "Crea opere letterarie",
-          "exerciseTypes": ["creative_writing", "criticism"]
-        },
-        {
-          "id": 62,
-          "title": "Critica Avanzata",
-          "uid": "italiano_c2_lezione_3",
-          "livello": "C2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [63],
-          "position": {"x": 0.2, "y": 0.3},
-          "description": "Analisi critica profonda",
-          "exerciseTypes": ["analysis", "publication"]
-        },
-        {
-          "id": 63,
-          "title": "Ricerca Accademica",
-          "uid": "italiano_c2_lezione_4",
-          "livello": "C2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [64],
-          "position": {"x": 0.8, "y": 0.4},
-          "description": "Metodologia di ricerca",
-          "exerciseTypes": ["research", "writing"]
-        },
-        {
-          "id": 64,
-          "title": "Insegnamento",
-          "uid": "italiano_c2_lezione_5",
-          "livello": "C2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [65],
-          "position": {"x": 0.2, "y": 0.5},
-          "description": "Insegna l'italiano",
-          "exerciseTypes": ["pedagogy", "practice"]
-        },
-        {
-          "id": 65,
-          "title": "Traduzione Letteraria",
-          "uid": "italiano_c2_lezione_6",
-          "livello": "C2",
-          "isUnlocked": false,
-          "isCompleted": false,
-          "nextLessonIds": [],
-          "position": {"x": 0.8, "y": 0.6},
-          "description": "Traduci opere letterarie",
-          "exerciseTypes": ["translation", "publication"]
+          "exerciseTypes": [
+            "reading",
+            "discussion",
+            "video_comprehension"
+          ],
+          "lives": 5,
+          "currentStreak": 0,
+          "maxStreak": 0,
+          "totalXP": 0,
+          "timeSpent": 0,
+          "isReplayable": false,
+          "difficulty": 5,
+          "estimatedTime": "16 min",
+          "category": "Cultura"
         }
       ]
     }

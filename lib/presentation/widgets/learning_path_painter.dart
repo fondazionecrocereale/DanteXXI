@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/entities/divine_comedy_model.dart';
+import '../../domain/entities/lesson.dart';
 
 class LearningPathPainter extends CustomPainter {
   final List<Lesson> lessons;
@@ -27,7 +27,16 @@ class LearningPathPainter extends CustomPainter {
       for (final nextId in lesson.nextLessonIds) {
         final nextLesson = lessons.firstWhere(
           (l) => l.id == nextId,
-          orElse: () => Lesson.dummy(),
+          orElse: () => const Lesson(
+            id: 0,
+            isCompleted: false,
+            isUnlocked: false,
+            livello: '',
+            nextLessonIds: [],
+            position: Position(x: 0.0, y: 0.0),
+            title: '',
+            uid: '',
+          ),
         );
 
         if (nextLesson.id != 0) {

@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
-import '../blocs/auth/auth_bloc.dart';
-import '../blocs/auth/auth_event.dart';
 import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_texts.dart';
 import '../../core/services/profile_service.dart';
 import '../../core/services/error_handler_service.dart';
-import '../../core/services/auth_service.dart';
 import '../../core/services/session_manager.dart';
+import '../../core/services/notification_service.dart';
 import '../../domain/entities/editable_profile.dart';
 import '../widgets/custom_text_field.dart';
-import '../widgets/custom_button.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -59,6 +54,12 @@ class _ProfilePageState extends State<ProfilePage> {
   bool _weeklyReports = true;
   bool _achievementNotifications = true;
 
+  // Configuración de notificaciones locales
+  bool _dailyFactNotifications = false;
+  bool _randomFactNotifications = false;
+  TimeOfDay _notificationTime = const TimeOfDay(hour: 9, minute: 0);
+  bool _notificationsInitialized = false;
+
   final List<String> _availableLanguages = [
     'Español',
     'English',
@@ -76,6 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     _initializeControllers();
     _loadProfile();
+    _initializeNotifications();
   }
 
   void _initializeControllers() {
@@ -85,6 +87,122 @@ class _ProfilePageState extends State<ProfilePage> {
     _phoneController = TextEditingController();
     _learningGoalController = TextEditingController();
     _dailyGoalController = TextEditingController();
+  }
+
+  Future<void> _initializeNotifications() async {
+    try {
+      await NotificationService.initialize();
+      setState(() {
+        _notificationsInitialized = true;
+      });
+    } catch (e) {
+      print('Error inicializando notificaciones: $e');
+    }
+  }
+
+  Future<void> _selectNotificationTime() async {
+    final TimeOfDay? picked = await showTimePicker(
+      context: context,
+      initialTime: _notificationTime,
+    );
+    if (picked != null && picked != _notificationTime) {
+      setState(() {
+        _notificationTime = picked;
+      });
+      _updateNotificationSchedule();
+    }
+  }
+
+  Future<void> _updateNotificationSchedule() async {
+    if (!_notificationsInitialized) return;
+
+    try {
+      // Cancelar notificaciones existentes
+      await NotificationService.cancelAllNotifications();
+
+      // Programar nuevas notificaciones según la configuración
+      if (_dailyFactNotifications) {
+        await _scheduleDailyNotification();
+      }
+
+      if (_randomFactNotifications) {
+        await _scheduleRandomNotification();
+      }
+
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Configuración de notificaciones actualizada'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error actualizando notificaciones: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
+  }
+
+  Future<void> _scheduleDailyNotification() async {
+    await NotificationService.initialize();
+
+    final now = DateTime.now();
+    final scheduledDate = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      _notificationTime.hour,
+      _notificationTime.minute,
+    );
+
+    final nextScheduledDate = scheduledDate.isBefore(now)
+        ? scheduledDate.add(const Duration(days: 1))
+        : scheduledDate;
+
+    // Usar el método existente del NotificationService
+    await NotificationService.scheduleDailyFactNotification();
+  }
+
+  Future<void> _scheduleRandomNotification() async {
+    await NotificationService.initialize();
+
+    // Programar para una hora después de la hora seleccionada
+    final now = DateTime.now();
+    final scheduledDate = DateTime(
+      now.year,
+      now.month,
+      now.day,
+      _notificationTime.hour + 1,
+      _notificationTime.minute,
+    );
+
+    final nextScheduledDate = scheduledDate.isBefore(now)
+        ? scheduledDate.add(const Duration(days: 1))
+        : scheduledDate;
+
+    // Usar el método existente del NotificationService
+    await NotificationService.scheduleRandomFactNotification();
+  }
+
+  Future<void> _testNotification() async {
+    try {
+      await NotificationService.showImmediateFactNotification();
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Notificación de prueba enviada'),
+          backgroundColor: Colors.green,
+        ),
+      );
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text('Error enviando notificación: $e'),
+          backgroundColor: Colors.red,
+        ),
+      );
+    }
   }
 
   Future<void> _loadProfile() async {
@@ -486,6 +604,63 @@ class _ProfilePageState extends State<ProfilePage> {
                       });
                     },
                   ),
+                ],
+              ),
+
+              const SizedBox(height: 24),
+
+              // Configuraciones de notificaciones locales
+              _buildSettingsSection(
+                title: 'Notificaciones Locales',
+                icon: Icons.notifications_active,
+                color: AppColors.secondaryOrange,
+                children: [
+                  _buildSwitchSetting(
+                    title: 'Hechos Diarios',
+                    subtitle: 'Recibe un hecho curioso sobre Italia cada día',
+                    icon: Icons.calendar_today,
+                    value: _dailyFactNotifications,
+                    onChanged: (value) {
+                      setState(() {
+                        _dailyFactNotifications = value;
+                      });
+                      _updateNotificationSchedule();
+                    },
+                  ),
+
+                  _buildSwitchSetting(
+                    title: 'Hechos Aleatorios',
+                    subtitle: 'Recibe hechos curiosos en momentos aleatorios',
+                    icon: Icons.shuffle,
+                    value: _randomFactNotifications,
+                    onChanged: (value) {
+                      setState(() {
+                        _randomFactNotifications = value;
+                      });
+                      _updateNotificationSchedule();
+                    },
+                  ),
+
+                  _buildActionSetting(
+                    title: 'Hora de Notificación',
+                    subtitle: '${_notificationTime.format(context)}',
+                    icon: Icons.access_time,
+                    onTap: _selectNotificationTime,
+                  ),
+
+                  _buildActionSetting(
+                    title: 'Probar Notificación',
+                    subtitle: 'Envía una notificación de prueba',
+                    icon: Icons.send,
+                    onTap: _testNotification,
+                  ),
+
+                  if (!_notificationsInitialized)
+                    _buildInfoSetting(
+                      title: 'Estado',
+                      subtitle: 'Inicializando notificaciones...',
+                      icon: Icons.info,
+                    ),
                 ],
               ),
 
