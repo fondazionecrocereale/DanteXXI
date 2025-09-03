@@ -2,8 +2,8 @@
   "italian_audiobooks": [
     {
       "name": "La Divina Commedia - Inferno",
-       "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/The%20Death%20of%20Julius%20Caesar%20(by%20Suetonius)%20-%20EN%20_%20FR%20SUBS.mp3?alt=media&token=45992414-1f03-488d-b675-831e318d6af0.mp3",
-            "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Suetonius%2C_De_vita_Caesarum%2C_Berlin%2C_Ms._lat._fol._28.jpg/800px-Suetonius%2C_De_vita_Caesarum%2C_Berlin%2C_Ms._lat._fol._28.jpg",
+      "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/The%20Death%20of%20Julius%20Caesar%20(by%20Suetonius)%20-%20EN%20_%20FR%20SUBS.mp3?alt=media&token=45992414-1f03-488d-b675-831e318d6af0.mp3",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Suetonius%2C_De_vita_Caesarum%2C_Berlin%2C_Ms._lat._fol._28.jpg/800px-Suetonius%2C_De_vita_Caesarum%2C_Berlin%2C_Ms._lat._fol._28.jpg",
       "author": "Dante Alighieri",
       "description": "Primera parte de la obra maestra de Dante, narrando su viaje por los nueve círculos del infierno. Una obra fundamental de la literatura italiana y universal.",
       "category": "Letteratura Classica",
@@ -59,7 +59,7 @@
     },
     {
       "name": "Pinocchio - Le Avventure di un Burattino",
-      "url": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Pinocchio%2FCarlo%20Collodi%20-%20Pinocchio%20-%20Le%20Avventure%20di%20un%20Burattino.mp3?alt=media&token=example",
+      "url": "https://mbizqtjqwcukpstphaky.supabase.co/storage/v1/object/public/audiobooks/Audiolibro%20C.%20Collodi%20Le%20Avventure%20di%20Pinocchio%20-%20Capitolo%20I%20-%20Librinpillole.mp3",
       "image": "https://firebasestorage.googleapis.com/v0/b/ciceroxxi.firebasestorage.app/o/Pinocchio%2FPinocchio%20cover.jpg?alt=media&token=example",
       "author": "Carlo Collodi",
       "description": "La famosa historia del muñeco de madera que cobra vida y aprende a ser un niño de verdad. Una obra maestra de la literatura infantil italiana.",
@@ -71,28 +71,838 @@
       "creatorLink": "https://it.wikipedia.org/wiki/Carlo_Collodi",
       "lingua": "it",
       "level": "A2",
-      "duration": "1:45:00",
+      "duration": "00:05:43",
       "capitoli": [
         {
           "capitolo": "Capitolo I - Come andò che Maestro Ciliegia trovò un pezzo di legno",
-          "duration": "00:12:00",
+          "duration": "00:05:43",
           "subtitles": [
             {
-              "text": "C'era una volta...",
-              "startTime": "00:00:00",
-              "endTime": "00:00:03",
-              "translation": "Érase una vez...",
-              "translationEN": "Once upon a time...",
-              "translationPR": "Era uma vez...",
+              "text": "Le avventure di Pinocchio",
+              "startTime": "00:00:10.128",
+              "endTime": "00:00:12.128",
+              "translation": "Las aventuras de Pinocho",
+              "translationPR": "As aventuras de Pinóquio",
+              "translationEN": "The adventures of Pinocchio",
               "isWordKey": false
             },
             {
-              "text": "Un re! diranno subito i miei piccoli lettori",
-              "startTime": "00:00:03",
-              "endTime": "00:00:08",
-              "translation": "¡Un re! dirán enseguida mis pequeños lectores",
-              "translationEN": "A king! my little readers will say at once",
-              "translationPR": "Um rei! dirão logo meus pequenos leitores",
+              "text": "di Carlo Collodi",
+              "startTime": "00:00:12.128",
+              "endTime": "00:00:14.180",
+              "translation": "por carlo Collodi",
+              "translationPR": "por Carlo Collodi",
+              "translationEN": "by Carlo Collodi",
+              "isWordKey": false
+            },
+            {
+              "text": "letto da libri in pillole",
+              "startTime": "00:00:14.180",
+              "endTime": "00:00:17.167",
+              "translation": "Leído por libros en pastillas",
+              "translationPR": "lido por livros em comprimidos",
+              "translationEN": "read by books in pills",
+              "isWordKey": false
+            },
+            {
+              "text": "capitolo 1",
+              "startTime": "00:00:19.727",
+              "endTime": "00:00:20.864",
+              "translation": "Capítulo 1",
+              "translationPR": "Capítulo 1",
+              "translationEN": "Chapter 1",
+              "isWordKey": false
+            },
+            {
+              "text": "Come andò che Mastro ciliegia falegname trovò un pezzo di legno che piangeva e",
+              "startTime": "00:00:20.864",
+              "endTime": "00:00:26.346",
+              "translation": "Mientras fue ese maestro carpintero de cereza, encontró un trozo de madera que lloraba y",
+              "translationPR": "Quando ele foi, o mestre Cherry Carpenter encontrou um pedaço de madeira que chorou e",
+              "translationEN": "As he went that master cherry carpenter found a piece of wood that cried and",
+              "isWordKey": false
+            },
+            {
+              "text": "rideva come un bambino",
+              "startTime": "00:00:26.346",
+              "endTime": "00:00:27.963",
+              "translation": "Se rió como un niño",
+              "translationPR": "Ele riu como uma criança",
+              "translationEN": "he laughed like a child",
+              "isWordKey": false
+            },
+            {
+              "text": "C'era una volta",
+              "startTime": "00:00:27.963",
+              "endTime": "00:00:29.910",
+              "translation": "Érase una vez",
+              "translationPR": "Era uma vez",
+              "translationEN": "Once upon a time",
+              "isWordKey": false
+            },
+            {
+              "text": "un re diranno subito i miei piccoli lettori",
+              "startTime": "00:00:29.910",
+              "endTime": "00:00:33.728",
+              "translation": "Un rey inmediatamente diran mis pequeños lectores",
+              "translationPR": "Um rei dirá imediatamente minhas pequenos letoris",
+              "translationEN": "a king will immediately say my little beds",
+              "isWordKey": false
+            },
+            {
+              "text": "No ragazzi avete sbagliato",
+              "startTime": "00:00:33.728",
+              "endTime": "00:00:35.912",
+              "translation": "No hay chicos, estan equivocados",
+              "translationPR": "Nenhum caras você estava errado",
+              "translationEN": "No guys you were wrong",
+              "isWordKey": false
+            },
+            {
+              "text": "C'era una volta un pezzo di legno",
+              "startTime": "00:00:35.912",
+              "endTime": "00:00:38.652",
+              "translation": "Érase una vez un pedazo de madera",
+              "translationPR": "Era uma vez um pedaço de madeira",
+              "translationEN": "Once upon a time there was a piece of wood",
+              "isWordKey": false
+            },
+            {
+              "text": "non era un legno di lusso ma un semplice pezzo da Catasta",
+              "startTime": "00:00:38.652",
+              "endTime": "00:00:42.771",
+              "translation": "No era una madera de lujo sino una simple pieza de catastros",
+              "translationPR": "Não era uma madeira de luxo, mas uma peça simples de cadastro",
+              "translationEN": "It was not a luxury wood but a simple cadastre piece",
+              "isWordKey": false
+            },
+            {
+              "text": "di quelli che d'inverno si mettono nelle stufe e nei caminetti per accendere il",
+              "startTime": "00:00:42.771",
+              "endTime": "00:00:47.886",
+              "translation": "de los que en invierno se colocan en las estufas y chimeneas para encender el",
+              "translationPR": "daqueles que no inverno são colocados nos fogões e lareiras para ligar o",
+              "translationEN": "of those who in winter are put in the stoves and fireplaces to turn on the",
+              "isWordKey": false
+            },
+            {
+              "text": "fuoco e riscaldare le stanze",
+              "startTime": "00:00:47.886",
+              "endTime": "00:00:49.765",
+              "translation": "dispara y calienta las habitaciones",
+              "translationPR": "Fogo e aqueça os quartos",
+              "translationEN": "fire and heat the rooms",
+              "isWordKey": false
+            },
+            {
+              "text": "non so come andasse ma il fatto Gli è anche un bel giorno questo pezzo di legno",
+              "startTime": "00:00:49.765",
+              "endTime": "00:00:54.790",
+              "translation": "No sé cómo fue, pero el hecho también es un buen día este pedazo de madera",
+              "translationPR": "Eu não sei como foi, mas o fato é também um bom dia este pedaço de madeira",
+              "translationEN": "I don't know how it went but the fact is also a nice day this piece of wood",
+              "isWordKey": false
+            },
+            {
+              "text": "capitò nella Bottega di un vecchio falegname il quale aveva nome mastran",
+              "startTime": "00:00:54.790",
+              "endTime": "00:00:59.435",
+              "translation": "Sucedió en el taller de un viejo carpintero que tenía un nombre Mastran",
+              "translationPR": "Aconteceu no workshop de um velho carpinteiro que tinha um nome de Mastran",
+              "translationEN": "It happened in the workshop of an old carpenter who had a name Mastran",
+              "isWordKey": false
+            },
+            {
+              "text": "se non che tutti lo chiamavano maestro cilie",
+              "startTime": "00:00:59.435",
+              "endTime": "00:01:03.293",
+              "translation": "excepto que todos lo llamaron maestro cilie",
+              "translationPR": "exceto que todos o chamavam de maestro cilie",
+              "translationEN": "except that everyone called him Maestro Cilie",
+              "isWordKey": false
+            },
+            {
+              "text": "per via della punta del suo naso",
+              "startTime": "00:01:03.293",
+              "endTime": "00:01:06.019",
+              "translation": "Por la punta de su nariz",
+              "translationPR": "Por causa da ponta do nariz",
+              "translationEN": "because of the tip of his nose",
+              "isWordKey": false
+            },
+            {
+              "text": "che era sempre Lustra e paonazza come una ciliegia matura",
+              "startTime": "00:01:06.019",
+              "endTime": "00:01:10.760",
+              "translation": "que siempre fue brillo y paonazza como una cereza madura",
+              "translationPR": "que sempre foi brilhar e paonazza como uma cereja madura",
+              "translationEN": "who was always shine and paonazza like a mature cherry",
+              "isWordKey": false
+            },
+            {
+              "text": "appena maestro ciliegia ebbe visto quel pezzo di legno si rallegrò tutto",
+              "startTime": "00:01:10.760",
+              "endTime": "00:01:15.760",
+              "translation": "Tan pronto como el Maestro Cherry había visto esa pieza de madera se regocijaron todo",
+              "translationPR": "Assim que o mestre Cherry viu aquele pedaço de madeira regozijou tudo",
+              "translationEN": "As soon as master cherry had seen that piece of wood rejoiced everything",
+              "isWordKey": false
+            },
+            {
+              "text": "e dandosi una fregatura di mani per la contentezza",
+              "startTime": "00:01:15.760",
+              "endTime": "00:01:19.248",
+              "translation": "y dándote un rasgón de las manos para la satisfacción",
+              "translationPR": "e dando a si mesmo um rasgo de mãos por contentamento",
+              "translationEN": "and giving himself a rip -off of hands for contentment",
+              "isWordKey": false
+            },
+            {
+              "text": "borbottò a mezza voce",
+              "startTime": "00:01:19.248",
+              "endTime": "00:01:21.153",
+              "translation": "murmurado en media voz",
+              "translationPR": "murmurou em meia voz",
+              "translationEN": "muttered in half a voice",
+              "isWordKey": false
+            },
+            {
+              "text": "questo legno è capitata a tempo voglio servirmene per fare una gamba di tavolino",
+              "startTime": "00:01:21.153",
+              "endTime": "00:01:28.078",
+              "translation": "Esta madera ha sucedido a tiempo, quiero llevarlo para hacer una pierna de mesa.",
+              "translationPR": "Esta madeira aconteceu com o tempo eu quero levá -lo para fazer uma perna de mesa",
+              "translationEN": "This wood has happened in time I want to take it to make a leg of table",
+              "isWordKey": false
+            },
+            {
+              "text": "Detto Fatto prese subito lascia arrotata per cominciare a levargli la scorza è",
+              "startTime": "00:01:28.078",
+              "endTime": "00:01:33.468",
+              "translation": "Dicho hecho tomado inmediatamente hojas enrolladas para comenzar a eliminar la ralladura es",
+              "translationPR": "O referido fato tirado imediatamente as folhas roladas para começar a remover o entusiasmo é",
+              "translationEN": "Said fact taken immediately leaves rolled to begin to remove the zest is",
+              "isWordKey": false
+            },
+            {
+              "text": "a di grossa",
+              "startTime": "00:01:33.468",
+              "endTime": "00:01:34.298",
+              "translation": "un gran",
+              "translationPR": "um grande",
+              "translationEN": "a big",
+              "isWordKey": false
+            },
+            {
+              "text": "Ma quando fu lì per lasciare andare la prima asciata",
+              "startTime": "00:01:34.298",
+              "endTime": "00:01:37.802",
+              "translation": "Pero cuando estuvo allí para soltar el primer hacha",
+              "translationPR": "Mas quando estava lá para deixar o primeiro machado de lado",
+              "translationEN": "But when it was there to let go of the first ax",
+              "isWordKey": false
+            },
+            {
+              "text": "rimase col braccio sospeso In",
+              "startTime": "00:01:37.802",
+              "endTime": "00:01:40.620",
+              "translation": "Permaneció con el brazo suspendido en",
+              "translationPR": "Ele permaneceu com o braço suspenso em",
+              "translationEN": "He remained with the arm suspended in",
+              "isWordKey": false
+            },
+            {
+              "text": "perché sentì una vocina sottile sottile",
+              "startTime": "00:01:40.620",
+              "endTime": "00:01:43.873",
+              "translation": "Porque escuchó una delgada voz delgada",
+              "translationPR": "Porque ele ouviu uma voz fina fina",
+              "translationEN": "because he heard a thin thin voice",
+              "isWordKey": false
+            },
+            {
+              "text": "che disse raccomandando",
+              "startTime": "00:01:43.873",
+              "endTime": "00:01:45.757",
+              "translation": "Dijo recomendando",
+              "translationPR": "Ele disse recomendando",
+              "translationEN": "he said recommending",
+              "isWordKey": false
+            },
+            {
+              "text": "non mi picchiare tanto forte",
+              "startTime": "00:01:45.757",
+              "endTime": "00:01:47.695",
+              "translation": "No me ganes tanto",
+              "translationPR": "Não me bata tanto",
+              "translationEN": "don't beat me so hard",
+              "isWordKey": false
+            },
+            {
+              "text": "Figuratevi come rimase quel buon vecchio di maestro ciliegia",
+              "startTime": "00:01:47.695",
+              "endTime": "00:01:51.965",
+              "translation": "Imagina cómo se quedaba ese viejo viejo cereza",
+              "translationPR": "Imagine como aquele velho velho velho permaneceu",
+              "translationEN": "Imagine how that good old cherry old man remained",
+              "isWordKey": false
+            },
+            {
+              "text": "giro gli occhi smarriti intorno alla stanza per vedere di dov'è mai poteva",
+              "startTime": "00:01:51.965",
+              "endTime": "00:01:56.872",
+              "translation": "Redgo sus ojos perdidos alrededor de la habitación para ver dónde nunca podría",
+              "translationPR": "Eu percorro os olhos dele perdidos pela sala para ver onde ele nunca poderia",
+              "translationEN": "I go around his eyes lost around the room to see where he could never",
+              "isWordKey": false
+            },
+            {
+              "text": "essere uscita quella vocina e non vide nessuno",
+              "startTime": "00:01:56.872",
+              "endTime": "00:01:59.989",
+              "translation": "Habiendo salido esa pequeña voz y no había visto a nadie",
+              "translationPR": "Tendo saído daquela voz e não viu ninguém",
+              "translationEN": "having come out that little voice and saw no one",
+              "isWordKey": false
+            },
+            {
+              "text": "guardò sotto il banco",
+              "startTime": "00:01:59.989",
+              "endTime": "00:02:01.876",
+              "translation": "Miró debajo del mostrador",
+              "translationPR": "Ele olhou debaixo do balcão",
+              "translationEN": "He looked under the counter",
+              "isWordKey": false
+            },
+            {
+              "text": "guardò dentro un armadio che stava sempre chiuso",
+              "startTime": "00:02:02.748",
+              "endTime": "00:02:06.061",
+              "translation": "Miró dentro de un armario que siempre estaba cerrado",
+              "translationPR": "Ele olhou dentro de um guarda -roupa que sempre estava fechado",
+              "translationEN": "He looked inside a wardrobe that was always closed",
+              "isWordKey": false
+            },
+            {
+              "text": "e",
+              "startTime": "00:02:06.061",
+              "endTime": "00:02:07.251",
+              "translation": "Y",
+              "translationPR": "E",
+              "translationEN": "And",
+              "isWordKey": false
+            },
+            {
+              "text": "guardò nel Corbello dei trucioli e della segatura",
+              "startTime": "00:02:07.251",
+              "endTime": "00:02:10.695",
+              "translation": "Miró en el Corbello de las papas fritas y los aserros",
+              "translationPR": "Ele olhou no Corbello das fichas e serras",
+              "translationEN": "He looked in the corbello of the chips and sawdusts",
+              "isWordKey": false
+            },
+            {
+              "text": "e nessuno",
+              "startTime": "00:02:10.695",
+              "endTime": "00:02:11.929",
+              "translation": "Y nadie",
+              "translationPR": "e ninguém",
+              "translationEN": "and nobody",
+              "isWordKey": false
+            },
+            {
+              "text": "aprì l'uscio di Bottega per dare un'occhiata anche sulla strada",
+              "startTime": "00:02:11.929",
+              "endTime": "00:02:16.655",
+              "translation": "Abrió la puerta de Bottega para echar un vistazo a la calle",
+              "translationPR": "Ele abriu a porta de Bottega para também dar uma olhada na rua",
+              "translationEN": "He opened Bottega's door to also take a look at the street",
+              "isWordKey": false
+            },
+            {
+              "text": "e nessuno",
+              "startTime": "00:02:16.655",
+              "endTime": "00:02:18.306",
+              "translation": "Y nadie",
+              "translationPR": "e ninguém",
+              "translationEN": "and nobody",
+              "isWordKey": false
+            },
+            {
+              "text": "Oh dunque",
+              "startTime": "00:02:18.306",
+              "endTime": "00:02:19.479",
+              "translation": "Oh entonces",
+              "translationPR": "Oh então",
+              "translationEN": "Oh then",
+              "isWordKey": false
+            },
+            {
+              "text": "ho capito",
+              "startTime": "00:02:19.479",
+              "endTime": "00:02:22.061",
+              "translation": "Entiendo",
+              "translationPR": "Eu entendo",
+              "translationEN": "I understand",
+              "isWordKey": false
+            },
+            {
+              "text": "disse Allora ridendo e grattandosi la parrucca e si vede quella vocina me la",
+              "startTime": "00:02:22.061",
+              "endTime": "00:02:27.942",
+              "translation": "Luego dijo riendo y rascándose la peluca y me ves esa pequeña voz allí",
+              "translationPR": "Ele então disse rindo e arranhando sua peruca e você vê aquela pequena voz me lá",
+              "translationEN": "he then said laughing and scratching his wig and you see that little voice me there",
+              "isWordKey": false
+            },
+            {
+              "text": "son figurata io",
+              "startTime": "00:02:27.942",
+              "endTime": "00:02:29.181",
+              "translation": "Fui pensado",
+              "translationPR": "Eu fui imaginado",
+              "translationEN": "I was figured",
+              "isWordKey": false
+            },
+            {
+              "text": "io rimettiamoci a lavorare vai ripresa lascia in mano",
+              "startTime": "00:02:29.181",
+              "endTime": "00:02:33.705",
+              "translation": "Volveré al trabajo, vaya a recuperar el permiso en la mano",
+              "translationPR": "Estou voltando ao trabalho, vá recuperar licença na mão",
+              "translationEN": "I'm getting back to work go recovering leave in hand",
+              "isWordKey": false
+            },
+            {
+              "text": "tirò giù un solennissimo colpo sul pezzo di",
+              "startTime": "00:02:33.705",
+              "endTime": "00:02:37.379",
+              "translation": "Derribó un golpe muy solemne en el pedazo de",
+              "translationPR": "Ele puxou um golpe muito solene no pedaço de",
+              "translationEN": "He pulled down a very solemn blow on the piece of",
+              "isWordKey": false
+            },
+            {
+              "text": "Ohi tu mi hai fatto male",
+              "startTime": "00:02:37.379",
+              "endTime": "00:02:39.802",
+              "translation": "Ohi me lastimas",
+              "translationPR": "Ohi você me machucou",
+              "translationEN": "Ohi you hurt me",
+              "isWordKey": false
+            },
+            {
+              "text": "gridò rammaricandosi la solita vocina",
+              "startTime": "00:02:39.802",
+              "endTime": "00:02:42.656",
+              "translation": "gritó, lamentando la pequeña voz habitual",
+              "translationPR": "Ele gritou, lamentando a pequena voz habitual",
+              "translationEN": "he shouted, regretting the usual little voice",
+              "isWordKey": false
+            },
+            {
+              "text": "questa volta maestro ciliegia restò di stucco",
+              "startTime": "00:02:42.656",
+              "endTime": "00:02:45.567",
+              "translation": "Esta vez el maestro Cherry permaneció estuco",
+              "translationPR": "Desta vez, o mestre de cereja permaneceu estuque",
+              "translationEN": "This time master cherry remained stucco",
+              "isWordKey": false
+            },
+            {
+              "text": "con gli occhi fuori dal capo per la paura con la bocca spalancata e con la",
+              "startTime": "00:02:45.567",
+              "endTime": "00:02:50.684",
+              "translation": "con los ojos fuera de la cabeza por miedo con la boca abierta y con el",
+              "translationPR": "com os olhos fora da cabeça por medo com a boca aberta e com o",
+              "translationEN": "with his eyes out of the head for fear with his mouth wide open and with the",
+              "isWordKey": false
+            },
+            {
+              "text": "lingua giù ciondoloni fino al me",
+              "startTime": "00:02:50.684",
+              "endTime": "00:02:52.967",
+              "translation": "Lengua Down Pendse hasta que yo",
+              "translationPR": "Língua para baixo até mim",
+              "translationEN": "tongue down pendant until me",
+              "isWordKey": false
+            },
+            {
+              "text": "come un mascherone da Fontana",
+              "startTime": "00:02:52.967",
+              "endTime": "00:02:55.317",
+              "translation": "Como una máscara de fuente",
+              "translationPR": "Como uma máscara de fonte",
+              "translationEN": "Like a fountain mask",
+              "isWordKey": false
+            },
+            {
+              "text": "appena riavuto della parola cominciò a dire tremando e balbettando dallo",
+              "startTime": "00:02:55.317",
+              "endTime": "00:03:01.000",
+              "translation": "Tan pronto como regresé de la palabra, comenzó a decir temblando y tartamudeando de",
+              "translationPR": "Assim que eu voltei da palavra, ele começou a dizer tremendo e gaguejando de",
+              "translationEN": "As soon as I got back of the word, he began to say trembling and stammering from",
+              "isWordKey": false
+            },
+            {
+              "text": "ma cattivi dove sarà uscita questa fucina che ha detto",
+              "startTime": "00:03:01.741",
+              "endTime": "00:03:05.813",
+              "translation": "Pero malo donde se liberará esta fragua, lo que dijo",
+              "translationPR": "mas ruim onde essa forja será lançada, o que ele disse",
+              "translationEN": "but bad where this forge will be released which he said",
+              "isWordKey": false
+            },
+            {
+              "text": "Eppure qui Non c'è anima viva",
+              "startTime": "00:03:06.603",
+              "endTime": "00:03:09.302",
+              "translation": "Sin embargo, aquí no hay alma viva",
+              "translationPR": "No entanto, aqui não há alma viva",
+              "translationEN": "Yet here there is no living soul",
+              "isWordKey": false
+            },
+            {
+              "text": "chi che sia per caso",
+              "startTime": "00:03:09.302",
+              "endTime": "00:03:11.021",
+              "translation": "quien es por casualidad",
+              "translationPR": "quem é por acaso",
+              "translationEN": "who is by chance",
+              "isWordKey": false
+            },
+            {
+              "text": "questo pezzo di legno",
+              "startTime": "00:03:11.021",
+              "endTime": "00:03:13.328",
+              "translation": "Este trozo de madera",
+              "translationPR": "Este pedaço de madeira",
+              "translationEN": "This piece of wood",
+              "isWordKey": false
+            },
+            {
+              "text": "che abbia imparato a piangere",
+              "startTime": "00:03:13.328",
+              "endTime": "00:03:15.461",
+              "translation": "que aprendió a llorar",
+              "translationPR": "que ele aprendeu a chorar",
+              "translationEN": "that he learned to cry",
+              "isWordKey": false
+            },
+            {
+              "text": "e a lamentarsi come bimbo",
+              "startTime": "00:03:15.461",
+              "endTime": "00:03:17.814",
+              "translation": "y quejarse como un niño",
+              "translationPR": "e reclamar como uma criança",
+              "translationEN": "and to complain like a child",
+              "isWordKey": false
+            },
+            {
+              "text": "io con la posso credere",
+              "startTime": "00:03:18.574",
+              "endTime": "00:03:20.530",
+              "translation": "Puedo creerlo con",
+              "translationPR": "Eu posso acreditar com",
+              "translationEN": "I can believe it with",
+              "isWordKey": false
+            },
+            {
+              "text": "Oh è questo legno Eccolo",
+              "startTime": "00:03:21.097",
+              "endTime": "00:03:23.360",
+              "translation": "Oh, ¿esta madera aquí?",
+              "translationPR": "Oh, isso é madeira aqui",
+              "translationEN": "Oh is this wood here",
+              "isWordKey": false
+            },
+            {
+              "text": "è un pezzo di legno da caminetto",
+              "startTime": "00:03:23.360",
+              "endTime": "00:03:26.153",
+              "translation": "Es un trozo de madera de chimenea",
+              "translationPR": "É um pedaço de madeira de lareira",
+              "translationEN": "It is a piece of fireplace wooden",
+              "isWordKey": false
+            },
+            {
+              "text": "come tutti i la",
+              "startTime": "00:03:26.153",
+              "endTime": "00:03:28.058",
+              "translation": "Como todo el",
+              "translationPR": "Como tudo",
+              "translationEN": "Like all the",
+              "isWordKey": false
+            },
+            {
+              "text": "ha buttato sui forbice la farfallina pentola di fagioli",
+              "startTime": "00:03:28.058",
+              "endTime": "00:03:33.425",
+              "translation": "Lanzó la mariposa mariposa de frijoles en las tijeras",
+              "translationPR": "Ele jogou a borboleta borboleta de feijão na tesoura",
+              "translationEN": "He threw the butterfly butterfly of beans on the scissors",
+              "isWordKey": false
+            },
+            {
+              "text": "che ci sia nascosto dentro anche tu",
+              "startTime": "00:03:34.585",
+              "endTime": "00:03:37.040",
+              "translation": "que también está escondido por dentro",
+              "translationPR": "que está escondido por dentro também",
+              "translationEN": "that there is hidden inside too",
+              "isWordKey": false
+            },
+            {
+              "text": "Ah se c'è nascosto anche tu",
+              "startTime": "00:03:37.040",
+              "endTime": "00:03:39.455",
+              "translation": "Ah, si estás oculto también",
+              "translationPR": "Ah se você estiver escondido também",
+              "translationEN": "Ah if you are hidden too",
+              "isWordKey": false
+            },
+            {
+              "text": "calcio Peggio per lui ora",
+              "startTime": "00:03:39.455",
+              "endTime": "00:03:41.568",
+              "translation": "Fútbol peor para él ahora",
+              "translationPR": "Futebol pior para ele agora",
+              "translationEN": "Football worse for him now",
+              "isWordKey": false
+            },
+            {
+              "text": "era comodo io e così dicendo agguantò con tutte e due le mani quel povero pezzo",
+              "startTime": "00:03:41.568",
+              "endTime": "00:03:47.964",
+              "translation": "Fue cómodo y, por lo tanto, dijo que agarró esa pobre pieza con ambas manos",
+              "translationPR": "Era confortável e dizendo que ele pegou aquela peça pobre com as duas mãos",
+              "translationEN": "It was comfortable and so saying he grabbed that poor piece with both hands",
+              "isWordKey": false
+            },
+            {
+              "text": "di legno e si pose a sbatacchia senza carità contro le pareti della stanza",
+              "startTime": "00:03:47.964",
+              "endTime": "00:03:54.038",
+              "translation": "de madera y se destacó sin caridad contra las paredes de la habitación",
+              "translationPR": "de madeira e se destacou sem caridade contra as paredes da sala",
+              "translationEN": "of wood and stood out without charity against the walls of the room",
+              "isWordKey": false
+            },
+            {
+              "text": "poi si messe in",
+              "startTime": "00:03:54.038",
+              "endTime": "00:03:56.040",
+              "translation": "Entonces entra",
+              "translationPR": "Então entre",
+              "translationEN": "Then get in",
+              "isWordKey": false
+            },
+            {
+              "text": "per",
+              "startTime": "00:03:56.040",
+              "endTime": "00:03:56.873",
+              "translation": "Para",
+              "translationPR": "Para",
+              "translationEN": "For",
+              "isWordKey": false
+            },
+            {
+              "text": "se c'era qualche vocina che si lamenta",
+              "startTime": "00:03:56.873",
+              "endTime": "00:04:00.258",
+              "translation": "Si hubiera una pequeña voz que se queja",
+              "translationPR": "Se houve uma pequena voz que reclama",
+              "translationEN": "If there was some little voice that complains",
+              "isWordKey": false
+            },
+            {
+              "text": "aspettò due minuti",
+              "startTime": "00:04:00.258",
+              "endTime": "00:04:02.188",
+              "translation": "Esperó dos minutos",
+              "translationPR": "Ele esperou dois minutos",
+              "translationEN": "He waited for two minutes",
+              "isWordKey": false
+            },
+            {
+              "text": "eh",
+              "startTime": "00:04:02.188",
+              "endTime": "00:04:03.174",
+              "translation": "eh",
+              "translationPR": "Eh",
+              "translationEN": "eh",
+              "isWordKey": false
+            },
+            {
+              "text": "cinque minuti",
+              "startTime": "00:04:03.174",
+              "endTime": "00:04:04.497",
+              "translation": "cinco minutos",
+              "translationPR": "cinco minutos",
+              "translationEN": "five minutes",
+              "isWordKey": false
+            },
+            {
+              "text": "10 minuti",
+              "startTime": "00:04:05.258",
+              "endTime": "00:04:06.576",
+              "translation": "10 minutos",
+              "translationPR": "10 minutos",
+              "translationEN": "10 minutes",
+              "isWordKey": false
+            },
+            {
+              "text": "eh nulla Ho capito disse Allora sforzandosi di ridere e arruffato sulla",
+              "startTime": "00:04:06.576",
+              "endTime": "00:04:13.129",
+              "translation": "Oh, no entendí nada que él dijo, luchando por reír y revolví en el",
+              "translationPR": "Oh, eu não entendi nada, então ele disse, esforçando -se para rir e bagunçado no",
+              "translationEN": "Oh I understood nothing then he said, striving to laugh and ruffled on the",
+              "isWordKey": false
+            },
+            {
+              "text": "parrucca si vede quella vocina nel Destroy me la son figurata io",
+              "startTime": "00:04:13.129",
+              "endTime": "00:04:19.129",
+              "translation": "peluca ves esa voz a la derecha a la derecha me imaginé",
+              "translationPR": "peruca você vê aquela voz à direita à direita que eu era imaginada",
+              "translationEN": "wig you see that voice in the right in the right I was imagined",
+              "isWordKey": false
+            },
+            {
+              "text": "rimettiamoci a lavorare giù e perché gli era entrata addosso una gran paura",
+              "startTime": "00:04:19.129",
+              "endTime": "00:04:24.579",
+              "translation": "Volvamos a trabajar y porque un gran miedo lo había entrado",
+              "translationPR": "Vamos voltar ao trabalho e porque um grande medo havia entrado nele",
+              "translationEN": "Let's get back to work down and because a great fear had entered him",
+              "isWordKey": false
+            },
+            {
+              "text": "si provò a canterellare",
+              "startTime": "00:04:24.579",
+              "endTime": "00:04:26.562",
+              "translation": "Intentó cantar",
+              "translationPR": "Ele tentou cantar",
+              "translationEN": "He tried to sing",
+              "isWordKey": false
+            },
+            {
+              "text": "per farsi un po' di",
+              "startTime": "00:04:26.562",
+              "endTime": "00:04:28.386",
+              "translation": "Para conseguir algo",
+              "translationPR": "Para conseguir alguns",
+              "translationEN": "To get some",
+              "isWordKey": false
+            },
+            {
+              "text": "intanto posata da una parte lascia prese in mano la pialla per piallare e",
+              "startTime": "00:04:28.386",
+              "endTime": "00:04:33.670",
+              "translation": "Mientras tanto, acostado por una mano, deja el avión en su mano para hacer bordes y",
+              "translationPR": "Enquanto isso, colocado, por um lado",
+              "translationEN": "Meanwhile, laid on the one hand leaves the plane to his hand to pit and",
+              "isWordKey": false
+            },
+            {
+              "text": "tirare a pulimento il pezzo",
+              "startTime": "00:04:33.670",
+              "endTime": "00:04:35.697",
+              "translation": "Borrar la pieza",
+              "translationPR": "Limpe a peça",
+              "translationEN": "Clear the piece",
+              "isWordKey": false
+            },
+            {
+              "text": "ma nel mentre che lo pialla va in su e in giù",
+              "startTime": "00:04:35.697",
+              "endTime": "00:04:39.036",
+              "translation": "Pero mientras lo afecta hacia arriba y hacia abajo",
+              "translationPR": "Mas enquanto atormenta para cima e para baixo",
+              "translationEN": "but while it plagues it up and down",
+              "isWordKey": false
+            },
+            {
+              "text": "senti la solita vo",
+              "startTime": "00:04:39.036",
+              "endTime": "00:04:40.980",
+              "translation": "Siente el VO habitual",
+              "translationPR": "Sinta o Vo habitual",
+              "translationEN": "Feel the usual vo",
+              "isWordKey": false
+            },
+            {
+              "text": "e gli disse",
+              "startTime": "00:04:40.980",
+              "endTime": "00:04:42.264",
+              "translation": "Y él le dijo",
+              "translationPR": "E ele disse a ele",
+              "translationEN": "And he said to him",
+              "isWordKey": false
+            },
+            {
+              "text": "smetti tu mi fai il pizzicorino sul corpo",
+              "startTime": "00:04:42.264",
+              "endTime": "00:04:46.125",
+              "translation": "Detente, puedes pellizcarme en el cuerpo",
+              "translationPR": "Pare você pode me beliscar no corpo",
+              "translationEN": "Stop you can pinch me on the body",
+              "isWordKey": false
+            },
+            {
+              "text": "questa volta il povero Mastro ciliegia Catti giù come fulminato",
+              "startTime": "00:04:46.125",
+              "endTime": "00:04:50.519",
+              "translation": "Esta vez, el pobre maestro cereza catti como electrocutado",
+              "translationPR": "Desta vez, o pobre mestre cereja Catti como eletrocutado",
+              "translationEN": "This time the poor master cherry catti down as electrocuted",
+              "isWordKey": false
+            },
+            {
+              "text": "quando riapri",
+              "startTime": "00:04:50.519",
+              "endTime": "00:04:52.067",
+              "translation": "Al reabrir",
+              "translationPR": "Ao reabrir",
+              "translationEN": "When reopening",
+              "isWordKey": false
+            },
+            {
+              "text": "si trovò seduto per terra",
+              "startTime": "00:04:52.067",
+              "endTime": "00:04:54.286",
+              "translation": "Se encontró sentado en el suelo",
+              "translationPR": "Ele se viu sentado no chão",
+              "translationEN": "He found himself sitting on the ground",
+              "isWordKey": false
+            },
+            {
+              "text": "il suo viso pareva trasfigurato",
+              "startTime": "00:04:54.286",
+              "endTime": "00:04:57.302",
+              "translation": "Su rostro parecía transfigurado",
+              "translationPR": "Seu rosto parecia transfigurado",
+              "translationEN": "His face seemed transfigured",
+              "isWordKey": false
+            },
+            {
+              "text": "e perfino la punta del naso di paonazza come era quasi sempre gli era diventata",
+              "startTime": "00:04:57.302",
+              "endTime": "00:05:03.353",
+              "translation": "e incluso la punta de la nariz de Padazza, ya que casi siempre se convirtió en él",
+              "translationPR": "E até a ponta do nariz de Padazza, pois quase sempre se tornou ele",
+              "translationEN": "and even the tip of the nose of Padazza as it was almost always it became him",
+              "isWordKey": false
+            },
+            {
+              "text": "turchina dalla gran paura",
+              "startTime": "00:05:03.353",
+              "endTime": "00:05:05.345",
+              "translation": "Turquín con un gran miedo",
+              "translationPR": "Turquim com um grande medo",
+              "translationEN": "turquin with a great fear",
               "isWordKey": false
             }
           ]

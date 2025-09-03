@@ -253,9 +253,9 @@ class _HomeContentState extends State<HomeContent> {
         Expanded(
           child: _buildStatCard(
             icon: Icons.quiz,
-            title: 'Ejercicios',
+            title: 'Mis Cursos',
             value: '45',
-            subtitle: 'Resueltos',
+            subtitle: 'Cursos',
             color: AppColors.secondaryGreen,
             onTap: () => Navigator.of(context).push(
               MaterialPageRoute(builder: (context) => const ExercisesPage()),
@@ -403,7 +403,7 @@ class _HomeContentState extends State<HomeContent> {
                     builder: (context) => const ReelsPage(),
                   ),
                 ),
-                text: 'Reels',
+                text: 'Karaoke',
                 icon: Icons.quiz,
                 height: 56,
                 backgroundColor: AppColors.secondaryGreen,
