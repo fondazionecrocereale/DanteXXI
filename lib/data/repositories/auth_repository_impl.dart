@@ -79,7 +79,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if (!isLoggedIn || token == null) return false;
 
-    if (await StorageService.isTokenExpired(token)) {
+    if (StorageService.isTokenExpired(token)) {
       await StorageService.clearAll();
       return false;
     }
@@ -90,7 +90,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<String?> getAccessToken() async {
     final token = await StorageService.getAccessToken();
-    if (token != null && await StorageService.isTokenExpired(token)) {
+    if (token != null && StorageService.isTokenExpired(token)) {
       await StorageService.clearAll();
       return null;
     }

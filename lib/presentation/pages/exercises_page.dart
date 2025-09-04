@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_texts.dart';
 
 class ExercisesPage extends StatefulWidget {
   const ExercisesPage({super.key});

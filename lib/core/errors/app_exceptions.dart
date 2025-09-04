@@ -11,8 +11,7 @@ abstract class AppException implements Exception {
 }
 
 class NetworkException extends AppException {
-  const NetworkException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const NetworkException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -20,8 +19,7 @@ class NetworkException extends AppException {
 }
 
 class AuthenticationException extends AppException {
-  const AuthenticationException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const AuthenticationException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -29,8 +27,7 @@ class AuthenticationException extends AppException {
 }
 
 class ValidationException extends AppException {
-  const ValidationException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const ValidationException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -38,8 +35,7 @@ class ValidationException extends AppException {
 }
 
 class CacheException extends AppException {
-  const CacheException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const CacheException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -47,8 +43,7 @@ class CacheException extends AppException {
 }
 
 class DatabaseException extends AppException {
-  const DatabaseException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const DatabaseException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -56,8 +51,7 @@ class DatabaseException extends AppException {
 }
 
 class FileException extends AppException {
-  const FileException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const FileException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -65,8 +59,7 @@ class FileException extends AppException {
 }
 
 class AudioException extends AppException {
-  const AudioException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const AudioException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -74,8 +67,7 @@ class AudioException extends AppException {
 }
 
 class VideoException extends AppException {
-  const VideoException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const VideoException(super.message, {super.code, super.details});
 
   @override
   String toString() =>
@@ -83,8 +75,7 @@ class VideoException extends AppException {
 }
 
 class UnknownException extends AppException {
-  const UnknownException(String message, {String? code, dynamic details})
-    : super(message, code: code, details: details);
+  const UnknownException(super.message, {super.code, super.details});
 
   @override
   String toString() =>

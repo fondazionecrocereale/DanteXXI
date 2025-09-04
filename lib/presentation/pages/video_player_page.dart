@@ -445,7 +445,7 @@ class _VideoPlayerPageState extends State<VideoPlayerPage> {
                     _practiceMode = value;
                   });
                 },
-                activeColor: AppColors.secondaryGreen,
+                activeThumbColor: AppColors.secondaryGreen,
                 activeTrackColor: AppColors.secondaryGreen.withValues(
                   alpha: 0.3,
                 ),

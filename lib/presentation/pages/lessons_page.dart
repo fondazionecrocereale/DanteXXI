@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../core/constants/app_colors.dart';
-import '../../core/constants/app_texts.dart';
 import '../../domain/entities/lesson.dart';
 
 class LessonsPage extends StatefulWidget {

@@ -14,6 +14,7 @@ sealed class Result<T> extends Equatable {
 }
 
 class Success<T> extends Result<T> {
+  @override
   final T data;
 
   const Success(this.data);
@@ -50,7 +51,7 @@ extension ResultExtensions<T> on Result<T> {
 
   Result<T> onSuccess(void Function(T data) callback) {
     if (isSuccess) {
-      callback(data!);
+      callback(data as T);
     }
     return this;
   }
@@ -81,7 +82,7 @@ extension ResultWhen<T> on Result<T> {
     required R Function(String message, String? code, dynamic details) failure,
   }) {
     if (isSuccess) {
-      return success(data!);
+      return success(data as T);
     } else {
       final failureResult = this as Failure<T>;
       return failure(

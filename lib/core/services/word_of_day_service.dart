@@ -66,9 +66,9 @@ class WordOfDayService {
 
           // Extraer la lista de palabras según el tipo de archivo
           String key = '';
-          if (filePath.contains('nouns'))
+          if (filePath.contains('nouns')) {
             key = 'nouns';
-          else if (filePath.contains('verbs'))
+          } else if (filePath.contains('verbs'))
             key = 'verbs';
           else if (filePath.contains('adjectives'))
             key = 'adjectives';

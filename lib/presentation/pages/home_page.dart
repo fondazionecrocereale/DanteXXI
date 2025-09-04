@@ -270,7 +270,7 @@ class _HomeContentState extends State<HomeContent> {
             value: 'A2',
             subtitle: 'Actual',
             color: AppColors.secondaryOrange,
-            onTap: () => null,
+            onTap: () {},
           ),
         ),
       ],

@@ -59,7 +59,7 @@ class _MultipleChoiceWidgetState extends State<MultipleChoiceWidget> {
     final soundPath = isCorrect
         ? widget.question.soundCorrectAnswer
         : widget.question.soundWrongAnswer;
-    if (soundPath != null && soundPath.isNotEmpty) {
+    if (soundPath.isNotEmpty) {
       try {
         await _audioPlayer.setAsset('assets/audio/$soundPath');
         await _audioPlayer.play();

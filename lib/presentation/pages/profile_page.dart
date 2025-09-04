@@ -643,7 +643,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
                   _buildActionSetting(
                     title: 'Hora de Notificación',
-                    subtitle: '${_notificationTime.format(context)}',
+                    subtitle: _notificationTime.format(context),
                     icon: Icons.access_time,
                     onTap: _selectNotificationTime,
                   ),
@@ -926,7 +926,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       : null,
                   child: _profile?.avatar == null
                       ? Text(
-                          '${_profile?.firstName?.substring(0, 1) ?? 'U'}${_profile?.lastName?.substring(0, 1) ?? 'D'}',
+                          '${_profile?.firstName.substring(0, 1) ?? 'U'}${_profile?.lastName.substring(0, 1) ?? 'D'}',
                           style: const TextStyle(
                             fontSize: 32,
                             fontWeight: FontWeight.bold,
@@ -1188,7 +1188,7 @@ class _ProfilePageState extends State<ProfilePage> {
           onChanged: _isEditing
               ? (value) => setState(() => _emailNotifications = value)
               : null,
-          activeColor: AppColors.primaryBlue,
+          activeThumbColor: AppColors.primaryBlue,
         ),
         SwitchListTile(
           title: const Text('Notificaciones Push'),
@@ -1196,7 +1196,7 @@ class _ProfilePageState extends State<ProfilePage> {
           onChanged: _isEditing
               ? (value) => setState(() => _pushNotifications = value)
               : null,
-          activeColor: AppColors.primaryBlue,
+          activeThumbColor: AppColors.primaryBlue,
         ),
       ],
     );
@@ -1284,7 +1284,7 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         const SizedBox(height: 8),
         DropdownButtonFormField<String>(
-          value: value,
+          initialValue: value,
           items: items
               .map((item) => DropdownMenuItem(value: item, child: Text(item)))
               .toList(),
@@ -1419,7 +1419,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Switch(
             value: value,
             onChanged: onChanged,
-            activeColor: AppColors.primaryBlue,
+            activeThumbColor: AppColors.primaryBlue,
           ),
         ],
       ),

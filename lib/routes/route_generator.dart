@@ -6,7 +6,6 @@ import '../presentation/pages/dictionary_page.dart';
 import '../presentation/pages/profile_page.dart';
 import '../presentation/pages/settings_page.dart';
 import '../presentation/pages/reels_page.dart';
-import '../presentation/pages/video_player_page.dart';
 import '../presentation/pages/auth/login_page.dart';
 import '../presentation/pages/onboarding_page.dart';
 

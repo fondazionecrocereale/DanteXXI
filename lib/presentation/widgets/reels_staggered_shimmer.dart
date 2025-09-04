@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import '../../core/constants/app_colors.dart';
 
 class ReelsStaggeredShimmer extends StatelessWidget {
   const ReelsStaggeredShimmer({super.key});

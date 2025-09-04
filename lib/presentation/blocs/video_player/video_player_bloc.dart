@@ -147,7 +147,7 @@ class VideoPlayerBloc
         final currentTime = await _controller!.currentTime;
         print('🎬 Tiempo actual del player: $currentTime');
 
-        if (currentTime != null && state is states.VideoPlayerLoading) {
+        if (state is states.VideoPlayerLoading) {
           print('✅ Player está funcionando, forzando estado ready');
           add(const events.VideoPlayerReady());
         }
@@ -438,7 +438,7 @@ class VideoPlayerBloc
     try {
       if (_controller != null && state is states.VideoPlayerReady) {
         final currentState = state as states.VideoPlayerReady;
-        _controller!..setVolume((event.volume * 100).round());
+        _controller!.setVolume((event.volume * 100).round());
         emit(currentState.copyWith(volume: event.volume));
         print(
           '🎵 Volumen establecido a: ${(event.volume * 100).toStringAsFixed(0)}%',
@@ -457,7 +457,7 @@ class VideoPlayerBloc
     try {
       if (_controller != null && state is states.VideoPlayerReady) {
         final currentState = state as states.VideoPlayerReady;
-        _controller!..setPlaybackRate(event.speed);
+        _controller!.setPlaybackRate(event.speed);
         emit(currentState.copyWith(speed: event.speed));
         print('🎵 Velocidad establecida a: ${event.speed}x');
       }

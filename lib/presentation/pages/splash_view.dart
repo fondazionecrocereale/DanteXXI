@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:just_audio/just_audio.dart';
 import 'exercise_screen.dart';
-import '../../domain/entities/question_model.dart';
 
 class SplashView extends StatefulWidget {
   const SplashView({super.key, required this.id, required this.title});

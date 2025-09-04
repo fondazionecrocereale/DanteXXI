@@ -26,7 +26,7 @@ class _AudiobookPlayerPageState extends State<AudiobookPlayerPage> {
   Duration _position = Duration.zero;
   Duration _duration = Duration.zero;
   int _currentSubtitleIndex = 0;
-  Set<int> _expandedSubtitles = {};
+  final Set<int> _expandedSubtitles = {};
 
   // ScrollController para el auto-scroll
   final ScrollController _scrollController = ScrollController();

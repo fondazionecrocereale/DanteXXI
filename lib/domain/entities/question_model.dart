@@ -64,8 +64,9 @@ class Question {
   }
 
   List<Map<String, String>>? get optionsAsMapList {
-    if (options is List<Map<String, String>>)
+    if (options is List<Map<String, String>>) {
       return options as List<Map<String, String>>;
+    }
     return null;
   }
 
@@ -75,8 +76,9 @@ class Question {
   }
 
   List<String>? get correctAnswerAsList {
-    if (correctAnswer is List<String>)
+    if (correctAnswer is List<String>) {
       return List<String>.from(correctAnswer as List);
+    }
     return null;
   }
 }

@@ -80,18 +80,14 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
     try {
       final user = await _getCurrentUserUseCase();
-      if (user != null) {
-        final token = await StorageService.getAccessToken();
-        if (token != null && !await StorageService.isTokenExpired(token)) {
-          emit(AuthAuthenticated(user, token));
-        } else {
-          await StorageService.clearAll();
-          emit(AuthUnauthenticated());
-        }
+      final token = await StorageService.getAccessToken();
+      if (token != null && !await StorageService.isTokenExpired(token)) {
+        emit(AuthAuthenticated(user, token));
       } else {
+        await StorageService.clearAll();
         emit(AuthUnauthenticated());
       }
-    } catch (e) {
+        } catch (e) {
       emit(AuthUnauthenticated());
     }
   }

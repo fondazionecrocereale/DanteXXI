@@ -1,7 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'dart:convert';
-import 'dart:typed_data';
 
 class StorageService {
   static const String _tokenKey = 'auth_token';
