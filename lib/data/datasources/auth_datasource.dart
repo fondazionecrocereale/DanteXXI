@@ -1,6 +1,8 @@
 import 'package:dio/dio.dart';
 import '../../domain/entities/user.dart';
+import '../../domain/entities/auth_entities.dart';
 import '../../core/network/dio_client.dart';
+import '../../core/services/did_service.dart';
 
 abstract class AuthDataSource {
   Future<AuthResponse> login(LoginRequest request);
@@ -22,7 +24,7 @@ class AuthDataSourceImpl implements AuthDataSource {
         '$_baseUrl/auth/login',
         data: request.toJson(),
       );
-      
+
       return AuthResponse.fromJson(response.data);
     } catch (e) {
       // Si falla, usar autenticación temporal para testing
@@ -36,12 +38,22 @@ class AuthDataSourceImpl implements AuthDataSource {
   @override
   Future<AuthResponse> register(RegisterRequest request) async {
     try {
+      // Generar DID y wallet address automáticamente
+      final did = DIDService.generateDID(request.email);
+      final walletAddress = DIDService.generateWalletAddress(did);
+
+      // Agregar campos Web3 al request
+      final requestData = request.toJson();
+      requestData['did'] = did;
+      requestData['wallet_address'] = walletAddress;
+      requestData['is_web3_enabled'] = true;
+
       // Intentar registro real primero
       final response = await _dioClient.dio.post(
         '$_baseUrl/auth/register',
-        data: request.toJson(),
+        data: requestData,
       );
-      
+
       return AuthResponse.fromJson(response.data);
     } catch (e) {
       // Si falla, usar autenticación temporal para testing
@@ -90,10 +102,11 @@ class AuthDataSourceImpl implements AuthDataSource {
     );
 
     return AuthResponse(
-      user: mockUser,
+      user: mockUser.toJson(),
       token: 'mock_token_${DateTime.now().millisecondsSinceEpoch}',
       refreshToken: 'mock_refresh_${DateTime.now().millisecondsSinceEpoch}',
-      message: '⚠️ Modo de prueba activado - Backend temporalmente no disponible',
+      message:
+          '⚠️ Modo de prueba activado - Backend temporalmente no disponible',
     );
   }
 }

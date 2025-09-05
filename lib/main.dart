@@ -7,6 +7,11 @@ import 'core/services/storage_service.dart';
 import 'core/services/word_of_day_service.dart';
 import 'core/network/dio_client.dart';
 import 'presentation/blocs/auth/auth_bloc.dart';
+import 'presentation/bloc/wallet/wallet_bloc.dart';
+import 'presentation/bloc/transactions/transactions_bloc.dart';
+import 'presentation/bloc/swap/swap_bloc.dart';
+import 'presentation/bloc/rewards/rewards_bloc.dart';
+import 'presentation/blocs/teacher/teacher_bloc.dart';
 import 'presentation/pages/splash_page.dart';
 import 'routes/route_generator.dart';
 
@@ -33,6 +38,13 @@ class DanteXXIApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         BlocProvider<AuthBloc>(create: (context) => di.sl<AuthBloc>()),
+        BlocProvider<WalletBloc>(create: (context) => di.sl<WalletBloc>()),
+        BlocProvider<TransactionsBloc>(
+          create: (context) => di.sl<TransactionsBloc>(),
+        ),
+        BlocProvider<SwapBloc>(create: (context) => di.sl<SwapBloc>()),
+        BlocProvider<RewardsBloc>(create: (context) => di.sl<RewardsBloc>()),
+        BlocProvider<TeacherBloc>(create: (context) => di.sl<TeacherBloc>()),
         Provider<DioClient>(create: (context) => di.sl<DioClient>()),
       ],
       child: MaterialApp(

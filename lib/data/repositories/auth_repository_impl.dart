@@ -1,4 +1,5 @@
 import '../../domain/entities/user.dart';
+import '../../domain/entities/auth_entities.dart';
 import '../../domain/repositories/auth_repository.dart';
 import '../datasources/auth_datasource.dart';
 import '../../core/services/storage_service.dart';
@@ -18,7 +19,7 @@ class AuthRepositoryImpl implements AuthRepository {
         response.token,
         response.refreshToken ?? response.token,
       );
-      await StorageService.saveUser(response.user.toJson());
+      await StorageService.saveUser(response.user);
       await StorageService.setLoggedIn(true);
 
       return response;
@@ -37,7 +38,7 @@ class AuthRepositoryImpl implements AuthRepository {
         response.token,
         response.refreshToken ?? response.token,
       );
-      await StorageService.saveUser(response.user.toJson());
+      await StorageService.saveUser(response.user);
       await StorageService.setLoggedIn(true);
 
       return response;
@@ -79,7 +80,7 @@ class AuthRepositoryImpl implements AuthRepository {
 
     if (!isLoggedIn || token == null) return false;
 
-    if (StorageService.isTokenExpired(token)) {
+    if (await StorageService.isTokenExpired(token)) {
       await StorageService.clearAll();
       return false;
     }
@@ -90,7 +91,7 @@ class AuthRepositoryImpl implements AuthRepository {
   @override
   Future<String?> getAccessToken() async {
     final token = await StorageService.getAccessToken();
-    if (token != null && StorageService.isTokenExpired(token)) {
+    if (token != null && await StorageService.isTokenExpired(token)) {
       await StorageService.clearAll();
       return null;
     }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../blocs/auth/auth_bloc.dart';
+import '../blocs/auth/auth_event.dart';
 import '../blocs/auth/auth_state.dart';
 
 import '../../core/constants/app_colors.dart';
@@ -34,55 +35,43 @@ class _SplashPageState extends State<SplashPage> {
     await Future.delayed(const Duration(seconds: 2));
 
     if (mounted) {
-      // PRIMERO: Verificar si hay una sesión activa (prioridad máxima)
-      print('🔍 SplashPage._handleAuthState() - Verificando sesión activa...');
-      final hasActiveSession = await ProfileService.hasActiveSession();
-      final profile = await ProfileService.getProfile();
-
+      // Usar AuthBloc en lugar de ProfileService
       print(
-        '🔍 SplashPage._handleAuthState() - hasActiveSession: $hasActiveSession',
-      );
-      print(
-        '🔍 SplashPage._handleAuthState() - profile: ${profile != null ? 'existe' : 'null'}',
+        '🔍 SplashPage._handleAuthState() - Verificando estado de AuthBloc...',
       );
 
-      if (hasActiveSession && profile != null) {
-        // ✅ USUARIO AUTENTICADO - Ir directamente a HomePage
-        print(
-          '✅ SplashPage._handleAuthState() - Usuario autenticado, yendo a HomePage',
-        );
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const HomePage()),
-        );
-        return; // Salir aquí, no verificar onboarding
-      }
+      // Disparar evento para verificar usuario actual
+      context.read<AuthBloc>().add(AuthCheckRequested());
 
-      // SEGUNDO: Si no hay sesión activa, verificar onboarding
-      print(
-        '🔍 SplashPage._handleAuthState() - No hay sesión activa, verificando onboarding...',
-      );
-      final onboardingCompleted = await StorageService.isOnboardingCompleted();
-      print(
-        '🔍 SplashPage._handleAuthState() - onboardingCompleted: $onboardingCompleted',
-      );
+      // El BlocListener se encargará de la navegación
+    }
+  }
 
-      if (!onboardingCompleted) {
-        // Primera vez, mostrar onboarding
-        print(
-          '📚 SplashPage._handleAuthState() - Primera vez, yendo a OnboardingPage',
-        );
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const OnboardingPage()),
-        );
-      } else {
-        // Usuario no autenticado, ir a login
-        print(
-          '🔐 SplashPage._handleAuthState() - Usuario no autenticado, yendo a LoginPage',
-        );
-        Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const LoginPage()),
-        );
-      }
+  Future<void> _checkOnboardingAndNavigate() async {
+    print(
+      '🔍 SplashPage._checkOnboardingAndNavigate() - Verificando onboarding...',
+    );
+    final onboardingCompleted = await StorageService.isOnboardingCompleted();
+    print(
+      '🔍 SplashPage._checkOnboardingAndNavigate() - onboardingCompleted: $onboardingCompleted',
+    );
+
+    if (!onboardingCompleted) {
+      // Primera vez, mostrar onboarding
+      print(
+        '📚 SplashPage._checkOnboardingAndNavigate() - Primera vez, yendo a OnboardingPage',
+      );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const OnboardingPage()),
+      );
+    } else {
+      // Usuario no autenticado, ir a login
+      print(
+        '🔐 SplashPage._checkOnboardingAndNavigate() - Usuario no autenticado, yendo a LoginPage',
+      );
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => const LoginPage()),
+      );
     }
   }
 
@@ -90,14 +79,22 @@ class _SplashPageState extends State<SplashPage> {
   Widget build(BuildContext context) {
     return BlocListener<AuthBloc, AuthState>(
       listener: (context, state) {
+        print(
+          '🔍 SplashPage.BlocListener - Estado recibido: ${state.runtimeType}',
+        );
+
         if (state is AuthAuthenticated) {
+          print(
+            '✅ SplashPage.BlocListener - Usuario autenticado, yendo a HomePage',
+          );
           Navigator.of(context).pushReplacement(
             MaterialPageRoute(builder: (context) => const HomePage()),
           );
         } else if (state is AuthUnauthenticated) {
-          Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const LoginPage()),
+          print(
+            '🔐 SplashPage.BlocListener - Usuario no autenticado, verificando onboarding...',
           );
+          _checkOnboardingAndNavigate();
         }
       },
       child: Scaffold(

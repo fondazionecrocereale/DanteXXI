@@ -8,6 +8,7 @@ import '../presentation/pages/settings_page.dart';
 import '../presentation/pages/reels_page.dart';
 import '../presentation/pages/auth/login_page.dart';
 import '../presentation/pages/onboarding_page.dart';
+import '../presentation/pages/main/main_page.dart';
 
 class RouteGenerator {
   static const String home = '/';
@@ -20,6 +21,7 @@ class RouteGenerator {
   static const String videoPlayer = '/video-player';
   static const String login = '/login';
   static const String onboarding = '/onboarding';
+  static const String wallet = '/wallet';
 
   static Route<dynamic> generateRoute(RouteSettings settings) {
     if (settings.name == home) {
@@ -47,6 +49,8 @@ class RouteGenerator {
       return MaterialPageRoute(builder: (_) => const LoginPage());
     } else if (settings.name == onboarding) {
       return MaterialPageRoute(builder: (_) => const OnboardingPage());
+    } else if (settings.name == wallet) {
+      return MaterialPageRoute(builder: (_) => const MainPage());
     } else {
       return MaterialPageRoute(
         builder: (_) => Scaffold(

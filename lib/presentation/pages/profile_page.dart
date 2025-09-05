@@ -7,7 +7,12 @@ import '../../core/services/error_handler_service.dart';
 import '../../core/services/session_manager.dart';
 import '../../core/services/notification_service.dart';
 import '../../domain/entities/editable_profile.dart';
+import '../../domain/entities/user.dart';
 import '../widgets/custom_text_field.dart';
+import '../widgets/wallet/user_web3_info.dart';
+import '../blocs/auth/auth_bloc.dart';
+import '../blocs/auth/auth_state.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -209,36 +214,57 @@ class _ProfilePageState extends State<ProfilePage> {
     print('🔄 ProfilePage._loadProfile() - Iniciando...');
     setState(() => _isLoading = true);
     try {
-      final profile = await ProfileService.getProfile();
+      // Usar AuthBloc en lugar de ProfileService
+      final authState = context.read<AuthBloc>().state;
       print(
-        '🔍 ProfilePage._loadProfile() - Profile obtenido: ${profile != null ? 'existe' : 'null'}',
+        '🔍 ProfilePage._loadProfile() - AuthState: ${authState.runtimeType}',
       );
 
-      if (profile != null) {
-        print('✅ ProfilePage._loadProfile() - Asignando perfil a _profile');
-        _profile = profile;
+      if (authState is AuthAuthenticated) {
         print(
-          '🔍 ProfilePage._loadProfile() - _profile después de asignar: ${_profile != null ? 'existe' : 'null'}',
+          '✅ ProfilePage._loadProfile() - Usuario autenticado: ${authState.user['email']}',
         );
 
+        // Convertir User del AuthBloc a EditableProfile
+        _profile = EditableProfile(
+          id: authState.user['id'],
+          email: authState.user['email'],
+          firstName: authState.user['firstName'],
+          lastName: authState.user['lastName'],
+          avatar: authState.user['avatar'],
+          level: authState.user['level'] ?? 'A1',
+          country: authState.user['country'] ?? 'Italia',
+          language: authState.user['language'] ?? 'italiano',
+          interests: List<String>.from(authState.user['intereses'] ?? []),
+          bio: 'Usuario de DanteXXI',
+          phoneNumber: null,
+          learningGoal: 'Aprender italiano',
+          dailyGoalMinutes: 30,
+          emailNotifications: true,
+          pushNotifications: true,
+        );
+
+        print('✅ ProfilePage._loadProfile() - Perfil creado desde AuthBloc');
         _populateControllers();
         print('✅ ProfilePage._loadProfile() - Controllers poblados');
 
-        // Mostrar mensaje de que la sesión se mantuvo activa
-        if (mounted) {
-          ErrorHandlerService.showInfoSnackBar(
-            context,
-            'Sesión mantenida: Bienvenido de vuelta, ${profile.firstName}!',
-          );
+        // Mostrar mensaje de bienvenida (solo si el widget está montado y el contexto es válido)
+        if (mounted && context.mounted) {
+          // Usar un delay para asegurar que el ScaffoldMessenger esté disponible
+          Future.delayed(const Duration(milliseconds: 100), () {
+            if (mounted && context.mounted) {
+              ErrorHandlerService.showInfoSnackBar(
+                context,
+                'Bienvenido, ${authState.user['firstName']}!',
+              );
+            }
+          });
         }
 
         print('✅ ProfilePage._loadProfile() - Perfil cargado exitosamente');
       } else {
-        print('❌ ProfilePage._loadProfile() - No hay perfil disponible');
-        // No hay perfil - el usuario debe estar autenticado para ver esta página
-        setState(() => _isLoading = false);
-        // No crear perfil por defecto, solo mostrar que no hay datos
-        return;
+        print('❌ ProfilePage._loadProfile() - Usuario no autenticado');
+        _profile = null;
       }
     } catch (e) {
       print('❌ ProfilePage._loadProfile() - Error: $e');
@@ -549,6 +575,11 @@ class _ProfilePageState extends State<ProfilePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildProfileHeader(),
+              const SizedBox(height: 24),
+
+              // Sección de Identidad Web3
+              _buildWeb3Section(),
+
               const SizedBox(height: 24),
 
               // Configuraciones de la aplicación
@@ -1726,6 +1757,51 @@ class _ProfilePageState extends State<ProfilePage> {
         content: Text('Abriendo contacto de soporte...'),
         backgroundColor: AppColors.info,
       ),
+    );
+  }
+
+  /// Construye la sección de información Web3
+  Widget _buildWeb3Section() {
+    return BlocBuilder<AuthBloc, AuthState>(
+      builder: (context, authState) {
+        if (authState is AuthAuthenticated) {
+          return Card(
+            elevation: 2,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(16),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Row(
+                    children: [
+                      Icon(
+                        Icons.fingerprint,
+                        color: Colors.amber[700],
+                        size: 24,
+                      ),
+                      const SizedBox(width: 12),
+                      Text(
+                        'Identidad Descentralizada',
+                        style: Theme.of(context).textTheme.titleMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.amber[700],
+                            ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                  UserWeb3Info(user: authState.user),
+                ],
+              ),
+            ),
+          );
+        }
+        return const SizedBox.shrink();
+      },
     );
   }
 

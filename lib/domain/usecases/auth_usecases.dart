@@ -1,4 +1,5 @@
 import '../entities/user.dart';
+import '../entities/auth_entities.dart';
 import '../repositories/auth_repository.dart';
 
 abstract class LoginUseCase {

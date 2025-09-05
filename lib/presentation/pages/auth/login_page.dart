@@ -8,6 +8,7 @@ import '../../widgets/custom_text_field.dart';
 import '../../widgets/custom_button.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/entities/user.dart';
+import '../../../domain/entities/auth_entities.dart';
 import 'register_page.dart';
 import '../home_page.dart';
 
@@ -252,10 +253,10 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _showSuccessMessage(User user) {
+  void _showSuccessMessage(Map<String, dynamic> user) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
-        content: Text('¡Bienvenido ${user.firstName}!'),
+        content: Text('¡Bienvenido ${user['firstName']}!'),
         backgroundColor: AppColors.success,
       ),
     );

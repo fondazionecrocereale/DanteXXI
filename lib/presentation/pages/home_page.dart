@@ -21,6 +21,8 @@ import 'divine_comedy_screen.dart';
 import 'reels_page.dart';
 import 'audiobooks_page.dart';
 import 'audiobook_details_page.dart';
+import 'wallet/wallet_page.dart';
+import 'channels/channels_page.dart';
 import '../widgets/reels_staggered_grid.dart';
 import '../blocs/reels/reels_bloc.dart';
 import '../blocs/reels/reels_event.dart';
@@ -37,12 +39,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _currentIndex = 1;
+  int _currentIndex = 2;
 
   final List<Widget> _pages = [
     const DivineComedyScreen(),
+
     //const ReelsPage(),
+    const ChannelsPage(), // Nueva pestaña de canales
     const HomeContent(),
+    const WalletPage(), // Nueva pestaña de billetera
     //const DictionaryPage(),
     const ProfilePage(),
   ];
@@ -70,17 +75,28 @@ class _HomePageState extends State<HomePage> {
             activeIcon: Icon(Icons.map),
             label: AppTexts.learningMap,
           ),
-        /*  BottomNavigationBarItem(
+
+          /*  BottomNavigationBarItem(
             icon: Icon(Icons.video_stable),
             activeIcon: Icon(Icons.video_stable),
             label: AppTexts.reels,
           ),*/
           BottomNavigationBarItem(
+            icon: Icon(Icons.school_outlined),
+            activeIcon: Icon(Icons.school),
+            label: 'Canales',
+          ),
+          BottomNavigationBarItem(
             icon: Icon(Icons.home_outlined),
             activeIcon: Icon(Icons.home),
             label: AppTexts.home,
           ),
-        /*  BottomNavigationBarItem(
+          BottomNavigationBarItem(
+            icon: Icon(Icons.account_balance_wallet_outlined),
+            activeIcon: Icon(Icons.account_balance_wallet),
+            label: 'Billetera',
+          ),
+          /*  BottomNavigationBarItem(
             icon: Icon(Icons.book_outlined),
             activeIcon: Icon(Icons.book),
             label: AppTexts.dictionary,
@@ -359,7 +375,9 @@ class _HomeContentState extends State<HomeContent> {
             Expanded(
               child: CustomButton(
                 onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const DictionaryPage()),
+                  MaterialPageRoute(
+                    builder: (context) => const DictionaryPage(),
+                  ),
                 ),
                 text: 'Dizionario',
                 icon: Icons.play_arrow,
@@ -399,9 +417,7 @@ class _HomeContentState extends State<HomeContent> {
             Expanded(
               child: CustomButton(
                 onPressed: () => Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => const ReelsPage(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const ReelsPage()),
                 ),
                 text: 'Karaoke',
                 icon: Icons.quiz,

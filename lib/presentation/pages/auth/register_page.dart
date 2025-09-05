@@ -8,6 +8,7 @@ import '../../widgets/custom_text_field.dart';
 import '../../widgets/custom_button.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../domain/entities/user.dart';
+import '../../../domain/entities/auth_entities.dart';
 import '../home_page.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -309,11 +310,11 @@ class _RegisterPageState extends State<RegisterPage> {
     Navigator.of(context).pop();
   }
 
-  void _showSuccessMessage(User user) {
+  void _showSuccessMessage(Map<String, dynamic> user) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(
-          '¡Bienvenido ${user.firstName}! Tu cuenta ha sido creada exitosamente.',
+          '¡Bienvenido ${user['firstName']}! Tu cuenta ha sido creada exitosamente.',
         ),
         backgroundColor: AppColors.success,
       ),
